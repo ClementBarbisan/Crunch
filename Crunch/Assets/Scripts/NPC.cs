@@ -27,8 +27,7 @@ public class NPC : MonoBehaviour
 
     public AStateNPC CurrentState { get; private set; }
     public float WorkStress { get; private set; }
-    private bool _isHeldByPlayer;
-
+    public bool isHeldByPlayer, isThrown;
 
     #region Unity Events
 
@@ -44,12 +43,19 @@ public class NPC : MonoBehaviour
 
     void Update()
     {
-        if (_isHeldByPlayer)
+        if (isHeldByPlayer)
         {
-            //TODO: held by player logic here
-
+            //TODO: held by player logic here, change animation, 
             return;
         }
+
+        if (isThrown)
+        {
+            // Player have throw NPC, he's flying waiting to collide with something
+            
+            return;
+        }
+        
         if (CurrentState.ShouldLeaveState(this)) // Changing state
         {
             CurrentState.OnLeaveState(this);
@@ -84,6 +90,15 @@ public class NPC : MonoBehaviour
         }
 
         //Debug.Log("stress "+WorkStress);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (isThrown)
+        {
+            isThrown = false;
+            Agent.enabled = true;
+        }
     }
 
     #endregion

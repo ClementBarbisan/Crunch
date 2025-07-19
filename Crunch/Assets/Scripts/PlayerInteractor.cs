@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerInteractor : MonoBehaviour
 {
@@ -43,7 +44,8 @@ public class PlayerInteractor : MonoBehaviour
             {
                 interactable.Interact();
                 _handFree = false;
-                
+                if(interactable.Heavy)
+                    _playerController.speedMove = _playerController.moveSpeedSlow;
                 InteractableToThrow(_interactableDetected.transform);
             }
         }
@@ -61,6 +63,7 @@ public class PlayerInteractor : MonoBehaviour
                 Rigidbody rb = _interactableToThrow.GetComponent<Rigidbody>();
                 rb.isKinematic = false;
                 rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+                _interactableDetected.GetComponent<Renderer>().materials[1].color = Color.black;
                 _interactableToThrow = null;
             }
         }
@@ -72,10 +75,13 @@ public class PlayerInteractor : MonoBehaviour
         _rotationInitThrowable = obj.rotation;
         obj.GetComponent<Rigidbody>().isKinematic = true;
         obj.GetComponent<Collider>().enabled = false;
+        
+        if (obj.GetComponent<NavMeshAgent>() != null)
+            obj.GetComponent<NavMeshAgent>().enabled = false;
+        
         obj.SetParent(carryPoint);
         obj.localPosition = Vector3.zero;
         obj.localRotation = Quaternion.identity;
-        _playerController.speedMove = _playerController.moveSpeedSlow;
     }
 
     private void Scream()
@@ -97,15 +103,22 @@ public class PlayerInteractor : MonoBehaviour
         Vector3 direction = transform.forward;
 
         if (Physics.SphereCast(origin, interactRadius, direction, out RaycastHit hit, interactRange, interactableLayer))
+        {
             _interactableDetected = hit.collider;
+            _interactableDetected.GetComponent<Renderer>().materials[1].color = Color.white;
+        }
         else
-            _interactableDetected = null;
-        
-        Debug.Log(_interactableDetected);
+        {
+            if (_interactableDetected)
+            {
+                _interactableDetected.GetComponent<Renderer>().materials[1].color = Color.black;
+                _interactableDetected = null;
+            }
+        }
         
         _screamedDetected = Physics.SphereCastNonAlloc(transform.position, interactRadius, transform.forward, _screamedDetectedHit, interactRange, interactableLayer);
     }
-
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;

@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 8412578189511358944}
   - component: {fileID: 8925518924239062056}
   - component: {fileID: 5076965970727811295}
-  m_Layer: 0
+  - component: {fileID: 8390436810436759822}
+  m_Layer: 6
   m_Name: NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,8 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0466a5b62703e486985b3507be1a3630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentStation: {fileID: 0}
-  agent: {fileID: 0}
+  CurrentStation: {fileID: 0}
+  Agent: {fileID: 0}
   _overworkedState: {fileID: 11400000, guid: e4b2de4a1b20347ae8afe94764a82baf, type: 2}
   _workingState: {fileID: 11400000, guid: b80861e825b394a458504c99ebfef030, type: 2}
   _underworkedState: {fileID: 11400000, guid: a947ceaa85a2c4a698492c62359611b9, type: 2}
@@ -156,4 +157,30 @@ MonoBehaviour:
   <OverworkedMax>k__BackingField: 0.85
   <UnderworkedMin>k__BackingField: 0.05
   <UnderworkedMax>k__BackingField: 0.4
-  Debug_Rend: {fileID: 0}
+--- !u!54 &8390436810436759822
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584757859879435942}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
