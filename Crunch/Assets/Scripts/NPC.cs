@@ -32,6 +32,10 @@ public class NPC : MonoBehaviour, IInteractable
     [field: SerializeField] public float FrenzyWorkEfficiencyRate { get; set; } = 0.8f;
     [field: SerializeField] public float DistanceToDestination { get; set; } = 1.5f;
 
+    [Header("State VFXs")]
+    [field: SerializeField] public ParticleSystem[] UnderworkedVFXs { get; set; }
+    [field: SerializeField] public ParticleSystem[] OverworkedVFXs { get; set; }
+
 
     [Header("UI")]
     public StressProgressBar stressProgressBar;
@@ -71,6 +75,7 @@ public class NPC : MonoBehaviour, IInteractable
             {
                 CurrentStation.freeStation = true;
                 CurrentStation.currentNPC = null;
+                CurrentStation = null;
             }
             IsWorking = false;
             return;
@@ -81,7 +86,7 @@ public class NPC : MonoBehaviour, IInteractable
             // Player have throw NPC, he's flying waiting to collide with something
             return;
         }
-        if (CurrentState.ShouldLeaveState(this) || (CurrentState.StateCategory == EStateCategory.Overworked && TimeCounter < 0)) //Changing state
+        if (CurrentState.ShouldLeaveState(this) && (CurrentState.StateCategory != EStateCategory.Overworked || TimeCounter < 0)) //Changing state
         {
             CurrentState.OnLeaveState(this);
 
@@ -126,6 +131,7 @@ public class NPC : MonoBehaviour, IInteractable
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.transform.name);
         if (collision.transform.CompareTag("Player"))
             return;
         
@@ -134,6 +140,7 @@ public class NPC : MonoBehaviour, IInteractable
             isThrown = false;
             Agent.enabled = true;
             transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
+            GetComponent<Rigidbody>().isKinematic = true;
         }
     }
 

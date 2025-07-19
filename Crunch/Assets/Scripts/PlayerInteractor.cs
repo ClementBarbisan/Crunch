@@ -145,7 +145,7 @@ public class PlayerInteractor : MonoBehaviour
         if(_interactableDetected != null)
             Debug.Log(_interactableDetected.transform.name);
         
-        _screamedDetected = Physics.SphereCastNonAlloc(transform.position, interactRadius, transform.forward, _screamedDetectedHit, interactRange, interactableLayer);
+        _screamedDetected = Physics.SphereCastNonAlloc(transform.position, screamRadius, transform.forward, _screamedDetectedHit, interactRange, interactableLayer);
     }
     
     private void OnDrawGizmos()
