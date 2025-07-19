@@ -116,14 +116,15 @@ public class PlayerInteractor : MonoBehaviour
 
         if (Physics.SphereCast(origin, interactRadius, direction, out RaycastHit hit, interactRange, interactableLayer))
         {
+
             _interactableDetected = hit.collider;
-            _interactableDetected.GetComponent<Renderer>().materials[1].color = Color.white;
+            _interactableDetected.GetComponent<Renderer>().materials[1].SetFloat("_Detected", 1f);
         }
         else
         {
             if (_interactableDetected)
             {
-                _interactableDetected.GetComponent<Renderer>().materials[1].color = Color.black;
+                _interactableDetected.GetComponent<Renderer>().materials[1].SetFloat("_Detected", 0f);
                 _interactableDetected = null;
             }
         }
