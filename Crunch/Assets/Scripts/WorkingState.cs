@@ -33,7 +33,7 @@ public class WorkingState : AStateNPC
             if (npc.CurrentStation)
             {
                 npc.Agent.isStopped = false;
-                npc.Agent.speed = 3.5f;
+                npc.Agent.speed = StateWalkSpeed;
                 npc.Agent.SetDestination(npc.CurrentStation.transform.position + npc.CurrentStation.transform.forward);
             }
         }
@@ -51,11 +51,11 @@ public class WorkingState : AStateNPC
             npc.CurrentStation = FindClosestStation(npc.transform.position);
             if (npc.CurrentStation)
             {
-                npc.Agent.speed = 3.5f;
+                npc.Agent.speed = StateWalkSpeed;
                 npc.Agent.SetDestination(npc.CurrentStation.transform.position + npc.CurrentStation.transform.forward);
             }
         }
-        if (Vector3.Distance(npc.transform.position, npc.Agent.destination) < 0.5f)
+        if (Vector3.Distance(npc.transform.position, npc.Agent.destination) < npc.DistanceToDestination)
         {
             npc.CurrentStation.freeStation = false;
             npc.CurrentStation.currentNPC = npc;

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ea4101329af47f8b597f5ccbad0de91, type: 3}
   m_Name: StressedHyperactifState
   m_EditorClassIdentifier: 
+  StateWalkSpeed: 5
   StateCategory: 2

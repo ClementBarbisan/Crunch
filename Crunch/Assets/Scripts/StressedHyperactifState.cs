@@ -1,4 +1,4 @@
-using UnityEngine;
+    using UnityEngine;
 
 [CreateAssetMenu(fileName = "StressedHyperactifState", menuName = "ScriptableObjects/StressedHyperactifState")]
 public class StressedHyperactifState : StressedState
@@ -8,7 +8,7 @@ public class StressedHyperactifState : StressedState
         base.OnUpdateState(npc);
         if (npc.OldTimer > 0 && npc.TimeCounter <= 0)
         {
-            npc.Agent.speed = 5f;
+            npc.Agent.speed = StateWalkSpeed;
             npc.Agent.SetDestination(new Vector3(Random.Range(-15f, 15f), 0f, Random.Range(-15f, 15f)));
             npc.finishFrenzy = true;
         }
