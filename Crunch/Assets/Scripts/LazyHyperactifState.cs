@@ -5,7 +5,7 @@ using UnityEngine;
 public class LazyHyperactifState : LazyState
 {
     [SerializeField] private float _radiusSphere = 3f;
-    [SerializeField] private float _rangeSphere = 1.5f;
+    [SerializeField] private float _rangeSphere = 0f;
     [SerializeField] private int _interactableLayer;
     [SerializeField] private float _dividerDestressOthers = 30f;
 
