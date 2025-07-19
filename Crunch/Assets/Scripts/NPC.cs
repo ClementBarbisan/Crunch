@@ -131,6 +131,7 @@ public class NPC : MonoBehaviour, IInteractable
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.transform.name);
         if (collision.transform.CompareTag("Player"))
             return;
         
@@ -139,6 +140,7 @@ public class NPC : MonoBehaviour, IInteractable
             isThrown = false;
             Agent.enabled = true;
             transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
+            GetComponent<Rigidbody>().isKinematic = true;
         }
     }
 
