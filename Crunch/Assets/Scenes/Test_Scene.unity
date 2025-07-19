@@ -895,6 +895,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a11785b116df744b5a7df37446cc5260, type: 3}
+--- !u!198 &1211429381 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2577621983158843689, guid: dc81b7a81ceed694784ecf406eeaff38, type: 3}
+  m_PrefabInstance: {fileID: 5574072493962120179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1261284208 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2883157826129877082, guid: dc81b7a81ceed694784ecf406eeaff38, type: 3}
+  m_PrefabInstance: {fileID: 5574072493962120179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1383937751 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8476831400209636927, guid: dc81b7a81ceed694784ecf406eeaff38, type: 3}
+  m_PrefabInstance: {fileID: 5574072493962120179}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1479409865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,6 +1360,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 82273851057240695, guid: 8c9bd7f7edcd2484cb008f7f8bc5fb59, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82273851057240695, guid: 8c9bd7f7edcd2484cb008f7f8bc5fb59, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 864255276003260053, guid: 8c9bd7f7edcd2484cb008f7f8bc5fb59, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1522,6 +1545,22 @@ PrefabInstance:
       propertyPath: interactRange
       value: 0.46
       objectReference: {fileID: 0}
+    - target: {fileID: 6163364187461141337, guid: dc81b7a81ceed694784ecf406eeaff38, type: 3}
+      propertyPath: waveScreamVfx
+      value: 
+      objectReference: {fileID: 1211429381}
+    - target: {fileID: 6163364187461141337, guid: dc81b7a81ceed694784ecf406eeaff38, type: 3}
+      propertyPath: textScreamVfxs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6163364187461141337, guid: dc81b7a81ceed694784ecf406eeaff38, type: 3}
+      propertyPath: 'textScreamVfxs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1383937751}
+    - target: {fileID: 6163364187461141337, guid: dc81b7a81ceed694784ecf406eeaff38, type: 3}
+      propertyPath: 'textScreamVfxs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1261284208}
     - target: {fileID: 7627798319866515507, guid: dc81b7a81ceed694784ecf406eeaff38, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
