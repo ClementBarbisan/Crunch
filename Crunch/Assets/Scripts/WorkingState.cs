@@ -18,7 +18,7 @@ public class WorkingState : AStateNPC
                 index = i;
             }
         }
-        if (index > 0)
+        if (index >= 0)
             return (allStations[index]);
         return (null);
     }
@@ -33,6 +33,7 @@ public class WorkingState : AStateNPC
             if (npc.currentStation)
             {
                 npc.agent.destination = npc.currentStation.transform.position;
+                npc.currentStation.freeStation = false;
             }
         }
     }
@@ -46,6 +47,7 @@ public class WorkingState : AStateNPC
     {
         if (npc.currentStation)
         {
+            npc.currentStation.freeStation = true;
             npc.currentStation = null;
         }
     }

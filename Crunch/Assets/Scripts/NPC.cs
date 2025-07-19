@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -30,6 +31,11 @@ public class NPC : MonoBehaviour
 
 
     #region Unity Events
+
+    void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+    }
 
     void Start()
     {
