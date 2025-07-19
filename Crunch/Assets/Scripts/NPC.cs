@@ -38,6 +38,9 @@ public class NPC : MonoBehaviour, IInteractable
 
     public bool isHeldByPlayer, isThrown;
     public bool IsWorking;
+    public float FrenzyTime = 10;
+    public float TimeCounter, OldTimer = 10;
+    public bool finishFrenzy = false;
     #region Unity Events
 
     void Awake()
@@ -54,6 +57,7 @@ public class NPC : MonoBehaviour, IInteractable
     {
         if (isHeldByPlayer)
         {
+            Agent.isStopped = true;
             //TODO: held by player logic here, change animation, 
             return;
         }
@@ -61,10 +65,10 @@ public class NPC : MonoBehaviour, IInteractable
         if (isThrown)
         {
             // Player have throw NPC, he's flying waiting to collide with something
-            
+            Agent.isStopped = true;
             return;
         }
-        
+        Agent.isStopped = false;
         if (CurrentState.ShouldLeaveState(this)) // Changing state
         {
             CurrentState.OnLeaveState(this);
@@ -75,6 +79,8 @@ public class NPC : MonoBehaviour, IInteractable
                 if(WorkStress >= OverworkedMax)
                 {
                     CurrentState = _overworkedState;
+                    TimeCounter = FrenzyTime;
+                    OldTimer = FrenzyTime;
                 }
                 else if(WorkStress <= UnderworkedMin)
                 {
@@ -94,8 +100,10 @@ public class NPC : MonoBehaviour, IInteractable
         }
         else // Calling state update
         {
+            TimeCounter -= Time.deltaTime;
             CurrentState.OnUpdateState(this);
             WorkStress = Mathf.Clamp01(WorkStress - _stressDecrementSpeed*Time.deltaTime);
+            OldTimer = TimeCounter;
         }
 
         //Debug.Log("stress "+WorkStress);
@@ -136,7 +144,7 @@ public class NPC : MonoBehaviour, IInteractable
 
     private void GetScreamedAt()
     {
-        WorkStress = Mathf.Clamp01(WorkStress + _screamStressBoost * Time.deltaTime);
+        WorkStress = Mathf.Clamp01(WorkStress + _screamStressBoost);
     }
 
     #endregion
