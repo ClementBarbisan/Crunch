@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0466a5b62703e486985b3507be1a3630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHeavy: 0
   CurrentStation: {fileID: 0}
   Agent: {fileID: 0}
   _overworkedState: {fileID: 11400000, guid: e4b2de4a1b20347ae8afe94764a82baf, type: 2}
@@ -159,11 +160,16 @@ MonoBehaviour:
   <OverworkedMax>k__BackingField: 0.85
   <UnderworkedMin>k__BackingField: 0.05
   <UnderworkedMax>k__BackingField: 0.4
+  <WorkEfficiencyRate>k__BackingField: 2.5
   stressProgressBar: {fileID: 0}
   TransformReferenceUI: {fileID: 1380800309870791561}
   isHeldByPlayer: 0
   isThrown: 0
   IsWorking: 0
+  FrenzyTime: 10
+  TimeCounter: 0
+  OldTimer: 10
+  finishFrenzy: 0
 --- !u!54 &8390436810436759822
 Rigidbody:
   m_ObjectHideFlags: 0
