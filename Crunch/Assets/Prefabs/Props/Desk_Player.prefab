@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3317811913362414660}
   - component: {fileID: 1614812336084374322}
   - component: {fileID: 6963774944584632454}
-  - component: {fileID: 5384236273141469179}
+  - component: {fileID: 7973705644894622983}
   m_Layer: 0
-  m_Name: Desk_Player
+  m_Name: Desk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 573b841baf322184c8383877c30aff63, type: 2}
+  - {fileID: 2100000, guid: 6d2b30bb67728a24189b7de6ec5995f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,7 +88,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5384236273141469179
+--- !u!65 &7973705644894622983
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,5 +107,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1152391, y: 0.8994717, z: 0.586866}
-  m_Center: {x: 0.00071692467, y: 0.44741318, z: 0.001776129}
+  m_Size: {x: 1.1152391, y: 0.46437562, z: 0.586866}
+  m_Center: {x: 0.00071692467, y: 0.22986513, z: 0.001776129}
