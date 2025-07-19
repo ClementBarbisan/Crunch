@@ -5,9 +5,8 @@ using Random = UnityEngine.Random;
 
 public class ShakeCam : MonoBehaviour
 {
-    [SerializeField] private float shakeAmount = 0.1f;
-    [SerializeField] private float decreaseFactor = 1f;
-    [SerializeField] private float shake = 0.5f;
+    public float shakeAmount = 0.1f;
+    public float shake = 0.5f;
     private Vector3 initPos;
 
 
@@ -21,7 +20,7 @@ public class ShakeCam : MonoBehaviour
         if (shake > 0) 
         {
             transform.localPosition += Random.insideUnitSphere * shakeAmount;
-            shake -= Time.deltaTime * decreaseFactor;
+            shake -= Time.deltaTime;
         } 
         else
         {
