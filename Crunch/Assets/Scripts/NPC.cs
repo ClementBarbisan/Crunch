@@ -132,8 +132,7 @@ public class NPC : MonoBehaviour, IInteractable
         if (isThrown)
         {
             isThrown = false;
-            Agent.isStopped = false;
-            GetComponent<Rigidbody>().isKinematic = true;
+            Agent.enabled = true;
             transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
         }
     }

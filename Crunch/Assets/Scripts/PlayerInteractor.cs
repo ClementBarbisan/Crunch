@@ -21,7 +21,8 @@ public class PlayerInteractor : MonoBehaviour
     private readonly RaycastHit[] _screamedDetectedHit = new RaycastHit[10];
 
     [Header("Actions Vfx")]
-    [SerializeField] private ParticleSystem screamVfx;
+    [SerializeField] private ParticleSystem[] textScreamVfxs;
+    [SerializeField] private ParticleSystem waveScreamVfx;
     private void Awake()
     {
         _playerController = GetComponentInParent<PlayerController>();
@@ -90,8 +91,10 @@ public class PlayerInteractor : MonoBehaviour
         {
             if (_interactableToThrow.GetComponent<NPC>() != null)
                 _interactableToThrow.GetComponent<NPC>().isHeldByPlayer = true;
-            obj.GetComponent<NavMeshAgent>().isStopped = true;
-            obj.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
+            NavMeshAgent agent = obj.GetComponent<NavMeshAgent>();
+            agent.isStopped = true;
+            agent.velocity = Vector3.zero;
+            agent.enabled = false;
         }
         
         obj.SetParent(carryPoint);
@@ -102,7 +105,12 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Scream()
     {
-        screamVfx.Play();
+        if (textScreamVfxs.Length > 0)
+        {
+            textScreamVfxs[Random.Range(0, textScreamVfxs.Length)].Play();
+        }
+        waveScreamVfx.Play();
+
 
         if (_screamedDetected == 0)
             return;

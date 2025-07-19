@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Station : MonoBehaviour
@@ -8,6 +7,7 @@ public class Station : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.transform.name);
         if (collision.collider.TryGetComponent(out NPC npc))
         {
             if (!freeStation)
