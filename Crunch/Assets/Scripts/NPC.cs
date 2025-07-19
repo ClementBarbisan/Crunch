@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NPC : MonoBehaviour
+public class NPC : MonoBehaviour, IInteractable
 {
 
     [Header("Navigation")]
@@ -23,6 +23,10 @@ public class NPC : MonoBehaviour
     [field: SerializeField] public float OverworkedMax { get; set; } = 0.85f;
     [field: SerializeField] public float UnderworkedMin { get; set; } = 0.05f;
     [field: SerializeField] public float UnderworkedMax { get; set; } = 0.4f;
+
+    [Header("UI")]
+    public StressProgressBar stressProgressBar;
+    public Transform TransformReferenceUI;
 
 
     public AStateNPC CurrentState { get; private set; }
@@ -86,6 +90,10 @@ public class NPC : MonoBehaviour
         //Debug.Log("stress "+WorkStress);
     }
 
+    private void OnDestroy()
+    {
+        Destroy(stressProgressBar); // Remove this NPC UI before destroying itself
+    }
     #endregion
 
     #region Private Methods
@@ -97,7 +105,15 @@ public class NPC : MonoBehaviour
 
         CurrentState.OnEnterState(this);
 
+        stressProgressBar =  UiNpcManager.Instance.RegisterNewNpc(this);
+        stressProgressBar.Npc = this;
     }
+
+    private void GetScreamedAt()
+    {
+        WorkStress = Mathf.Clamp01(WorkStress + _screamStressBoost * Time.deltaTime);
+    }
+
     #endregion
 
     #region Public Methods
@@ -110,9 +126,15 @@ public class NPC : MonoBehaviour
 
     #region Events Callbacks
 
-    public void GetScreamedAt()
+
+    public void Interact()
     {
-        WorkStress = Mathf.Clamp01(WorkStress + _screamStressBoost * Time.deltaTime);
+        throw new NotImplementedException();
+    }
+
+    public void OnScream()
+    {
+        GetScreamedAt();
     }
 
     #endregion
