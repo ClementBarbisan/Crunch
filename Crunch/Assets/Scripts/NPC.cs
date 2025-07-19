@@ -32,6 +32,10 @@ public class NPC : MonoBehaviour, IInteractable
     [field: SerializeField] public float FrenzyWorkEfficiencyRate { get; set; } = 0.8f;
     [field: SerializeField] public float DistanceToDestination { get; set; } = 1.5f;
 
+    [Header("State VFXs")]
+    [field: SerializeField] public ParticleSystem[] UnderworkedVFXs { get; set; }
+    [field: SerializeField] public ParticleSystem[] OverworkedVFXs { get; set; }
+
 
     [Header("UI")]
     public StressProgressBar stressProgressBar;
