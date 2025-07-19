@@ -27,6 +27,10 @@ public class StressedTouMouState : StressedState
     public override void OnUpdateState(NPC npc)
     {
         base.OnUpdateState(npc);
+        if (!npc.finishFrenzy)
+        {
+            GameManager.Instance.ProduceMoney(npc.FrenzyWorkEfficiencyRate);
+        }
         if (npc.OldTimer >= 0 && npc.TimeCounter < 0)
         {
             Exit door = FindClosestExit(npc.transform.position);

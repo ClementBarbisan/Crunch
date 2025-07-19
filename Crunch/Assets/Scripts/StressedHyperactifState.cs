@@ -6,6 +6,10 @@ public class StressedHyperactifState : StressedState
     public override void OnUpdateState(NPC npc)
     {
         base.OnUpdateState(npc);
+        if(!npc.finishFrenzy)
+        {
+            GameManager.Instance.ProduceMoney(npc.FrenzyWorkEfficiencyRate);
+        }
         if (npc.OldTimer > 0 && npc.TimeCounter <= 0)
         {
             npc.Agent.speed = StateWalkSpeed;

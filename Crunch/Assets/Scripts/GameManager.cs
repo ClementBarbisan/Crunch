@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     private float waveTimeElapsed;
     private float waveScore;
     private bool _isGameDone;
+    private bool _hasWon;
+
+
     public void Awake()
     {
         if (Instance == null)
@@ -49,10 +52,7 @@ public class GameManager : MonoBehaviour
 
     private void OnGUI()
     {
-        if (_isGameDone)
-        {
-            return;
-        }
+
         UpdateUIElements();
     }
 
@@ -63,22 +63,21 @@ public class GameManager : MonoBehaviour
     public void SetGameOver(bool hasWon)
     {
         _isGameDone = true;
+        _hasWon = hasWon;
         if (hasWon)
         {
             Debug.Log("YOU WON (ka-ching!)");
+
+
             scoreSlider.value = 1f;
         }
         else
         {
             Debug.Log("YOU LOST (loser)");
 
-            int minutes = (int)waveDuration / 60;
-            int seconds = (int)waveDuration % 60;
-            timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-            timeSlider.value = 1f;
+            return;
         }
-        UpdateUIElements();
     }
 
 
