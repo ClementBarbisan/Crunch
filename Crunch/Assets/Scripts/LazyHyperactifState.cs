@@ -26,11 +26,9 @@ public class LazyHyperactifState : LazyState
     public override void OnEnterState(NPC npc)
     {
         base.OnEnterState(npc);
-        npc.IsWorking = false;
         npc.CurrentStation = FindClosestOccupiedStation(npc.transform.position);
         if (npc.CurrentStation)
         {
-            npc.Agent.isStopped = false;
             npc.Agent.speed = 3.5f;
             npc.Agent.SetDestination(npc.CurrentStation.transform.position + npc.CurrentStation.transform.forward +
                                      npc.CurrentStation.transform.right);
