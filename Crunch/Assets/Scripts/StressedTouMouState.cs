@@ -43,9 +43,9 @@ public class StressedTouMouState : StressedState
             }
             npc.finishFrenzy = true;
         }
-        if (Vector3.Distance(npc.transform.position, npc.Agent.destination) < npc.DistanceToDestination && npc.finishFrenzy)
+        /*if (Vector3.Distance(npc.transform.position, npc.Agent.destination) < npc.DistanceToDestination && npc.finishFrenzy)
         {
             npc.gameObject.SetActive(false);
-        }
+        }*/
     }
 }
