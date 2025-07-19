@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Slider scoreSlider;
     [SerializeField] private Slider timeSlider;
     [SerializeField] private TMP_Text timeText;
+    [SerializeField] private Animator animator;
 
     [SerializeField] private float waveDuration = 20;
     [SerializeField] private float waveGoalScore = 20;
@@ -68,26 +69,33 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("YOU WON (ka-ching!)");
 
-
+            animator.SetTrigger("victoryTrigger");
+            
             scoreSlider.value = 1f;
         }
         else
         {
             Debug.Log("YOU LOST (loser)");
 
+            timeText.text = string.Format("{0:00}:{1:00}", 0, 0);
+            
+            animator.SetTrigger("defeatTrigger");
 
-            return;
+            timeSlider.value = 0f;
         }
     }
 
 
     private void UpdateUIElements()
     {
-        int minutes = (int)waveTimeElapsed / 60;
-        int seconds = (int)waveTimeElapsed % 60;
+        int minutes = (int)(waveDuration-waveTimeElapsed) / 60;
+        int seconds = (int)(waveDuration-waveTimeElapsed) % 60;
+        
+        minutes = Mathf.Max(minutes, 0);
+        seconds = Mathf.Max(seconds, 0);
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-        timeSlider.value = Mathf.Clamp01(waveTimeElapsed / waveDuration);
+        timeSlider.value = 1-Mathf.Clamp01(waveTimeElapsed / waveDuration);
 
         scoreSlider.value = Mathf.Clamp01(waveScore / waveGoalScore);
     }
