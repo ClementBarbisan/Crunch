@@ -30,11 +30,11 @@ public class PlayerInteractor : MonoBehaviour
 
     void TryInteract()
     {
-        if (_interactableDetected == null)
-            return;
-        
         if (_handFree)
         {
+            if (_interactableDetected == null)
+                return;
+            
             // CARRY 
             IInteractable interactable = _interactableDetected.GetComponent<IInteractable>();
             if (interactable != null)
