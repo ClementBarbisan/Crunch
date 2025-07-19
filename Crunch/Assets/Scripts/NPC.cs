@@ -71,6 +71,7 @@ public class NPC : MonoBehaviour, IInteractable
             {
                 CurrentStation.freeStation = true;
                 CurrentStation.currentNPC = null;
+                CurrentStation = null;
             }
             IsWorking = false;
             return;
@@ -81,7 +82,7 @@ public class NPC : MonoBehaviour, IInteractable
             // Player have throw NPC, he's flying waiting to collide with something
             return;
         }
-        if (CurrentState.ShouldLeaveState(this) || (CurrentState.StateCategory == EStateCategory.Overworked && TimeCounter < 0)) //Changing state
+        if (CurrentState.ShouldLeaveState(this) && (CurrentState.StateCategory != EStateCategory.Overworked || TimeCounter < 0)) //Changing state
         {
             CurrentState.OnLeaveState(this);
 
@@ -132,8 +133,7 @@ public class NPC : MonoBehaviour, IInteractable
         if (isThrown)
         {
             isThrown = false;
-            Agent.isStopped = false;
-            GetComponent<Rigidbody>().isKinematic = true;
+            Agent.enabled = true;
             transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
         }
     }

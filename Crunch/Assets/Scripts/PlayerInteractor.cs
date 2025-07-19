@@ -91,8 +91,10 @@ public class PlayerInteractor : MonoBehaviour
         {
             if (_interactableToThrow.GetComponent<NPC>() != null)
                 _interactableToThrow.GetComponent<NPC>().isHeldByPlayer = true;
-            obj.GetComponent<NavMeshAgent>().isStopped = true;
-            obj.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
+            NavMeshAgent agent = obj.GetComponent<NavMeshAgent>();
+            agent.isStopped = true;
+            agent.velocity = Vector3.zero;
+            agent.enabled = false;
         }
         
         obj.SetParent(carryPoint);
