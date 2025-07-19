@@ -2,9 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NPC : MonoBehaviour
+public class NPC : MonoBehaviour, IInteractable
 {
-
+    [Header("States")] 
+    [SerializeField] bool isHeavy;
+    
     [Header("Navigation")]
     public Station CurrentStation;
     public NavMeshAgent Agent;
@@ -24,12 +26,18 @@ public class NPC : MonoBehaviour
     [field: SerializeField] public float UnderworkedMin { get; set; } = 0.05f;
     [field: SerializeField] public float UnderworkedMax { get; set; } = 0.4f;
 
+    [Header("UI")]
+    public StressProgressBar stressProgressBar;
+    public Transform TransformReferenceUI;
+
 
     public AStateNPC CurrentState { get; private set; }
     public float WorkStress { get; private set; }
-    private bool _isHeldByPlayer;
 
+    public bool Heavy => isHeavy;
 
+    public bool isHeldByPlayer, isThrown;
+    public bool IsWorking;
     #region Unity Events
 
     void Awake()
@@ -44,12 +52,19 @@ public class NPC : MonoBehaviour
 
     void Update()
     {
-        if (_isHeldByPlayer)
+        if (isHeldByPlayer)
         {
-            //TODO: held by player logic here
-
+            //TODO: held by player logic here, change animation, 
             return;
         }
+
+        if (isThrown)
+        {
+            // Player have throw NPC, he's flying waiting to collide with something
+            
+            return;
+        }
+        
         if (CurrentState.ShouldLeaveState(this)) // Changing state
         {
             CurrentState.OnLeaveState(this);
@@ -86,6 +101,21 @@ public class NPC : MonoBehaviour
         //Debug.Log("stress "+WorkStress);
     }
 
+    private void OnDestroy()
+    {
+        Destroy(stressProgressBar); // Remove this NPC UI before destroying itself
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (isThrown)
+        {
+            isThrown = false;
+            Agent.enabled = true;
+            GetComponent<Rigidbody>().isKinematic = true;
+            transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
+        }
+    }
+
     #endregion
 
     #region Private Methods
@@ -97,7 +127,15 @@ public class NPC : MonoBehaviour
 
         CurrentState.OnEnterState(this);
 
+        stressProgressBar =  UiNpcManager.Instance.RegisterNewNpc(this);
+        stressProgressBar.Npc = this;
     }
+
+    private void GetScreamedAt()
+    {
+        WorkStress = Mathf.Clamp01(WorkStress + _screamStressBoost * Time.deltaTime);
+    }
+
     #endregion
 
     #region Public Methods
@@ -109,10 +147,15 @@ public class NPC : MonoBehaviour
     #endregion
 
     #region Events Callbacks
-
-    public void GetScreamedAt()
+    
+    public void Interact()
     {
-        WorkStress = Mathf.Clamp01(WorkStress + _screamStressBoost * Time.deltaTime);
+        
+    }
+
+    public void OnScream()
+    {
+        GetScreamedAt();
     }
 
     #endregion

@@ -14,6 +14,7 @@ public class StressedState : AStateNPC
 
     public override void OnLeaveState(NPC npc)
     {
+        npc.Agent.isStopped = true;
     }
 
     public override bool ShouldLeaveState(NPC npc)
