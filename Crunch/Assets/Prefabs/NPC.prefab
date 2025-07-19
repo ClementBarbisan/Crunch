@@ -70,6 +70,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2eb7a49eb25e1674587ebdcc79577185, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -146,8 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0466a5b62703e486985b3507be1a3630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentStation: {fileID: 0}
-  agent: {fileID: 0}
+  CurrentStation: {fileID: 0}
+  Agent: {fileID: 0}
   _overworkedState: {fileID: 11400000, guid: e4b2de4a1b20347ae8afe94764a82baf, type: 2}
   _workingState: {fileID: 11400000, guid: b80861e825b394a458504c99ebfef030, type: 2}
   _underworkedState: {fileID: 11400000, guid: a947ceaa85a2c4a698492c62359611b9, type: 2}
@@ -160,6 +161,9 @@ MonoBehaviour:
   <UnderworkedMax>k__BackingField: 0.4
   stressProgressBar: {fileID: 0}
   TransformReferenceUI: {fileID: 1380800309870791561}
+  isHeldByPlayer: 0
+  isThrown: 0
+  IsWorking: 0
 --- !u!54 &8390436810436759822
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
 public class InteractableCoffeeMachine : MonoBehaviour, IInteractable
 {
-    public bool Heavy { get; }
-
+    public bool Heavy => true;
+    
     public void Interact()
     {
         
