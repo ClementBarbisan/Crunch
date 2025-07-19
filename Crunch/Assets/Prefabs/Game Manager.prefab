@@ -47,3 +47,5 @@ MonoBehaviour:
   scoreSlider: {fileID: 0}
   timeSlider: {fileID: 0}
   timeText: {fileID: 0}
+  waveDuration: 15
+  waveGoalScore: 20
