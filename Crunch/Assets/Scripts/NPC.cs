@@ -28,7 +28,7 @@ public class NPC : MonoBehaviour
     public AStateNPC CurrentState { get; private set; }
     public float WorkStress { get; private set; }
     public bool isHeldByPlayer, isThrown;
-
+    public bool IsWorking;
     #region Unity Events
 
     void Awake()
