@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StressedTouMouState", menuName = "ScriptableObjects/StressedTouMouState")]
 public class StressedTouMouState : StressedState
 {
+    
     Exit FindClosestExit(Vector3 pos)
     {
         Exit[] exits = FindObjectsByType<Exit>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
@@ -31,12 +32,12 @@ public class StressedTouMouState : StressedState
             Exit door = FindClosestExit(npc.transform.position);
             if (door)
             {
-                npc.Agent.speed = 1f;
+                npc.Agent.speed = StateWalkSpeed;
                 npc.Agent.SetDestination(door.transform.position);
             }
             npc.finishFrenzy = true;
         }
-        if (Vector3.Distance(npc.transform.position, npc.Agent.destination) < 0.5f && npc.finishFrenzy)
+        if (Vector3.Distance(npc.transform.position, npc.Agent.destination) < npc.DistanceToDestination && npc.finishFrenzy)
         {
             npc.gameObject.SetActive(false);
         }

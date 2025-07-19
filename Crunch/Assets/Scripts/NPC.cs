@@ -29,6 +29,8 @@ public class NPC : MonoBehaviour, IInteractable
     [Header("Efficiency")]
 
     [field: SerializeField] public float WorkEfficiencyRate { get; set; } = 0.4f;
+    [field: SerializeField] public float DistanceToDestination { get; set; } = 1f;
+
 
     [Header("UI")]
     public StressProgressBar stressProgressBar;
@@ -37,7 +39,7 @@ public class NPC : MonoBehaviour, IInteractable
     [Header("Others")]
 
     public AStateNPC CurrentState { get; private set; }
-    public float WorkStress { get; private set; }
+    public float WorkStress { get; set; }
 
     public bool Heavy => isHeavy;
 
@@ -63,6 +65,12 @@ public class NPC : MonoBehaviour, IInteractable
         if (isHeldByPlayer)
         {
             //TODO: held by player logic here, change animation, 
+            if (CurrentStation)
+            {
+                CurrentStation.freeStation = true;
+                CurrentStation.currentNPC = null;
+            }
+            IsWorking = false;
             return;
         }
 
@@ -71,7 +79,7 @@ public class NPC : MonoBehaviour, IInteractable
             // Player have throw NPC, he's flying waiting to collide with something
             return;
         }
-        if (CurrentState.ShouldLeaveState(this)) // Changing state
+        if (CurrentState.ShouldLeaveState(this) || (CurrentState.StateCategory == EStateCategory.Overworked && TimeCounter < 0)) //Changing state
         {
             CurrentState.OnLeaveState(this);
 
@@ -103,7 +111,7 @@ public class NPC : MonoBehaviour, IInteractable
         {
             TimeCounter -= Time.deltaTime;
             CurrentState.OnUpdateState(this);
-            WorkStress = Mathf.Clamp01(WorkStress - _stressDecrementSpeed*Time.deltaTime);
+            WorkStress = Mathf.Clamp01(WorkStress - _stressDecrementSpeed * Time.deltaTime);
             OldTimer = TimeCounter;
         }
 
