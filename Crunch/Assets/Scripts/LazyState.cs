@@ -30,4 +30,9 @@ public class LazyState : AStateNPC
     {
         throw new System.NotImplementedException();
     }
+
+    public override bool ShouldLeaveState(NPC npc)
+    {
+        throw new System.NotImplementedException();
+    }
 }
