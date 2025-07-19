@@ -1,10 +1,18 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NPC : MonoBehaviour
 {
+
+    [Header("Navigation")]
+    public Station currentStation;
+    public NavMeshAgent agent;
+
+    [Header("States")]
     [SerializeField] private AStateNPC _overworkedState;
     [SerializeField] private AStateNPC _workingState;
     [SerializeField] private AStateNPC _underworkedState;
+
 
     [Header("Working Stress Values")]
     [Range(0, 1), SerializeField] private float _workStressAtStart = 0.5f;
@@ -28,6 +36,7 @@ public class NPC : MonoBehaviour
     {
 
     }
+
     void Start()
     {
         InitNpc();
