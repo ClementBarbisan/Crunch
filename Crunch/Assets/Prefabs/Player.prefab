@@ -20049,7 +20049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRange: 0.44
   interactRadius: 0.3
-  screamRadius: 0.9
+  screamRadius: 3
   interactableLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -70056,4 +70056,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   refTransform: {fileID: 8182345024130557912}
-  refToCamDistanceRatio: 0.6
+  refToCamDistanceRatio: 0.65

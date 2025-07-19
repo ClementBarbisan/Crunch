@@ -46,16 +46,21 @@ public class WorkingState : AStateNPC
             GameManager.Instance.ProduceMoney(npc.WorkEfficiencyRate);
             return;
         }
-        if (!npc.IsWorking && (!npc.CurrentStation || !npc.CurrentStation.freeStation))
+        if ((!npc.CurrentStation || !npc.CurrentStation.freeStation))
         {
             npc.CurrentStation = FindClosestStation(npc.transform.position);
             if (npc.CurrentStation)
             {
+                npc.Agent.isStopped = false;
                 npc.Agent.speed = StateWalkSpeed;
                 npc.Agent.SetDestination(npc.CurrentStation.transform.position + npc.CurrentStation.transform.forward);
             }
+            else
+            {
+                npc.Agent.isStopped = true;
+            }
         }
-        if (Vector3.Distance(npc.transform.position, npc.Agent.destination) < npc.DistanceToDestination)
+        if (npc.CurrentStation && Vector3.Distance(npc.transform.position, npc.Agent.destination) < npc.DistanceToDestination)
         {
             npc.CurrentStation.freeStation = false;
             npc.CurrentStation.currentNPC = npc;
