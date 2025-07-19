@@ -8,10 +8,12 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private float screamRadius = 2f;
     [SerializeField] LayerMask interactableLayer;
     [SerializeField] private Transform carryPoint;
+    [SerializeField] private float throwForce;
 
     private InputSystem_Actions _controls;
     private bool _handFree = true;
     private Transform _interactableToThrow;
+    private Quaternion _rotationInitThrowable;
     private PlayerController _playerController;
     private Collider _interactableDetected;
     private int _screamedDetected;
@@ -41,7 +43,7 @@ public class PlayerInteractor : MonoBehaviour
             {
                 interactable.Interact();
                 _handFree = false;
-                    
+                
                 InteractableToThrow(_interactableDetected.transform);
             }
         }
@@ -52,11 +54,14 @@ public class PlayerInteractor : MonoBehaviour
 
             if (_interactableToThrow != null)
             {
+                _playerController.speedMove = _playerController.moveSpeedFast;
                 _interactableToThrow.SetParent(null);
                 _interactableToThrow.GetComponent<Collider>().enabled = true;
+                _interactableToThrow.rotation = _rotationInitThrowable;
+                Rigidbody rb = _interactableToThrow.GetComponent<Rigidbody>();
+                rb.isKinematic = false;
+                rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
                 _interactableToThrow = null;
-                
-                //To do Throw  
             }
         }
     }
@@ -64,11 +69,13 @@ public class PlayerInteractor : MonoBehaviour
     private void InteractableToThrow(Transform obj)
     {
         _interactableToThrow = obj;
+        _rotationInitThrowable = obj.rotation;
+        obj.GetComponent<Rigidbody>().isKinematic = true;
         obj.GetComponent<Collider>().enabled = false;
         obj.SetParent(carryPoint);
         obj.localPosition = Vector3.zero;
         obj.localRotation = Quaternion.identity;
-        _playerController.moveSpeed -= 3f;
+        _playerController.speedMove = _playerController.moveSpeedSlow;
     }
 
     private void Scream()
@@ -86,7 +93,7 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Update()
     {
-        Vector3 origin = transform.position + Vector3.up * 1f;
+        Vector3 origin = transform.position + Vector3.up * 1f - transform.forward * 0.5f;
         Vector3 direction = transform.forward;
 
         if (Physics.SphereCast(origin, interactRadius, direction, out RaycastHit hit, interactRange, interactableLayer))
@@ -94,13 +101,15 @@ public class PlayerInteractor : MonoBehaviour
         else
             _interactableDetected = null;
         
+        Debug.Log(_interactableDetected);
+        
         _screamedDetected = Physics.SphereCastNonAlloc(transform.position, interactRadius, transform.forward, _screamedDetectedHit, interactRange, interactableLayer);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position + Vector3.up * 1f + transform.forward * interactRange, interactRadius);
+        Gizmos.DrawWireSphere(transform.position + Vector3.up * 1f + transform.forward * interactRange - transform.forward * 0.5f, interactRadius);
         
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, screamRadius);
