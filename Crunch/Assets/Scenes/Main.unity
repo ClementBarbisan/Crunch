@@ -498,7 +498,7 @@ MonoBehaviour:
   speedMove: 0
   acceleration: 10
   drag: 4
-  bodyToRotate: {fileID: 0}
+  bodyToRotate: {fileID: 277166597}
 --- !u!54 &475594026
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -775,6 +775,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -9.4869
       objectReference: {fileID: 0}
+    - target: {fileID: 200961596585896464, guid: b088d2976bcbe4f7e9ce3f84a5f47488, type: 3}
+      propertyPath: TimeCounter
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 365413216795133902, guid: b088d2976bcbe4f7e9ce3f84a5f47488, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -793,7 +797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3314241618951957609, guid: b088d2976bcbe4f7e9ce3f84a5f47488, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3390509078180468206, guid: b088d2976bcbe4f7e9ce3f84a5f47488, type: 3}
       propertyPath: m_LocalScale.x
@@ -802,6 +806,14 @@ PrefabInstance:
     - target: {fileID: 3390509078180468206, guid: b088d2976bcbe4f7e9ce3f84a5f47488, type: 3}
       propertyPath: m_LocalPosition.z
       value: 14.5185
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516227139918922689, guid: b088d2976bcbe4f7e9ce3f84a5f47488, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516227139918922689, guid: b088d2976bcbe4f7e9ce3f84a5f47488, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4396893333959132022, guid: b088d2976bcbe4f7e9ce3f84a5f47488, type: 3}
       propertyPath: m_Size.y

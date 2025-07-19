@@ -57,7 +57,6 @@ public class NPC : MonoBehaviour, IInteractable
     {
         if (isHeldByPlayer)
         {
-            Agent.isStopped = true;
             //TODO: held by player logic here, change animation, 
             return;
         }
@@ -65,14 +64,11 @@ public class NPC : MonoBehaviour, IInteractable
         if (isThrown)
         {
             // Player have throw NPC, he's flying waiting to collide with something
-            Agent.isStopped = true;
             return;
         }
-        Agent.isStopped = false;
         if (CurrentState.ShouldLeaveState(this)) // Changing state
         {
             CurrentState.OnLeaveState(this);
-
 
             if (CurrentState.StateCategory == EStateCategory.Working)
             {
@@ -121,7 +117,7 @@ public class NPC : MonoBehaviour, IInteractable
         if (isThrown)
         {
             isThrown = false;
-            Agent.enabled = true;
+            Agent.isStopped = false;
             GetComponent<Rigidbody>().isKinematic = true;
             transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
         }

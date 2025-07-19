@@ -67,7 +67,7 @@ public class PlayerInteractor : MonoBehaviour
                 if (_interactableToThrow.GetComponent<NPC>() != null)
                 {
                     NPC npc = _interactableToThrow.GetComponent<NPC>();
-                    npc.isHeldByPlayer = true;
+                    npc.isHeldByPlayer = false;
                     npc.isThrown = true;
                 }
                 
@@ -87,7 +87,7 @@ public class PlayerInteractor : MonoBehaviour
         {
             if (_interactableToThrow.GetComponent<NPC>() != null)
                 _interactableToThrow.GetComponent<NPC>().isHeldByPlayer = true;
-            obj.GetComponent<NavMeshAgent>().enabled = false;
+            obj.GetComponent<NavMeshAgent>().isStopped = true;
         }
         
         obj.SetParent(carryPoint);
