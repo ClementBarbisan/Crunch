@@ -91,6 +91,7 @@ public class PlayerInteractor : MonoBehaviour
             if (_interactableToThrow.GetComponent<NPC>() != null)
                 _interactableToThrow.GetComponent<NPC>().isHeldByPlayer = true;
             obj.GetComponent<NavMeshAgent>().isStopped = true;
+            obj.GetComponent<NavMeshAgent>().velocity = Vector3.zero;
         }
         
         obj.SetParent(carryPoint);
@@ -116,7 +117,7 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Update()
     {
-        Vector3 origin = transform.position + Vector3.up * .25f - transform.forward * 0.1f;
+        Vector3 origin = transform.position + Vector3.up * .25f - transform.forward * 0.2f;
         Vector3 direction = transform.forward;
 
         if (Physics.SphereCast(origin, interactRadius, direction, out RaycastHit hit, interactRange, interactableLayer))
