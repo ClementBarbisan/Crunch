@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d41c42509fdc4f49827631e6be0da6e, type: 3}
   m_Name: LazyTouMouState
   m_EditorClassIdentifier: 
+  StateWalkSpeed: 1
   StateCategory: 1

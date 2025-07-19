@@ -18,7 +18,7 @@ public class PlayerInteractor : MonoBehaviour
     private PlayerController _playerController;
     private Collider _interactableDetected;
     private int _screamedDetected;
-    private RaycastHit[] _screamedDetectedHit = new RaycastHit[10];
+    private readonly RaycastHit[] _screamedDetectedHit = new RaycastHit[10];
 
     private void Awake()
     {
@@ -93,7 +93,7 @@ public class PlayerInteractor : MonoBehaviour
         obj.SetParent(carryPoint);
         obj.localPosition = Vector3.zero;
         obj.localRotation = Quaternion.identity;
-        obj.GetComponent<Renderer>().materials[1].color = Color.black;
+        obj.GetComponent<Renderer>().materials[1].SetFloat("_Detected", 0f);
     }
 
     private void Scream()
@@ -111,7 +111,7 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Update()
     {
-        Vector3 origin = transform.position + Vector3.up * 1f - transform.forward * 0.5f;
+        Vector3 origin = transform.position + Vector3.up * .25f - transform.forward * 0.1f;
         Vector3 direction = transform.forward;
 
         if (Physics.SphereCast(origin, interactRadius, direction, out RaycastHit hit, interactRange, interactableLayer))
@@ -128,13 +128,16 @@ public class PlayerInteractor : MonoBehaviour
             _interactableDetected = null;
         }
         
+        if(_interactableDetected != null)
+            Debug.Log(_interactableDetected.transform.name);
+        
         _screamedDetected = Physics.SphereCastNonAlloc(transform.position, interactRadius, transform.forward, _screamedDetectedHit, interactRange, interactableLayer);
     }
     
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position + Vector3.up * 1f + transform.forward * interactRange - transform.forward * 0.5f, interactRadius);
+        Gizmos.DrawWireSphere(transform.position + Vector3.up * .25f + transform.forward * interactRange - transform.forward * 0.1f, interactRadius);
         
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, screamRadius);
