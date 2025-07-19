@@ -35,7 +35,7 @@ public class NPC : MonoBehaviour, IInteractable
     public bool Heavy => throw new NotImplementedException();
 
     public bool isHeldByPlayer, isThrown;
-
+    public bool IsWorking;
     #region Unity Events
 
     void Awake()
