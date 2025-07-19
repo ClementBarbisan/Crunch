@@ -856,6 +856,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -9.4869
       objectReference: {fileID: 0}
+    - target: {fileID: 200961596585896464, guid: b088d2976bcbe4f7e9ce3f84a5f47488, type: 3}
+      propertyPath: TimeCounter
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 365413216795133902, guid: b088d2976bcbe4f7e9ce3f84a5f47488, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -883,6 +887,14 @@ PrefabInstance:
     - target: {fileID: 3390509078180468206, guid: b088d2976bcbe4f7e9ce3f84a5f47488, type: 3}
       propertyPath: m_LocalPosition.z
       value: 14.5185
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516227139918922689, guid: b088d2976bcbe4f7e9ce3f84a5f47488, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516227139918922689, guid: b088d2976bcbe4f7e9ce3f84a5f47488, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4396893333959132022, guid: b088d2976bcbe4f7e9ce3f84a5f47488, type: 3}
       propertyPath: m_Size.y
