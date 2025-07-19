@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5532053768330878220
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6030182955089786966}
-  m_Layer: 0
-  m_Name: UI Stress ProgressBar Ref
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6030182955089786966
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5532053768330878220}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.774, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4968492947203142844}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7584757859879435942
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,7 +14,8 @@ GameObject:
   - component: {fileID: 8412578189511358944}
   - component: {fileID: 8925518924239062056}
   - component: {fileID: 5076965970727811295}
-  m_Layer: 0
+  - component: {fileID: 8390436810436759822}
+  m_Layer: 6
   m_Name: NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,8 +34,7 @@ Transform:
   m_LocalPosition: {x: 2.17, y: 1, z: 0.06}
   m_LocalScale: {x: 0.5, y: 2, z: 0.5}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6030182955089786966}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &378974313333840952
@@ -176,8 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0466a5b62703e486985b3507be1a3630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentStation: {fileID: 0}
-  agent: {fileID: 0}
+  CurrentStation: {fileID: 0}
+  Agent: {fileID: 0}
   _overworkedState: {fileID: 11400000, guid: e4b2de4a1b20347ae8afe94764a82baf, type: 2}
   _workingState: {fileID: 11400000, guid: b80861e825b394a458504c99ebfef030, type: 2}
   _underworkedState: {fileID: 11400000, guid: a947ceaa85a2c4a698492c62359611b9, type: 2}
@@ -188,5 +157,30 @@ MonoBehaviour:
   <OverworkedMax>k__BackingField: 0.85
   <UnderworkedMin>k__BackingField: 0.05
   <UnderworkedMax>k__BackingField: 0.4
-  stressProgressBar: {fileID: 0}
-  TransformReferenceUI: {fileID: 6030182955089786966}
+--- !u!54 &8390436810436759822
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584757859879435942}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

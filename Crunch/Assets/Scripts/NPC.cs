@@ -6,8 +6,8 @@ public class NPC : MonoBehaviour, IInteractable
 {
 
     [Header("Navigation")]
-    public Station currentStation;
-    public NavMeshAgent agent;
+    public Station CurrentStation;
+    public NavMeshAgent Agent;
 
     [Header("States")]
     [SerializeField] private AStateNPC _overworkedState;
@@ -31,14 +31,13 @@ public class NPC : MonoBehaviour, IInteractable
 
     public AStateNPC CurrentState { get; private set; }
     public float WorkStress { get; private set; }
-    private bool _isHeldByPlayer;
-
+    public bool isHeldByPlayer, isThrown;
 
     #region Unity Events
 
     void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
+        Agent = GetComponent<NavMeshAgent>();
     }
 
     void Start()
@@ -48,12 +47,19 @@ public class NPC : MonoBehaviour, IInteractable
 
     void Update()
     {
-        if (_isHeldByPlayer)
+        if (isHeldByPlayer)
         {
-            //TODO: held by player logic here
-
+            //TODO: held by player logic here, change animation, 
             return;
         }
+
+        if (isThrown)
+        {
+            // Player have throw NPC, he's flying waiting to collide with something
+            
+            return;
+        }
+        
         if (CurrentState.ShouldLeaveState(this)) // Changing state
         {
             CurrentState.OnLeaveState(this);
@@ -94,6 +100,15 @@ public class NPC : MonoBehaviour, IInteractable
     {
         Destroy(stressProgressBar); // Remove this NPC UI before destroying itself
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (isThrown)
+        {
+            isThrown = false;
+            Agent.enabled = true;
+        }
+    }
+
     #endregion
 
     #region Private Methods

@@ -2,9 +2,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float moveSpeedSlow = 5f, moveSpeedFast = 10f;
     [SerializeField] private float speedRotate = 10f;
 
+    [HideInInspector]
+    public float speedMove;
     private Camera _cam;
     private InputSystem_Actions _controls;
     private Vector2 _moveInput;
@@ -20,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
         _cam = Camera.main;
         //Cursor.lockState = CursorLockMode.Confined;
+
+        speedMove = moveSpeedFast;
     }
    
     void OnEnable() => _controls.Enable();
@@ -34,7 +38,7 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         Vector3 move = new Vector3(_moveInput.x, 0f, _moveInput.y);
-        _controller.Move(move * moveSpeed * Time.deltaTime);
+        _controller.Move(move * speedMove * Time.deltaTime);
         
         if (transform.position.y != 0f)
             transform.position = new Vector3(transform.position.x, 0f, transform.position.z);

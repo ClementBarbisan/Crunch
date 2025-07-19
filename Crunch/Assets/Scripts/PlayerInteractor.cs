@@ -1,6 +1,5 @@
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.AI;
 
 public class PlayerInteractor : MonoBehaviour
 {
@@ -10,11 +9,16 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private float screamRadius = 2f;
     [SerializeField] LayerMask interactableLayer;
     [SerializeField] private Transform carryPoint;
+    [SerializeField] private float throwForce;
 
     private InputSystem_Actions _controls;
     private bool _handFree = true;
     private Transform _interactableToThrow;
+    private Quaternion _rotationInitThrowable;
     private PlayerController _playerController;
+    private Collider _interactableDetected;
+    private int _screamedDetected;
+    private RaycastHit[] _screamedDetectedHit = new RaycastHit[10];
 
     private void Awake()
     {
@@ -29,69 +33,96 @@ public class PlayerInteractor : MonoBehaviour
 
     void TryInteract()
     {
-        Debug.Log("Player Interact");
         if (_handFree)
         {
-            // CARRY 
+            if (_interactableDetected == null)
+                return;
             
-            Vector3 origin = transform.position + Vector3.up * 1f;
-            Vector3 direction = transform.forward;
-
-            if (Physics.SphereCast(origin, interactRadius, direction, out RaycastHit hit, interactRange, interactableLayer))
+            // CARRY 
+            IInteractable interactable = _interactableDetected.GetComponent<IInteractable>();
+            if (interactable != null)
             {
-                Debug.Log(hit.transform.name);
-                IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-                if (interactable != null)
-                {
-                    interactable.Interact();
-                    _handFree = false;
-                    
-                    InteractableToThrow(hit.transform);
-                }
+                interactable.Interact();
+                _handFree = false;
+                if(interactable.Heavy)
+                    _playerController.speedMove = _playerController.moveSpeedSlow;
+                InteractableToThrow(_interactableDetected.transform);
             }
         }
         else
         {
             // THROW
-            _handFree = false;
+            _handFree = true;
 
             if (_interactableToThrow != null)
             {
-                //To do 
+                _playerController.speedMove = _playerController.moveSpeedFast;
                 _interactableToThrow.SetParent(null);
+                _interactableToThrow.GetComponent<Collider>().enabled = true;
+                _interactableToThrow.rotation = _rotationInitThrowable;
+                Rigidbody rb = _interactableToThrow.GetComponent<Rigidbody>();
+                rb.isKinematic = false;
+                rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+                _interactableDetected.GetComponent<Renderer>().materials[1].color = Color.black;
+                _interactableToThrow = null;
             }
         }
     }
-
+    
     private void InteractableToThrow(Transform obj)
     {
         _interactableToThrow = obj;
+        _rotationInitThrowable = obj.rotation;
+        obj.GetComponent<Rigidbody>().isKinematic = true;
         obj.GetComponent<Collider>().enabled = false;
+        
+        if (obj.GetComponent<NavMeshAgent>() != null)
+            obj.GetComponent<NavMeshAgent>().enabled = false;
+        
         obj.SetParent(carryPoint);
         obj.localPosition = Vector3.zero;
         obj.localRotation = Quaternion.identity;
-        _playerController.moveSpeed -= 3f;
     }
 
     private void Scream()
     {
-        Debug.Log("Player scream");
+        if (_screamedDetected == 0)
+            return;
 
-        if (Physics.SphereCast(transform.position, screamRadius, transform.forward, out RaycastHit hit, 0f, interactableLayer))
+        for (int j = 0; j < _screamedDetected; j++)
         {
-            Debug.Log(hit.transform.name);
-            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+            IInteractable interactable = _screamedDetectedHit[j].transform.GetComponent<IInteractable>();
             if (interactable != null)
-            {
                 interactable.OnScream();
-            }
         }
     }
 
+    private void Update()
+    {
+        Vector3 origin = transform.position + Vector3.up * 1f - transform.forward * 0.5f;
+        Vector3 direction = transform.forward;
+
+        if (Physics.SphereCast(origin, interactRadius, direction, out RaycastHit hit, interactRange, interactableLayer))
+        {
+            _interactableDetected = hit.collider;
+            _interactableDetected.GetComponent<Renderer>().materials[1].color = Color.white;
+        }
+        else
+        {
+            if (_interactableDetected)
+            {
+                _interactableDetected.GetComponent<Renderer>().materials[1].color = Color.black;
+                _interactableDetected = null;
+            }
+        }
+        
+        _screamedDetected = Physics.SphereCastNonAlloc(transform.position, interactRadius, transform.forward, _screamedDetectedHit, interactRange, interactableLayer);
+    }
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position + Vector3.up * 1f + transform.forward * interactRange, interactRadius);
+        Gizmos.DrawWireSphere(transform.position + Vector3.up * 1f + transform.forward * interactRange - transform.forward * 0.5f, interactRadius);
         
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, screamRadius);
