@@ -21,7 +21,8 @@ public class PlayerInteractor : MonoBehaviour
     private readonly RaycastHit[] _screamedDetectedHit = new RaycastHit[10];
 
     [Header("Actions Vfx")]
-    [SerializeField] private ParticleSystem screamVfx;
+    [SerializeField] private ParticleSystem[] textScreamVfxs;
+    [SerializeField] private ParticleSystem waveScreamVfx;
     private void Awake()
     {
         _playerController = GetComponentInParent<PlayerController>();
@@ -104,7 +105,12 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Scream()
     {
-        screamVfx.Play();
+        if (textScreamVfxs.Length > 0)
+        {
+            textScreamVfxs[Random.Range(0, textScreamVfxs.Length)].Play();
+        }
+        waveScreamVfx.Play();
+
 
         if (_screamedDetected == 0)
             return;
