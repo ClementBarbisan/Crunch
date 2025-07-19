@@ -26,10 +26,15 @@ public class NPC : MonoBehaviour, IInteractable
     [field: SerializeField] public float UnderworkedMin { get; set; } = 0.05f;
     [field: SerializeField] public float UnderworkedMax { get; set; } = 0.4f;
 
+    [Header("Efficiency")]
+
+    [field: SerializeField] public float WorkEfficiencyRate { get; set; } = 0.4f;
+
     [Header("UI")]
     public StressProgressBar stressProgressBar;
     public Transform TransformReferenceUI;
 
+    [Header("Others")]
 
     public AStateNPC CurrentState { get; private set; }
     public float WorkStress { get; private set; }
