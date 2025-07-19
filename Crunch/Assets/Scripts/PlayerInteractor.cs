@@ -67,7 +67,7 @@ public class PlayerInteractor : MonoBehaviour
                 if (_interactableToThrow.GetComponent<NPC>() != null)
                 {
                     NPC npc = _interactableToThrow.GetComponent<NPC>();
-                    npc.isHeldByPlayer = true;
+                    npc.isHeldByPlayer = false;
                     npc.isThrown = true;
                 }
                 
@@ -87,7 +87,7 @@ public class PlayerInteractor : MonoBehaviour
         {
             if (_interactableToThrow.GetComponent<NPC>() != null)
                 _interactableToThrow.GetComponent<NPC>().isHeldByPlayer = true;
-            obj.GetComponent<NavMeshAgent>().enabled = false;
+            obj.GetComponent<NavMeshAgent>().isStopped = true;
         }
         
         obj.SetParent(carryPoint);
@@ -116,16 +116,16 @@ public class PlayerInteractor : MonoBehaviour
 
         if (Physics.SphereCast(origin, interactRadius, direction, out RaycastHit hit, interactRange, interactableLayer))
         {
+            if (_interactableDetected != null && _interactableDetected != hit.collider)
+                _interactableDetected.GetComponent<Renderer>().materials[1].SetFloat("_Detected", 0f);
+
             _interactableDetected = hit.collider;
-            _interactableDetected.GetComponent<Renderer>().materials[1].color = Color.white;
+            _interactableDetected.GetComponent<Renderer>().materials[1].SetFloat("_Detected", 1f);
         }
-        else
+        else if (_interactableDetected)
         {
-            if (_interactableDetected)
-            {
-                _interactableDetected.GetComponent<Renderer>().materials[1].color = Color.black;
-                _interactableDetected = null;
-            }
+            _interactableDetected.GetComponent<Renderer>().materials[1].SetFloat("_Detected", 0f);
+            _interactableDetected = null;
         }
         
         _screamedDetected = Physics.SphereCastNonAlloc(transform.position, interactRadius, transform.forward, _screamedDetectedHit, interactRange, interactableLayer);

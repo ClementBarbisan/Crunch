@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
             lookDir.y = 0;
 
             if (lookDir.sqrMagnitude > 0.01f)
-                bodyToRotate.forward = Vector3.Lerp(bodyToRotate.forward, lookDir.normalized, Time.deltaTime * 10f);
+                bodyToRotate.forward = Vector3.Lerp(bodyToRotate.forward, lookDir.normalized, Time.deltaTime * 50f);
         }
     }
 
