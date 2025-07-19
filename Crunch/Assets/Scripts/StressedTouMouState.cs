@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [CreateAssetMenu(fileName = "StressedTouMouState", menuName = "ScriptableObjects/StressedTouMouState")]
 public class StressedTouMouState : StressedState
@@ -37,7 +38,7 @@ public class StressedTouMouState : StressedState
             if (door)
             {
                 npc.Agent.speed = StateWalkSpeed;
-                npc.Agent.SetDestination(door.transform.position);
+                npc.Agent.SetDestination(door.transform.position + new Vector3(Random.Range(-2, 2), 0, Random.Range(-2, 2)));
             }
             npc.finishFrenzy = true;
         }
