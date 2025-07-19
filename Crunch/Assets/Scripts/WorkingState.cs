@@ -32,7 +32,6 @@ public class WorkingState : AStateNPC
             npc.CurrentStation = FindClosestStation(npc.transform.position);
             if (npc.CurrentStation)
             {
-                Debug.Log("Choose station");
                 npc.Agent.isStopped = false;
                 npc.Agent.speed = 3.5f;
                 npc.Agent.SetDestination(npc.CurrentStation.transform.position + npc.CurrentStation.transform.forward);
