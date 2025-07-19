@@ -41,7 +41,11 @@ public class WorkingState : AStateNPC
 
     public override void OnUpdateState(NPC npc)
     {
-
+        if (npc.IsWorking)
+        {
+            GameManager.Instance.ProduceMoney(npc.WorkEfficiencyRate);
+            return;
+        }
         if (!npc.IsWorking && !npc.CurrentStation.freeStation)
         {
             npc.CurrentStation = FindClosestStation(npc.transform.position);
@@ -54,9 +58,8 @@ public class WorkingState : AStateNPC
         if (Vector3.Distance(npc.transform.position, npc.Agent.destination) < 0.5f)
         {
             npc.CurrentStation.freeStation = false;
+            npc.CurrentStation.currentNPC = npc;
             npc.IsWorking = true;
-
-            GameManager.Instance.ProduceMoney(npc.WorkEfficiencyRate);
         }
     }
 
