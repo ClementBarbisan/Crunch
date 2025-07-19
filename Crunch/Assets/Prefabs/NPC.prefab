@@ -160,8 +160,9 @@ MonoBehaviour:
   <OverworkedMax>k__BackingField: 0.85
   <UnderworkedMin>k__BackingField: 0.05
   <UnderworkedMax>k__BackingField: 0.4
-  <WorkEfficiencyRate>k__BackingField: 2.5
-  <DistanceToStation>k__BackingField: 1.5
+  <WorkEfficiencyRate>k__BackingField: 0.5
+  <FrenzyWorkEfficiencyRate>k__BackingField: 5
+  <DistanceToDestination>k__BackingField: 1.5
   stressProgressBar: {fileID: 0}
   TransformReferenceUI: {fileID: 1380800309870791561}
   isHeldByPlayer: 0

@@ -29,7 +29,8 @@ public class NPC : MonoBehaviour, IInteractable
     [Header("Efficiency")]
 
     [field: SerializeField] public float WorkEfficiencyRate { get; set; } = 0.4f;
-    [field: SerializeField] public float DistanceToDestination { get; set; } = 1f;
+    [field: SerializeField] public float FrenzyWorkEfficiencyRate { get; set; } = 0.8f;
+    [field: SerializeField] public float DistanceToDestination { get; set; } = 1.5f;
 
 
     [Header("UI")]
