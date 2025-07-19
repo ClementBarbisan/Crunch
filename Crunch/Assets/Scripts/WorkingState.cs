@@ -27,13 +27,13 @@ public class WorkingState : AStateNPC
     {
         npc.DEBUG_ChangeColor(Color.gray);
 
-        if (!npc.currentStation)
+        if (!npc.CurrentStation)
         {
-            npc.currentStation = FindClosestStation(npc.transform.position);
-            if (npc.currentStation)
+            npc.CurrentStation = FindClosestStation(npc.transform.position);
+            if (npc.CurrentStation)
             {
-                npc.agent.destination = npc.currentStation.transform.position;
-                npc.currentStation.freeStation = false;
+                npc.Agent.destination = npc.CurrentStation.transform.position;
+                npc.CurrentStation.freeStation = false;
             }
         }
     }
@@ -45,11 +45,6 @@ public class WorkingState : AStateNPC
 
     public override void OnLeaveState(NPC npc)
     {
-        if (npc.currentStation)
-        {
-            npc.currentStation.freeStation = true;
-            npc.currentStation = null;
-        }
     }
 
     public override bool ShouldLeaveState(NPC npc)

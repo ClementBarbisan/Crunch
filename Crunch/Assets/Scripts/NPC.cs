@@ -6,8 +6,8 @@ public class NPC : MonoBehaviour
 {
 
     [Header("Navigation")]
-    public Station currentStation;
-    public NavMeshAgent agent;
+    public Station CurrentStation;
+    public NavMeshAgent Agent;
 
     [Header("States")]
     [SerializeField] private AStateNPC _overworkedState;
@@ -34,7 +34,7 @@ public class NPC : MonoBehaviour
 
     void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
+        Agent = GetComponent<NavMeshAgent>();
     }
 
     void Start()
