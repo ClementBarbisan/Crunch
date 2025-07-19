@@ -107,6 +107,9 @@ public class NPC : MonoBehaviour, IInteractable
     }
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.transform.CompareTag("Player"))
+            return;
+        
         if (isThrown)
         {
             isThrown = false;
