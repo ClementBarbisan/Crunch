@@ -22,7 +22,7 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Awake()
     {
-        _playerController = GetComponent<PlayerController>();
+        _playerController = GetComponentInParent<PlayerController>();
         _controls = new InputSystem_Actions();
         _controls.Player.Attack.started += _ => TryInteract();
         _controls.Player.Scream.performed += _ => Scream();
@@ -63,11 +63,15 @@ public class PlayerInteractor : MonoBehaviour
                 Rigidbody rb = _interactableToThrow.GetComponent<Rigidbody>();
                 rb.isKinematic = false;
                 rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
-                _interactableToThrow = null;
                 
-                if (_interactableDetected.TryGetComponent<NPC>(out NPC npc))
+                if (_interactableToThrow.GetComponent<NPC>() != null)
+                {
+                    NPC npc = _interactableToThrow.GetComponent<NPC>();
+                    npc.isHeldByPlayer = true;
                     npc.isThrown = true;
+                }
                 
+                _interactableToThrow = null;
             }
         }
     }
@@ -81,8 +85,8 @@ public class PlayerInteractor : MonoBehaviour
 
         if (obj.GetComponent<NavMeshAgent>() != null)
         {
-            if (_interactableDetected.TryGetComponent<NPC>(out NPC npc))
-                npc.isHeldByPlayer = true;
+            if (_interactableToThrow.GetComponent<NPC>() != null)
+                _interactableToThrow.GetComponent<NPC>().isHeldByPlayer = true;
             obj.GetComponent<NavMeshAgent>().enabled = false;
         }
         
