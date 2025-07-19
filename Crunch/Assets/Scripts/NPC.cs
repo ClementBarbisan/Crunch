@@ -31,6 +31,9 @@ public class NPC : MonoBehaviour, IInteractable
 
     public AStateNPC CurrentState { get; private set; }
     public float WorkStress { get; private set; }
+
+    public bool Heavy => throw new NotImplementedException();
+
     public bool isHeldByPlayer, isThrown;
 
     #region Unity Events
