@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3317811913362414660}
   - component: {fileID: 1614812336084374322}
   - component: {fileID: 6963774944584632454}
-  - component: {fileID: 5384236273141469179}
+  - component: {fileID: 7973705644894622983}
   m_Layer: 0
   m_Name: Desk
   m_TagString: Untagged
@@ -87,7 +87,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5384236273141469179
+--- !u!65 &7973705644894622983
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,5 +106,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1042159, y: 0.63967484, z: 0.8162487}
-  m_Center: {x: 0.00071692467, y: 0.030303191, z: 0.4092658}
+  m_Size: {x: 1.1152391, y: 0.46437562, z: 0.586866}
+  m_Center: {x: 0.00071692467, y: 0.22986513, z: 0.001776129}

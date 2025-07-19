@@ -4,9 +4,11 @@ using UnityEngine;
 public class PropsBoost : MonoBehaviour, IInteractable
 {
     [SerializeField] private ParticleSystem breakFx;
+    [SerializeField] private AudioClip clipBreak;
     [HideInInspector]
     public bool waitColliding;
     public bool Heavy => false;
+    
     public void Interact()
     {
         // Nothing
@@ -35,13 +37,10 @@ public class PropsBoost : MonoBehaviour, IInteractable
 
     private void Breaks()
     {
-        breakFx.Play();
+        waitColliding = true;
+        AudioSource.PlayClipAtPoint(clipBreak, transform.position);
+        Instantiate(breakFx, transform.position, Quaternion.identity);
         GetComponent<MeshRenderer>().enabled = false;
-        Invoke(nameof(DestroyGameObject), 1f);
-    }
-
-    private void DestroyGameObject()
-    {
         Destroy(gameObject);
     }
 }
