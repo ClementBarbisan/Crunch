@@ -1,32 +1,50 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "WorkingState", menuName = "ScriptableObjects/WorkingState")]
 public class WorkingState : AStateNPC
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    Station FindClosestStation(Vector3 pos)
     {
-        
+        Station[] allStations = FindObjectsByType<Station>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        float distance = Single.MaxValue;
+        int index = -1;
+        for (int i = 0; i < allStations.Length; i++)
+        {
+            float curDist = Vector3.Distance(allStations[i].transform.position, pos);
+            if (curDist < distance && allStations[i].freeStation)
+            {
+                distance = curDist;
+                index = i;
+            }
+        }
+        if (index > 0)
+            return (allStations[index]);
+        return (null);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public override void OnEnterState(NPC npc)
     {
-        throw new System.NotImplementedException();
+        if (!npc.currentStation)
+        {
+            npc.currentStation = FindClosestStation(npc.transform.position);
+            if (npc.currentStation)
+            {
+                npc.agent.destination = npc.currentStation.transform.position;
+            }
+        }
     }
 
     public override void OnUpdateState(NPC npc)
     {
-        throw new System.NotImplementedException();
+       
     }
 
     public override void OnLeaveState(NPC npc)
     {
-        throw new System.NotImplementedException();
+        if (npc.currentStation)
+        {
+            npc.currentStation = null;
+        }
     }
 }
