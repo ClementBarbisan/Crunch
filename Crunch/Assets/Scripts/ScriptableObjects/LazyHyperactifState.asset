@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a71a3ef980f54c4685ed9fb1959a79d7, type: 3}
   m_Name: LazyHyperactifState
   m_EditorClassIdentifier: 
+  StateWalkSpeed: 3.5
   StateCategory: 1
+  _radiusSphere: 3
+  _rangeSphere: 1.5
+  _interactableLayer: 6
+  _dividerDestressOthers: 30
