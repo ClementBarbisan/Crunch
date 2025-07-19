@@ -14,6 +14,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Outline_Mat
     second: {fileID: 2100000, guid: 6d2b30bb67728a24189b7de6ec5995f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Transparent_Mat
+    second: {fileID: 2100000, guid: ddff98e52028d7f44b22394305177033, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
