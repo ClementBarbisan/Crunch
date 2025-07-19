@@ -66,6 +66,7 @@ public class NPC : MonoBehaviour, IInteractable
         if (isHeldByPlayer)
         {
             //TODO: held by player logic here, change animation, 
+            
             if (CurrentStation)
             {
                 CurrentStation.freeStation = true;
