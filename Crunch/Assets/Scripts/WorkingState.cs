@@ -25,6 +25,8 @@ public class WorkingState : AStateNPC
     
     public override void OnEnterState(NPC npc)
     {
+        npc.DEBUG_ChangeColor(Color.gray);
+
         if (!npc.currentStation)
         {
             npc.currentStation = FindClosestStation(npc.transform.position);
@@ -50,6 +52,6 @@ public class WorkingState : AStateNPC
 
     public override bool ShouldLeaveState(NPC npc)
     {
-        throw new System.NotImplementedException();
+        return npc.WorkStress >= npc.OverworkedMin || npc.WorkStress <= npc.UnderworkedMin;
     }
 }

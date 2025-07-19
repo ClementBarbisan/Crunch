@@ -15,27 +15,21 @@ public class NPC : MonoBehaviour
 
 
     [Header("Working Stress Values")]
-    [Range(0, 1), SerializeField] private float _workStressAtStart = 0.5f;
+    [Range(0, 1), SerializeField] private float WorkStressAtStart = 0.5f;
     [Range(0, 1), SerializeField] private float _screamStressBoost = 0.125f;
     [SerializeField] private float _stressDecrementSpeed;
-    [field: SerializeField] public float OverworkedMin { get; set; } = 0.85f;
-    [field: SerializeField] public float OverworkedMax { get; set; } = 0.75f;
+    [field: SerializeField] public float OverworkedMin { get; set; } = 0.75f;
+    [field: SerializeField] public float OverworkedMax { get; set; } = 0.85f;
     [field: SerializeField] public float UnderworkedMin { get; set; } = 0.05f;
-    [field: SerializeField] public float UnderworkdMax { get; set; } = 0.4f;
-
+    [field: SerializeField] public float UnderworkedMax { get; set; } = 0.4f;
 
 
     public AStateNPC CurrentState { get; private set; }
-    private float _workStress;
+    public float WorkStress { get; private set; }
     private bool _isHeldByPlayer;
 
 
     #region Unity Events
-
-    void Awake()
-    {
-
-    }
 
     void Start()
     {
@@ -44,12 +38,6 @@ public class NPC : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape)) //// ONLY FOR DEBUG PURPOSES
-        {
-            GetScreamedAt();
-        }
-
-
         if (_isHeldByPlayer)
         {
             //TODO: held by player logic here
@@ -58,13 +46,16 @@ public class NPC : MonoBehaviour
         }
         if (CurrentState.ShouldLeaveState(this)) // Changing state
         {
-            if(CurrentState.StateCategory == EStateCategory.Working)
+            CurrentState.OnLeaveState(this);
+
+
+            if (CurrentState.StateCategory == EStateCategory.Working)
             {
-                if(_workStress >= OverworkedMin)
+                if(WorkStress >= OverworkedMax)
                 {
                     CurrentState = _overworkedState;
                 }
-                else if(_workStress <= UnderworkedMin)
+                else if(WorkStress <= UnderworkedMin)
                 {
                     CurrentState = _underworkedState;
                 }
@@ -77,12 +68,16 @@ public class NPC : MonoBehaviour
             {
                 CurrentState = _workingState;
             }
+
+            CurrentState.OnEnterState(this);
         }
         else // Calling state update
         {
             CurrentState.OnUpdateState(this);
-            _workStress = Mathf.Clamp01(_workStress - _stressDecrementSpeed*Time.deltaTime);
+            WorkStress = Mathf.Clamp01(WorkStress - _stressDecrementSpeed*Time.deltaTime);
         }
+
+        //Debug.Log("stress "+WorkStress);
     }
 
     #endregion
@@ -91,21 +86,27 @@ public class NPC : MonoBehaviour
     private void InitNpc()
     {
         //could be random later
+        WorkStress = WorkStressAtStart;
         CurrentState = _workingState;
 
-        _workStress = _workStressAtStart;
+        CurrentState.OnEnterState(this);
+
     }
     #endregion
 
     #region Public Methods
 
+    public void DEBUG_ChangeColor(Color color) // To see states changes visually for now
+    {
+        GetComponent<Renderer>().material.color = color;
+    }
     #endregion
 
     #region Events Callbacks
 
     public void GetScreamedAt()
     {
-        _workStress = Mathf.Clamp01(_workStress + _screamStressBoost * Time.deltaTime);
+        WorkStress = Mathf.Clamp01(WorkStress + _screamStressBoost * Time.deltaTime);
     }
 
     #endregion

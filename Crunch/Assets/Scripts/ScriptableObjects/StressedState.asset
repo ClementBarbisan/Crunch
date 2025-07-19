@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb8b711066f8a4a499dd468f227e5330, type: 3}
   m_Name: StressedState
   m_EditorClassIdentifier: 
+  StateCategory: 2

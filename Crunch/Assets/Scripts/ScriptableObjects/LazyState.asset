@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d41c42509fdc4f49827631e6be0da6e, type: 3}
   m_Name: LazyState
   m_EditorClassIdentifier: 
+  StateCategory: 1

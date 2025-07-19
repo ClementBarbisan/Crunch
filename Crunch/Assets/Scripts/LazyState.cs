@@ -18,21 +18,20 @@ public class LazyState : AStateNPC
 
     public override void OnEnterState(NPC npc)
     {
-        throw new System.NotImplementedException();
+        npc.DEBUG_ChangeColor(Color.blue);
+
     }
 
     public override void OnUpdateState(NPC npc)
     {
-        throw new System.NotImplementedException();
     }
 
     public override void OnLeaveState(NPC npc)
     {
-        throw new System.NotImplementedException();
     }
 
     public override bool ShouldLeaveState(NPC npc)
     {
-        throw new System.NotImplementedException();
+        return npc.WorkStress >= npc.UnderworkedMax;
     }
 }
