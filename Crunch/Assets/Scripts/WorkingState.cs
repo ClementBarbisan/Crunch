@@ -47,13 +47,10 @@ public class WorkingState : AStateNPC
             npc.CurrentStation = FindClosestStation(npc.transform.position);
             if (npc.CurrentStation)
             {
-                Debug.Log("Choose station");
-                npc.Agent.isStopped = false;
                 npc.Agent.speed = 3.5f;
                 npc.Agent.SetDestination(npc.CurrentStation.transform.position + npc.CurrentStation.transform.forward);
             }
         }
-        Debug.Log("Test");
         if (Vector3.Distance(npc.transform.position, npc.Agent.destination) < 0.5f)
         {
             npc.CurrentStation.freeStation = false;
@@ -63,7 +60,6 @@ public class WorkingState : AStateNPC
 
     public override void OnLeaveState(NPC npc)
     {
-        npc.Agent.isStopped = true;
     }
 
     public override bool ShouldLeaveState(NPC npc)

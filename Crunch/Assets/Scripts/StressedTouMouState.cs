@@ -23,22 +23,20 @@ public class StressedTouMouState : StressedState
         return (null);
     }
     
-    public override void OnEnterState(NPC npc)
-    {
-        base.OnEnterState(npc);
-        Exit door = FindClosestExit(npc.transform.position);
-        if (door)
-        {
-            npc.Agent.isStopped = false;
-            npc.Agent.speed = 1f;
-            npc.Agent.SetDestination(door.transform.position);
-        }
-    }
-
     public override void OnUpdateState(NPC npc)
     {
         base.OnUpdateState(npc);
-        if (Vector3.Distance(npc.transform.position, npc.Agent.destination) < 0.5f)
+        if (npc.OldTimer >= 0 && npc.TimeCounter < 0)
+        {
+            Exit door = FindClosestExit(npc.transform.position);
+            if (door)
+            {
+                npc.Agent.speed = 1f;
+                npc.Agent.SetDestination(door.transform.position);
+            }
+            npc.finishFrenzy = true;
+        }
+        if (Vector3.Distance(npc.transform.position, npc.Agent.destination) < 0.5f && npc.finishFrenzy)
         {
             npc.gameObject.SetActive(false);
         }

@@ -6,7 +6,7 @@ public class LazyState : AStateNPC
     public override void OnEnterState(NPC npc)
     {
         npc.DEBUG_ChangeColor(Color.blue);
-
+        npc.IsWorking = false;
     }
 
     public override void OnUpdateState(NPC npc)
@@ -15,7 +15,6 @@ public class LazyState : AStateNPC
 
     public override void OnLeaveState(NPC npc)
     {
-        npc.Agent.isStopped = true;
     }
 
     public override bool ShouldLeaveState(NPC npc)

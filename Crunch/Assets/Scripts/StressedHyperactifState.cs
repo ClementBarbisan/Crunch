@@ -6,10 +6,14 @@ public class StressedHyperactifState : StressedState
     public override void OnUpdateState(NPC npc)
     {
         base.OnUpdateState(npc);
-        if (npc.Agent.velocity.magnitude < 0.1f)
+        if (npc.OldTimer > 0 && npc.TimeCounter <= 0)
         {
-            npc.Agent.isStopped = false;
             npc.Agent.speed = 5f;
+            npc.Agent.SetDestination(new Vector3(Random.Range(-15f, 15f), 0f, Random.Range(-15f, 15f)));
+            npc.finishFrenzy = true;
+        }
+        if (npc.Agent.velocity.magnitude < 0.1f && npc.finishFrenzy)
+        {
             npc.Agent.SetDestination(new Vector3(Random.Range(-15f, 15f), 0f, Random.Range(-15f, 15f)));
         }
     }
