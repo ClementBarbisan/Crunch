@@ -4,7 +4,9 @@ using UnityEngine.AI;
 
 public class NPC : MonoBehaviour, IInteractable
 {
-
+    [Header("States")] 
+    [SerializeField] bool isHeavy;
+    
     [Header("Navigation")]
     public Station CurrentStation;
     public NavMeshAgent Agent;
@@ -32,7 +34,7 @@ public class NPC : MonoBehaviour, IInteractable
     public AStateNPC CurrentState { get; private set; }
     public float WorkStress { get; private set; }
 
-    public bool Heavy => throw new NotImplementedException();
+    public bool Heavy => isHeavy;
 
     public bool isHeldByPlayer, isThrown;
     public bool IsWorking;
@@ -109,6 +111,8 @@ public class NPC : MonoBehaviour, IInteractable
         {
             isThrown = false;
             Agent.enabled = true;
+            GetComponent<Rigidbody>().isKinematic = true;
+            transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
         }
     }
 
@@ -143,11 +147,10 @@ public class NPC : MonoBehaviour, IInteractable
     #endregion
 
     #region Events Callbacks
-
-
+    
     public void Interact()
     {
-        throw new NotImplementedException();
+        
     }
 
     public void OnScream()

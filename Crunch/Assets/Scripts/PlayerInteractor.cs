@@ -63,8 +63,11 @@ public class PlayerInteractor : MonoBehaviour
                 Rigidbody rb = _interactableToThrow.GetComponent<Rigidbody>();
                 rb.isKinematic = false;
                 rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
-                _interactableDetected.GetComponent<Renderer>().materials[1].color = Color.black;
                 _interactableToThrow = null;
+                
+                if (_interactableDetected.TryGetComponent<NPC>(out NPC npc))
+                    npc.isThrown = true;
+                
             }
         }
     }
@@ -75,13 +78,18 @@ public class PlayerInteractor : MonoBehaviour
         _rotationInitThrowable = obj.rotation;
         obj.GetComponent<Rigidbody>().isKinematic = true;
         obj.GetComponent<Collider>().enabled = false;
-        
+
         if (obj.GetComponent<NavMeshAgent>() != null)
+        {
+            if (_interactableDetected.TryGetComponent<NPC>(out NPC npc))
+                npc.isHeldByPlayer = true;
             obj.GetComponent<NavMeshAgent>().enabled = false;
+        }
         
         obj.SetParent(carryPoint);
         obj.localPosition = Vector3.zero;
         obj.localRotation = Quaternion.identity;
+        obj.GetComponent<Renderer>().materials[1].color = Color.black;
     }
 
     private void Scream()
