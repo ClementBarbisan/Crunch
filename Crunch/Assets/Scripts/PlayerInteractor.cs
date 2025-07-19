@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,9 @@ public class PlayerInteractor : MonoBehaviour
     private bool _handFree = true;
     private Transform _interactableToThrow;
     private PlayerController _playerController;
+    private Collider _interactableDetected;
+    private int _screamedDetected;
+    private RaycastHit[] _screamedDetectedHit = new RaycastHit[10];
 
     private void Awake()
     {
@@ -29,40 +33,39 @@ public class PlayerInteractor : MonoBehaviour
 
     void TryInteract()
     {
-        Debug.Log("Player Interact");
+        Debug.Log("Player Try Interact");
+        
+        if (_interactableDetected == null)
+            return;
+        
         if (_handFree)
         {
             // CARRY 
-            
-            Vector3 origin = transform.position + Vector3.up * 1f;
-            Vector3 direction = transform.forward;
-
-            if (Physics.SphereCast(origin, interactRadius, direction, out RaycastHit hit, interactRange, interactableLayer))
+            IInteractable interactable = _interactableDetected.GetComponent<IInteractable>();
+            if (interactable != null)
             {
-                Debug.Log(hit.transform.name);
-                IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-                if (interactable != null)
-                {
-                    interactable.Interact();
-                    _handFree = false;
+                interactable.Interact();
+                _handFree = false;
                     
-                    InteractableToThrow(hit.transform);
-                }
+                InteractableToThrow(_interactableDetected.transform);
             }
         }
         else
         {
             // THROW
-            _handFree = false;
+            _handFree = true;
 
             if (_interactableToThrow != null)
             {
-                //To do 
                 _interactableToThrow.SetParent(null);
+                _interactableToThrow.GetComponent<Collider>().enabled = true;
+                _interactableToThrow = null;
+                
+                //To do Throw  
             }
         }
     }
-
+    
     private void InteractableToThrow(Transform obj)
     {
         _interactableToThrow = obj;
@@ -75,17 +78,28 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Scream()
     {
-        Debug.Log("Player scream");
+        if (_screamedDetected == 0)
+            return;
 
-        if (Physics.SphereCast(transform.position, screamRadius, transform.forward, out RaycastHit hit, 0f, interactableLayer))
+        for (int j = 0; j < _screamedDetected; j++)
         {
-            Debug.Log(hit.transform.name);
-            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+            IInteractable interactable = _screamedDetectedHit[j].transform.GetComponent<IInteractable>();
             if (interactable != null)
-            {
                 interactable.OnScream();
-            }
         }
+    }
+
+    private void Update()
+    {
+        Vector3 origin = transform.position + Vector3.up * 1f;
+        Vector3 direction = transform.forward;
+
+        if (Physics.SphereCast(origin, interactRadius, direction, out RaycastHit hit, interactRange, interactableLayer))
+            _interactableDetected = hit.collider;
+        else
+            _interactableDetected = null;
+        
+        _screamedDetected = Physics.SphereCastNonAlloc(transform.position, interactRadius, transform.forward, _screamedDetectedHit, interactRange, interactableLayer);
     }
 
     private void OnDrawGizmos()
