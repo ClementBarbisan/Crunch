@@ -64,6 +64,6 @@ public class WorkingState : AStateNPC
 
     public override bool ShouldLeaveState(NPC npc)
     {
-        return npc.WorkStress >= npc.OverworkedMin || npc.WorkStress <= npc.UnderworkedMin;
+        return npc.WorkStress >= npc.OverworkedMax || npc.WorkStress <= npc.UnderworkedMin;
     }
 }
