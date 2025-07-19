@@ -141,7 +141,7 @@ public class NPC : MonoBehaviour, IInteractable
 
     private void GetScreamedAt()
     {
-        WorkStress = Mathf.Clamp01(WorkStress + _screamStressBoost * Time.deltaTime);
+        WorkStress = Mathf.Clamp01(WorkStress + _screamStressBoost);
     }
 
     #endregion
