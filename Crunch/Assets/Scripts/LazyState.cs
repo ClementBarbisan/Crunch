@@ -6,9 +6,12 @@ public class LazyState : AStateNPC
     public override void OnEnterState(NPC npc)
     {
         npc.DEBUG_ChangeColor(Color.blue);
-        npc.CurrentStation.freeStation = true;
-        npc.CurrentStation.currentNPC = null;
-        npc.CurrentStation = null;
+        if (npc.CurrentStation)
+        {
+            npc.CurrentStation.freeStation = true;
+            npc.CurrentStation.currentNPC = null;
+            npc.CurrentStation = null;
+        }
         npc.IsWorking = false;
         npc.Agent.SetDestination(new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f)));
     }
