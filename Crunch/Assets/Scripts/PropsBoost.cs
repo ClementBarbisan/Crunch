@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PropsBoost : MonoBehaviour, IInteractable
 {
+    [SerializeField] private ParticleSystem breakFx;
     [HideInInspector]
     public bool waitColliding;
     public bool Heavy => false;
@@ -14,6 +15,11 @@ public class PropsBoost : MonoBehaviour, IInteractable
     public void OnScream()
     {
         // Nothing
+    }
+
+    public void OnThrow()
+    {
+        waitColliding = true;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -29,6 +35,13 @@ public class PropsBoost : MonoBehaviour, IInteractable
 
     private void Breaks()
     {
-        
+        breakFx.Play();
+        GetComponent<MeshRenderer>().enabled = false;
+        Invoke(nameof(DestroyGameObject), 1f);
+    }
+
+    private void DestroyGameObject()
+    {
+        Destroy(gameObject);
     }
 }

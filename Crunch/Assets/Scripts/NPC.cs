@@ -178,6 +178,11 @@ public class NPC : MonoBehaviour, IInteractable
         GetScreamedAt();
     }
 
+    public void OnThrow()
+    {
+        
+    }
+
     #endregion
 
 

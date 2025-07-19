@@ -60,6 +60,7 @@ public class PlayerInteractor : MonoBehaviour
                 _interactableToThrow.SetParent(null);
                 _interactableToThrow.GetComponent<Collider>().enabled = true;
                 _interactableToThrow.rotation = _rotationInitThrowable;
+                _interactableToThrow.GetComponent<IInteractable>().OnThrow();
                 Rigidbody rb = _interactableToThrow.GetComponent<Rigidbody>();
                 rb.isKinematic = false;
                 rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);

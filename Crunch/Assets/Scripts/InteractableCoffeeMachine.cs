@@ -14,4 +14,9 @@ public class InteractableCoffeeMachine : MonoBehaviour, IInteractable
     {
         
     }
+
+    public void OnThrow()
+    {
+        
+    }
 }

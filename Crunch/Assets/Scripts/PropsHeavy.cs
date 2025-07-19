@@ -13,4 +13,9 @@ public class PropsHeavy : MonoBehaviour, IInteractable
     {
         // Nothing
     }
+
+    public void OnThrow()
+    {
+        
+    }
 }
