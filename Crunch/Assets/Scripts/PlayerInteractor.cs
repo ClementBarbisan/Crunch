@@ -20,6 +20,8 @@ public class PlayerInteractor : MonoBehaviour
     private int _screamedDetected;
     private readonly RaycastHit[] _screamedDetectedHit = new RaycastHit[10];
 
+    [Header("Actions Vfx")]
+    [SerializeField] private ParticleSystem screamVfx;
     private void Awake()
     {
         _playerController = GetComponentInParent<PlayerController>();
@@ -100,6 +102,8 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Scream()
     {
+        screamVfx.Play();
+
         if (_screamedDetected == 0)
             return;
 

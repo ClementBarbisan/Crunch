@@ -33,6 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5042833968644443827}
+  - {fileID: 2813262064191115367}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5248227175255362289
@@ -188,6 +189,7 @@ MonoBehaviour:
     m_Bits: 64
   carryPoint: {fileID: 8515144021434477755}
   throwForce: 15
+  screamVfx: {fileID: 2577621983158843689}
 --- !u!1 &5650287786181731174
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,4 +299,43 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 40c2f13f12ac0464aab79ec041ef8aa0, type: 3}
   m_PrefabInstance: {fileID: 1854662662539555285}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4598873649429198292
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7627798319866515507}
+    m_Modifications:
+    - target: {fileID: 1790407105607378355, guid: 1e6b8a172cb36ad44be2d60debed76a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790407105607378355, guid: 1e6b8a172cb36ad44be2d60debed76a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790407105607378355, guid: 1e6b8a172cb36ad44be2d60debed76a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5616979066050088695, guid: 1e6b8a172cb36ad44be2d60debed76a3, type: 3}
+      propertyPath: m_Name
+      value: Scream Vfx
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1e6b8a172cb36ad44be2d60debed76a3, type: 3}
+--- !u!198 &2577621983158843689 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2024357855817764093, guid: 1e6b8a172cb36ad44be2d60debed76a3, type: 3}
+  m_PrefabInstance: {fileID: 4598873649429198292}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2813262064191115367 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1790407105607378355, guid: 1e6b8a172cb36ad44be2d60debed76a3, type: 3}
+  m_PrefabInstance: {fileID: 4598873649429198292}
   m_PrefabAsset: {fileID: 0}
