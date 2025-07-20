@@ -1,3 +1,4 @@
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance {get; private set;}
 
     [SerializeField] private Slider scoreSlider;
+    [SerializeField] private TMP_Text debugScoreText;
+
     [SerializeField] private Slider timeSlider;
     [SerializeField] private TMP_Text timeText;
     [SerializeField] private Animator animator;
@@ -108,5 +111,7 @@ public class GameManager : MonoBehaviour
         timeSlider.value = 1-Mathf.Clamp01(waveTimeElapsed / waveDuration);
 
         scoreSlider.value = Mathf.Clamp01(waveScore / waveGoalScore);
+
+        debugScoreText.text = "Score : "+waveScore.ToString("F2", CultureInfo.InvariantCulture); ;
     }
 }

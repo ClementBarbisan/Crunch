@@ -44,10 +44,9 @@ public class WorkingState : AStateNPC
         if (npc.IsWorking)
         {
             GameManager.Instance.ProduceMoney(npc.WorkEfficiencyRate);
-           
             return;
         }
-        if ((!npc.CurrentStation || !npc.CurrentStation.freeStation))
+        if ((!npc.CurrentStation || !npc.CurrentStation.freeStation && npc.CurrentStation.currentNPC != npc))
         {
             npc.CurrentStation = FindClosestStation(npc.transform.position);
             if (npc.CurrentStation)
