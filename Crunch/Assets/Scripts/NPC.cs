@@ -172,6 +172,7 @@ public class NPC : MonoBehaviour, IInteractable
             else if(CurrentState.StateCategory == EStateCategory.Overworked)
             {
                 CurrentState = _workingState;
+                GameManager.Instance.StatsTrauma();
             }
             else // leaving an underworked state
             {
@@ -187,8 +188,6 @@ public class NPC : MonoBehaviour, IInteractable
             WorkStress = Mathf.Clamp01(WorkStress - _stressDecrementSpeed * Time.deltaTime);
             OldTimer = TimeCounter;
         }
-
-        //Debug.Log("stress "+WorkStress);
     }
 
     private void OnDestroy()
@@ -285,6 +284,7 @@ public class NPC : MonoBehaviour, IInteractable
     public void OnScream()
     {
         GetScreamedAt();
+        GameManager.Instance.StatsScreams();
     }
 
     public void OnThrow()

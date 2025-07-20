@@ -19727,10 +19727,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3182174052723866330}
   - {fileID: 4941426269476131430}
   - {fileID: 1380800309870791561}
   - {fileID: 2621240448108364794}
-  - {fileID: 3182174052723866330}
   - {fileID: 8074778396100607312}
   - {fileID: 3990797896283731877}
   m_Father: {fileID: 0}
@@ -19798,9 +19798,9 @@ MonoBehaviour:
   _workingState: {fileID: 11400000, guid: b80861e825b394a458504c99ebfef030, type: 2}
   _underworkedState: {fileID: 11400000, guid: a947ceaa85a2c4a698492c62359611b9, type: 2}
   WorkStressAtStart: 0.5
-  _screamStressBoostLazy: 0.04
-  _screamStressBoostHyperactif: 0.08
-  _stressDecrementSpeed: 0.09
+  _screamStressBoostLazy: 0.08
+  _screamStressBoostHyperactif: 0.16
+  _stressDecrementSpeed: 0.2
   <OverworkedMin>k__BackingField: 0.75
   <OverworkedMax>k__BackingField: 0.85
   <UnderworkedMin>k__BackingField: 0.05
@@ -19818,6 +19818,7 @@ MonoBehaviour:
   isWalkingAnimThreshold: 0.1
   _isWalkingParamName: isWalking
   _isWorkingParamName: isWorking
+  _isHeldParamName: isHeld
   stressProgressBar: {fileID: 0}
   TransformReferenceUI: {fileID: 1380800309870791561}
   DEBUG_Renderer: {fileID: 6161330008158331647}
