@@ -57,8 +57,10 @@ public class PlayerInteractor : MonoBehaviour
                     _playerController.speedMove = _playerController.moveSpeedSlow;
                 InteractableToThrow(_interactableDetected.transform);
 
-
-                animator.SetBool(_isHoldingObjectParamName, true);
+                if (animator != null)
+                {
+                    animator.SetBool(_isHoldingObjectParamName, true);
+                }
             }
         }
         else
@@ -88,9 +90,12 @@ public class PlayerInteractor : MonoBehaviour
                 _interactableToThrow = null;
 
 
-                animator.SetBool(_isHoldingObjectParamName, false);
-                animator.SetBool(_isThrowingObjectParamName, false);
 
+                if (animator != null)
+                {
+                    animator.SetBool(_isHoldingObjectParamName, false);
+                    animator.SetBool(_isThrowingObjectParamName, true);
+                }
             }
         }
     }
