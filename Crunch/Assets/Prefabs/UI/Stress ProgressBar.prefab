@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Npc: {fileID: 0}
-  screenOffset: {x: 0, y: 1}
+  screenOffset: {x: 0, y: 50}
   rectTr: {fileID: 1822130790951872239}
   fillImage: {fileID: 2521818262247148885}
   colorGradientStress:
