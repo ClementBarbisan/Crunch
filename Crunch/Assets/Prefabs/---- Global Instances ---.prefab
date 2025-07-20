@@ -335,6 +335,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4381127467224934144 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3546311302509808379, guid: 58a7567feb5944f4589e433ba508f74e, type: 3}
+  m_PrefabInstance: {fileID: 1007649008445484539}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5265396636008545621 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4965659737824268462, guid: 58a7567feb5944f4589e433ba508f74e, type: 3}
@@ -472,6 +483,10 @@ PrefabInstance:
       propertyPath: scoreSlider
       value: 
       objectReference: {fileID: 8329081212410961096}
+    - target: {fileID: 8258691342991050554, guid: ba1edaaaa92e5484cbf42894b7b35982, type: 3}
+      propertyPath: gameOverText
+      value: 
+      objectReference: {fileID: 4381127467224934144}
     - target: {fileID: 8258691342991050554, guid: ba1edaaaa92e5484cbf42894b7b35982, type: 3}
       propertyPath: debugScoreText
       value: 

@@ -151,6 +151,12 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Scream()
     {
+        if (!sourceAudioScream.isPlaying)
+        {
+            sourceAudioScream.clip = clipsScreams[Random.Range(0, clipsScreams.Length)];
+            sourceAudioScream.Play();
+        }
+        
         if (textScreamVfxs.Length > 0)
         {
             textScreamVfxs[Random.Range(0, textScreamVfxs.Length)].Play();
@@ -167,9 +173,6 @@ public class PlayerInteractor : MonoBehaviour
             if (interactable != null)
                 interactable.OnScream();
         }
-        
-        sourceAudioScream.clip = clipsScreams[Random.Range(0, clipsScreams.Length)];
-        sourceAudioScream.Play();
     }
 
     private IEnumerator SwitchFaceRenderer()

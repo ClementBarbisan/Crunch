@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text debugScoreText;
     [SerializeField] private TMP_Text waveNumberText;
     [SerializeField] private Slider timeSlider;
-    [SerializeField] private TMP_Text timeText, scoreText, newsText;
+    [SerializeField] private TMP_Text timeText, scoreText, gameOverText, newsText;
     [SerializeField] private Animator animator;
     [SerializeField] private Vector2 _minMaxCooldownPhone = new Vector2(10, 20);
     [SerializeField] private GameObject tutorial;
@@ -100,6 +100,7 @@ public class GameManager : MonoBehaviour
         _isGameDone = true;
         _hasWon = hasWon;
         Time.timeScale  = 0f;
+        gameOverText.text = "Stats:" + Environment.NewLine + "Screams " + _nbScreams + Environment.NewLine + "Breaks " + _nbBreaks + Environment.NewLine + "Traumatized " + _nbTrauma + Environment.NewLine;
         
         if (hasWon)
         {
