@@ -815,7 +815,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80119b767a77b1c4c822b8adb722de6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicManager: {fileID: 0}
 --- !u!1 &1568795178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,7 +1394,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a698965e485af804ab35d3a8c1f543d5, type: 3}
   - {fileID: 8300000, guid: 1dc7bb4970bda4448a66edc8bbbda304, type: 3}
   - {fileID: 8300000, guid: fcabd10ea82ac0e41890c7ffbec5b132, type: 3}
-  - {fileID: 8300000, guid: fcabd10ea82ac0e41890c7ffbec5b132, type: 3}
+  - {fileID: 8300000, guid: 07d51c454b3f94b49a544fc542ee0819, type: 3}
+  - {fileID: 8300000, guid: 07d51c454b3f94b49a544fc542ee0819, type: 3}
+  - {fileID: 8300000, guid: 07d51c454b3f94b49a544fc542ee0819, type: 3}
+  - {fileID: 8300000, guid: 07d51c454b3f94b49a544fc542ee0819, type: 3}
+  - {fileID: 8300000, guid: 07d51c454b3f94b49a544fc542ee0819, type: 3}
+  - {fileID: 8300000, guid: 07d51c454b3f94b49a544fc542ee0819, type: 3}
+  - {fileID: 8300000, guid: 07d51c454b3f94b49a544fc542ee0819, type: 3}
 --- !u!82 &1976662922
 AudioSource:
   m_ObjectHideFlags: 0
