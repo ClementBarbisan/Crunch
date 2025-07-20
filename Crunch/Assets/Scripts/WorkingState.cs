@@ -46,7 +46,7 @@ public class WorkingState : AStateNPC
             GameManager.Instance.ProduceMoney(npc.WorkEfficiencyRate);
             return;
         }
-        if ((!npc.CurrentStation || !npc.CurrentStation.freeStation))
+        if ((!npc.CurrentStation || !npc.CurrentStation.freeStation && npc.CurrentStation.currentNPC != npc))
         {
             npc.CurrentStation = FindClosestStation(npc.transform.position);
             if (npc.CurrentStation)
@@ -60,16 +60,24 @@ public class WorkingState : AStateNPC
                 npc.Agent.isStopped = true;
             }
         }
-        if (npc.CurrentStation && Vector3.Distance(npc.transform.position, npc.Agent.destination) < npc.DistanceToDestination)
+        if (npc.CurrentStation && Vector3.Distance(npc.transform.position, npc.CurrentStation.transform.position) < npc.DistanceToDestination)
         {
             npc.CurrentStation.freeStation = false;
             npc.CurrentStation.currentNPC = npc;
             npc.IsWorking = true;
+            for (int i = 0; i < npc.WorkingVFXs.Length; i++)
+            {
+                npc.WorkingVFXs[i].Play();
+            }
         }
     }
 
     public override void OnLeaveState(NPC npc)
     {
+        for (int i = 0; i < npc.WorkingVFXs.Length; i++)
+        {
+            npc.WorkingVFXs[i].Stop();
+        }
     }
 
     public override bool ShouldLeaveState(NPC npc)

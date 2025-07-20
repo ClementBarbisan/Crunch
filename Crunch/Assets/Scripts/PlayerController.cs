@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
@@ -9,6 +10,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float drag = 4f;
 
     [Header("Look")]
+    // NB : PlayerInteractor.cs is also modifying animator values
+    [SerializeField] Animator animator;
+    private string _isWalkingParamName = "isWalking";
+
     [SerializeField] Transform bodyToRotate;
     private Camera _cam;
 
@@ -70,13 +75,30 @@ public class PlayerController : MonoBehaviour
     
     private void OnMove(InputAction.CallbackContext context)
     {
+        if (animator != null)
+        {
+            animator.SetBool(_isWalkingParamName, true);
+        }
         moveInput = context.ReadValue<Vector2>();
     }
 
     private void OnStop(InputAction.CallbackContext context)
     {
+        if (animator != null)
+        {
+            animator.SetBool(_isWalkingParamName, false);
+        }
         moveInput = Vector2.zero;
     }
-    
-    
+
+    public void OnStun(float timeStun)
+    {
+        StartCoroutine(StunForAWhile(timeStun));
+    }
+
+    private IEnumerator StunForAWhile(float timeStun)
+    {
+        rb.isKinematic = true;
+        yield return new WaitForSeconds(timeStun);
+    }
 }
