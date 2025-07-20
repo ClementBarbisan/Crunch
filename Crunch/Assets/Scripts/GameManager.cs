@@ -61,11 +61,12 @@ public class GameManager : MonoBehaviour
         if (waveScore >= waveGoalScore)
         {
             SetGameOver(true);
+            MusicManager.Instance.ChangeMusic(1);
         }
         else if (waveTimeElapsed >= waveDuration)
         {
             SetGameOver(false);
-            
+            MusicManager.Instance.ChangeMusic(2);
         }
 
         if (_timeBeforePhone < 0)
@@ -118,6 +119,8 @@ public class GameManager : MonoBehaviour
     public void RestartWave()
     {
         SceneManager.LoadSceneAsync(currentWave);
+        int v = currentWave + 3;
+        MusicManager.Instance.ChangeMusic(v);
     }
     
     public void SetContinue()
@@ -132,7 +135,9 @@ public class GameManager : MonoBehaviour
         _nbBreaks = 0;
         _nbScreams = 0;
         _nbTrauma = 0;
-        SceneManager.LoadSceneAsync(currentWave);
+        int v = currentWave + 4;
+        MusicManager.Instance.ChangeMusic(v);
+        SceneManager.LoadSceneAsync(currentWave+1);
     }
 
 

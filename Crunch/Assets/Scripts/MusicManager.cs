@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MusicManager : MonoBehaviour
@@ -29,7 +30,7 @@ public class MusicManager : MonoBehaviour
 
     public void ChangeMusic(int index)
     {
-        CoroutineChangeMusic(index);
+        StartCoroutine((CoroutineChangeMusic(index)));
     }
     
     private IEnumerator CoroutineChangeMusic(int index)
@@ -43,9 +44,9 @@ public class MusicManager : MonoBehaviour
             yield return null;
         }
         _source.volume = 0f;
-
+        _source.Stop();
         _source.clip = clips[index];
-
+        _source.Play();
         value = 0f;
         
         while (value < _volumeMax)
