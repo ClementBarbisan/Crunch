@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Slider timeSlider;
     [SerializeField] private TMP_Text timeText;
     [SerializeField] private Animator animator;
-
+    [SerializeField] private Vector2 _minMaxCooldownPhone = new Vector2(10, 20);
     public float waveDuration = 20;
     public float waveGoalScore = 20;
 
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         }
 
         _phone = FindFirstObjectByType<InteractablePhoneBoss>(FindObjectsInactive.Include);
-        _timeBeforePhone = Random.Range(10, 20);
+        _timeBeforePhone = Random.Range(_minMaxCooldownPhone.x, _minMaxCooldownPhone.y);
         waveNumberText.text = "Wave " + (currentWave + 1);
     }
 
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         if (_timeBeforePhone < 0)
         {
            _phone.LaunchCoroutineRing();
-            _timeBeforePhone = Random.Range(10, 20);
+           _timeBeforePhone = Random.Range(_minMaxCooldownPhone.x, _minMaxCooldownPhone.y);
         }
         _timeBeforePhone -= Time.deltaTime;
     }
