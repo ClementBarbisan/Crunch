@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "WorkingState", menuName = "ScriptableObjects/WorkingState")]
+[CreateAssetMenu(fileName = "WorkingState", menuName = "ScriptableObjects/NPC/WorkingState")]
 public class WorkingState : AStateNPC
 {
     Station FindClosestStation(Vector3 pos)
@@ -44,10 +44,9 @@ public class WorkingState : AStateNPC
         if (npc.IsWorking)
         {
             GameManager.Instance.ProduceMoney(npc.WorkEfficiencyRate);
-           
             return;
         }
-        if ((!npc.CurrentStation || !npc.CurrentStation.freeStation))
+        if ((!npc.CurrentStation || !npc.CurrentStation.freeStation && npc.CurrentStation.currentNPC != npc))
         {
             npc.CurrentStation = FindClosestStation(npc.transform.position);
             if (npc.CurrentStation)

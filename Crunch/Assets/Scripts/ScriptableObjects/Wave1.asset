@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dfb15634910445b29b48d324c58ce5c, type: 3}
+  m_Name: Wave1
+  m_EditorClassIdentifier: 
+  _posCoffeMachine: {fileID: 11400000, guid: 7ed3bd0c4dbb54efb8cebd5acb66bdad, type: 2}
+  startPos:
+  - {fileID: 11400000, guid: 800bb55f697f4453e8d4e7ba9aa6d1e1, type: 2}
+  - {fileID: 11400000, guid: a220cc3bd7f394155be4a1b96c34612b, type: 2}
+  - {fileID: 11400000, guid: 30fe0a110fcad4f888981f557feca5dc, type: 2}
+  - {fileID: 11400000, guid: f2190005a0d3740ffa71a3e21cde68bc, type: 2}
+  _coffeeMachine: {fileID: 4705637285225965197, guid: e474bbdb452a3be4f869f8fc34be72a0, type: 3}
+  _hyperactifNPC: {fileID: 1114827760742900835, guid: f60e3d918d3ee4a42bd7ed3b42b0bf60, type: 3}
+  _toumouNPC: {fileID: 7580259520870812120, guid: fdc60cb523907b54c8db044c93cf1934, type: 3}
+  nbToumou: 2
+  nbHyperactif: 0
+  WaveDuration: 60
+  WaveScore: 200
