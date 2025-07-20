@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LazyState", menuName = "ScriptableObjects/LazyState")]
+[CreateAssetMenu(fileName = "LazyState", menuName = "ScriptableObjects/NPC/LazyState")]
 public class LazyState : AStateNPC
 {
     public override void OnEnterState(NPC npc)

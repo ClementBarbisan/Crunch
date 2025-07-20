@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[CreateAssetMenu(fileName = "StressedTouMouState", menuName = "ScriptableObjects/StressedTouMouState")]
+[CreateAssetMenu(fileName = "StressedTouMouState", menuName = "ScriptableObjects/NPC/StressedTouMouState")]
 public class StressedTouMouState : StressedState
 {
     
