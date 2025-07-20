@@ -49,7 +49,10 @@ MonoBehaviour:
   waveNumberText: {fileID: 0}
   timeSlider: {fileID: 0}
   timeText: {fileID: 0}
+  scoreText: {fileID: 0}
+  newsText: {fileID: 0}
   animator: {fileID: 0}
-  waveDuration: 30
-  waveGoalScore: 23
+  _minMaxCooldownPhone: {x: 10, y: 20}
+  waveDuration: 60
+  waveGoalScore: 30
   currentWave: 1
