@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.7759995
+      value: -1.1337619
       objectReference: {fileID: 0}
     - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.004999995
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.487
+      value: 7.486508
       objectReference: {fileID: 0}
     - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
       propertyPath: m_LocalRotation.w
@@ -64,9 +64,13 @@ PrefabInstance:
       propertyPath: <UnderworkedMax>k__BackingField
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 6161330008158331647, guid: a11785b116df744b5a7df37446cc5260, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2715485340361893928, guid: 3a730d9ac42787e40b90cc2c9269a9da, type: 3}
     - target: {fileID: 7584757859879435942, guid: a11785b116df744b5a7df37446cc5260, type: 3}
       propertyPath: m_Name
-      value: NPC (3) Variant
+      value: NPC Hyperactif variant
       objectReference: {fileID: 0}
     - target: {fileID: 7584757859879435942, guid: a11785b116df744b5a7df37446cc5260, type: 3}
       propertyPath: m_IsActive
