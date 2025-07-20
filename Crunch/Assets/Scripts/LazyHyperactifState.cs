@@ -37,8 +37,8 @@ public class LazyHyperactifState : LazyState
         {
             npc.Agent.isStopped = false;
             npc.Agent.speed = StateWalkSpeed;
-            npc.Agent.SetDestination(npc.CurrentStation.transform.position + npc.CurrentStation.transform.forward +
-                                     npc.CurrentStation.transform.right);
+            npc.Agent.SetDestination(npc.CurrentStation.transform.position + npc.CurrentStation.transform.forward / 2f +
+                                     npc.CurrentStation.transform.right / 2f);
         }
     }
 
