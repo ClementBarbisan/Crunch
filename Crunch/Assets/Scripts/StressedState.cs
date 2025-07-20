@@ -7,10 +7,24 @@ public class StressedState : AStateNPC
     {
         npc.DEBUG_ChangeColor(Color.red);
         npc.SwitchFaceRenderer(2);
+
+        for (int i = 0; i < npc.WorkingVFXs.Length; i++)
+        {
+            npc.WorkingVFXs[i].Play();
+        }
+        npc.Agent.enabled = true;
+
     }
 
     public override void OnUpdateState(NPC npc)
     {
+        if(npc.finishFrenzy)
+        {
+            for (int i = 0; i < npc.WorkingVFXs.Length; i++)
+            {
+                npc.WorkingVFXs[i].Stop();
+            }
+        }
     }
 
     public override void OnLeaveState(NPC npc)
