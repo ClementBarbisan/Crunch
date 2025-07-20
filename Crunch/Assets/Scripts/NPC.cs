@@ -45,6 +45,7 @@ public class NPC : MonoBehaviour, IInteractable
     [field: SerializeField] private float isWalkingAnimThreshold = 0.1f;
     public string _isWalkingParamName = "isWalking";
     public string _isWorkingParamName = "isWorking";
+    public string _isHeldParamName = "isHeld";
 
     [Header("UI")]
     public StressProgressBar stressProgressBar;
@@ -97,6 +98,7 @@ public class NPC : MonoBehaviour, IInteractable
             if (animator != null)
             {
                 animator.SetBool(_isWorkingParamName, false);
+                animator.SetBool(_isHeldParamName, true);
             }
             return;
         }
@@ -119,6 +121,11 @@ public class NPC : MonoBehaviour, IInteractable
             {
                 //can get up and be active again
                 timerGettingUp = -1;
+
+                if (animator != null)
+                {
+                    animator.SetBool(_isHeldParamName, false);
+                }
             }
         }
 
