@@ -71,8 +71,9 @@ public class PlayerInteractor : MonoBehaviour
                 if (_interactableToThrow.GetComponent<NPC>() != null)
                 {
                     NPC npc = _interactableToThrow.GetComponent<NPC>();
-                    npc.isHeldByPlayer = false;
-                    npc.isThrown = true;
+
+                    npc.OnThrow();
+
                 }
                 
                 _interactableToThrow = null;
