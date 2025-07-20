@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 8925518924239062056}
   - component: {fileID: 5076965970727811295}
   - component: {fileID: 8390436810436759822}
+  - component: {fileID: 2684317636820767808}
   m_Layer: 6
   m_Name: Employee
   m_TagString: Untagged
@@ -202,6 +203,8 @@ MonoBehaviour:
   <OverworkedVFXs>k__BackingField: []
   <WorkingVFXs>k__BackingField:
   - {fileID: 8074778396100607342}
+  <animator>k__BackingField: {fileID: 2684317636820767808}
+  isWalkingAnimThreshold: 0.1
   stressProgressBar: {fileID: 0}
   TransformReferenceUI: {fileID: 1380800309870791561}
   isHeldByPlayer: 0
@@ -239,6 +242,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!95 &2684317636820767808
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584757859879435942}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8360130155241016518
 GameObject:
   m_ObjectHideFlags: 0
