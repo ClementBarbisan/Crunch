@@ -127,7 +127,13 @@ public class GameManager : MonoBehaviour
 
     public void RestartWave()
     {
-        SceneManager.LoadSceneAsync(currentWave);
+        SceneManager.LoadSceneAsync(currentWave+1);
+        waveScore = 0;
+        waveTimeElapsed = 0;
+        Time.timeScale = 1f;
+        _nbBreaks = 0;
+        _nbScreams = 0;
+        _nbTrauma = 0;
         int v = currentWave + 3;
         
         if(MusicManager.Instance != null && MusicManager.Instance.clips.Length > v)
