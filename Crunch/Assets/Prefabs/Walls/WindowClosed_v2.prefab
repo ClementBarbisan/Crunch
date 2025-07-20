@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3055006205653592315}
   - component: {fileID: 3067730894190416253}
   m_Layer: 0
-  m_Name: WindowClosed
+  m_Name: WindowClosed_v2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 862167030115897661}
-  m_Mesh: {fileID: -3822031669826919154, guid: b852e0a672af07c4ba5d4394539b5c5e, type: 3}
+  m_Mesh: {fileID: 8338758518094756434, guid: 113b2fd6ef4771a45adbfa5a0cd272f9, type: 3}
 --- !u!23 &3055006205653592315
 MeshRenderer:
   m_ObjectHideFlags: 0
