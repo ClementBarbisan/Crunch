@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text timeText, scoreText, newsText;
     [SerializeField] private Animator animator;
     [SerializeField] private Vector2 _minMaxCooldownPhone = new Vector2(10, 20);
+    [SerializeField] private GameObject tutorial;
     public float waveDuration = 20;
     public float waveGoalScore = 20;
 
@@ -43,10 +44,16 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("singleton GameManager is already instantiated");
             Destroy(gameObject);
         }
-
-        _phone = FindFirstObjectByType<InteractablePhoneBoss>(FindObjectsInactive.Include);
+        
+        _phone = FindFirstObjectByType<InteractablePhoneBoss>(FindObjectsInactive.Exclude);
         _timeBeforePhone = UnityEngine.Random.Range(_minMaxCooldownPhone.x, _minMaxCooldownPhone.y);
         waveNumberText.text = "Wave " + (currentWave + 1);
+
+        if (currentWave == 0)
+        {
+            SetTimeScale(0f);
+            tutorial.SetActive(true);
+        }
     }
 
     private void Update()
@@ -69,9 +76,9 @@ public class GameManager : MonoBehaviour
             MusicManager.Instance.ChangeMusic(2);
         }
 
-        if (_timeBeforePhone < 0)
+        if (_timeBeforePhone < 0 && _phone != null)
         {
-           _phone.LaunchCoroutineRing();
+            _phone.LaunchCoroutineRing();
            _timeBeforePhone = UnityEngine.Random.Range(_minMaxCooldownPhone.x, _minMaxCooldownPhone.y);
         }
         _timeBeforePhone -= Time.deltaTime;
@@ -155,5 +162,10 @@ public class GameManager : MonoBehaviour
         scoreSlider.value = Mathf.Clamp01(waveScore / waveGoalScore);
 
         debugScoreText.text = "Score : " + waveScore.ToString("F2", CultureInfo.InvariantCulture); ;
+    }
+
+    public void SetTimeScale(float value)
+    {
+        Time.timeScale = value;
     }
 }

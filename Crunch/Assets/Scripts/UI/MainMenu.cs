@@ -16,9 +16,8 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-
-        SceneManager.LoadScene(3);
-        MusicManager.Instance.ChangeMusic(1);
+        SceneManager.LoadScene(1);
+        MusicManager.Instance.ChangeMusic(3);
         Debug.Log("Launching main Scene");
     }
 }
