@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private MusicManager musicManager;
     public void ExitButton()
     {
         Application.Quit();
@@ -18,7 +17,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
         MusicManager.Instance.ChangeMusic(1);
         Debug.Log("Launching main Scene");
     }
