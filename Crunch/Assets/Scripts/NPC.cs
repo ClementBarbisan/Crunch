@@ -37,7 +37,7 @@ public class NPC : MonoBehaviour, IInteractable
     [Header("State VFXs")]
     [field: SerializeField] public ParticleSystem[] UnderworkedVFXs { get; set; }
     [field: SerializeField] public ParticleSystem[] OverworkedVFXs { get; set; }
-
+    [field: SerializeField] public ParticleSystem[] WorkingVFXs { get; set; }
 
     [Header("UI")]
     public StressProgressBar stressProgressBar;
