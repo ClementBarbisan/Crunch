@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 0b562e32e1f5c3c4fbeb0dd3fb4a074f
+  - enabled: 1
     path: Assets/Scenes/Wave_0.unity
     guid: 48a838c5afd64f64fa196c9fdf9c7ca9
   - enabled: 1
@@ -20,9 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Wave_3.unity
     guid: 6783d249e34f3d84ba8d7b4f960115b4
-  - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 0b562e32e1f5c3c4fbeb0dd3fb4a074f
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: ae5c6134a0e294d8ba85ea9acf82928d
