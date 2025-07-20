@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float drag = 4f;
 
     [Header("Look")]
+    // NB : PlayerInteractor.cs is also modifying animator values
+    [SerializeField] Animator animator;
+    private string _isWalkingParamName = "isWalking";
+
     [SerializeField] Transform bodyToRotate;
     private Camera _cam;
 
@@ -71,11 +75,13 @@ public class PlayerController : MonoBehaviour
     
     private void OnMove(InputAction.CallbackContext context)
     {
+        animator.SetBool(_isWalkingParamName, true);
         moveInput = context.ReadValue<Vector2>();
     }
 
     private void OnStop(InputAction.CallbackContext context)
     {
+        animator.SetBool(_isWalkingParamName, false);
         moveInput = Vector2.zero;
     }
 

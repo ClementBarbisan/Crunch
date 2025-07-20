@@ -23,6 +23,12 @@ public class PlayerInteractor : MonoBehaviour
     [Header("Actions Vfx")]
     [SerializeField] private ParticleSystem[] textScreamVfxs;
     [SerializeField] private ParticleSystem waveScreamVfx;
+
+    [Header("Animations")]
+    [SerializeField] Animator animator;
+    private string _isHoldingObjectParamName = "isHoldingObject";
+    private string _isThrowingObjectParamName = "isThrowingObject";
+    
     private void Awake()
     {
         _playerController = GetComponentInParent<PlayerController>();
@@ -50,6 +56,9 @@ public class PlayerInteractor : MonoBehaviour
                 if(interactable.Heavy)
                     _playerController.speedMove = _playerController.moveSpeedSlow;
                 InteractableToThrow(_interactableDetected.transform);
+
+
+                animator.SetBool(_isHoldingObjectParamName, true);
             }
         }
         else
@@ -77,6 +86,11 @@ public class PlayerInteractor : MonoBehaviour
                 }
                 
                 _interactableToThrow = null;
+
+
+                animator.SetBool(_isHoldingObjectParamName, false);
+                animator.SetBool(_isThrowingObjectParamName, false);
+
             }
         }
     }
