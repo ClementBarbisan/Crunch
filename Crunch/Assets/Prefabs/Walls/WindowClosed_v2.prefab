@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5207547574446303117}
   - component: {fileID: 3375388165994520633}
   - component: {fileID: 3055006205653592315}
-  - component: {fileID: 8780786102674771110}
+  - component: {fileID: 3067730894190416253}
   m_Layer: 0
-  m_Name: WindowOpened
+  m_Name: WindowClosed_v2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 862167030115897661}
-  m_Mesh: {fileID: -834771295469326594, guid: c9bdff24f3978cd40bdfffad5ededef7, type: 3}
+  m_Mesh: {fileID: 8338758518094756434, guid: 113b2fd6ef4771a45adbfa5a0cd272f9, type: 3}
 --- !u!23 &3055006205653592315
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8780786102674771110
+--- !u!65 &3067730894190416253
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,5 +108,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.6000051, y: 1.5000054, z: 0.3734691}
-  m_Center: {x: 0.00000047683704, y: 0.7500027, z: 0.06765277}
+  m_Size: {x: 1.6000048, y: 1.5000054, z: 0.25000006}
+  m_Center: {x: 0, y: 0.7500027, z: 0}
