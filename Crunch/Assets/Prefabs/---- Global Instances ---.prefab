@@ -328,6 +328,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7596101881152824902, guid: 58a7567feb5944f4589e433ba508f74e, type: 3}
   m_PrefabInstance: {fileID: 1007649008445484539}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7797759153479622580 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7047244796517085775, guid: 58a7567feb5944f4589e433ba508f74e, type: 3}
+  m_PrefabInstance: {fileID: 1007649008445484539}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8329081212410961096 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9109995158996807987, guid: 58a7567feb5944f4589e433ba508f74e, type: 3}
@@ -399,6 +410,10 @@ PrefabInstance:
       propertyPath: scoreSlider
       value: 
       objectReference: {fileID: 8329081212410961096}
+    - target: {fileID: 8258691342991050554, guid: ba1edaaaa92e5484cbf42894b7b35982, type: 3}
+      propertyPath: debugScoreText
+      value: 
+      objectReference: {fileID: 7797759153479622580}
     - target: {fileID: 8825679314589148155, guid: ba1edaaaa92e5484cbf42894b7b35982, type: 3}
       propertyPath: m_Name
       value: Game Manager
