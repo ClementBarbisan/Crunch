@@ -151,8 +151,11 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Scream()
     {
-        sourceAudioScream.clip = clipsScreams[Random.Range(0, clipsScreams.Length)];
-        sourceAudioScream.Play();
+        if (!sourceAudioScream.isPlaying)
+        {
+            sourceAudioScream.clip = clipsScreams[Random.Range(0, clipsScreams.Length)];
+            sourceAudioScream.Play();
+        }
         
         if (textScreamVfxs.Length > 0)
         {
