@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99884132e0b71f4f8e5ff6cde264f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleSystem: {fileID: 2535000540749763450, guid: 6f8df5d7cb1a07b4e95a30805d4390e2, type: 3}
+  _particleSystem: {fileID: 8205706795460263316, guid: 326e86d5729c54e479798cacab220bb2, type: 3}
   _radiusSphere: 2.5
   _interactableLayer:
     serializedVersion: 2

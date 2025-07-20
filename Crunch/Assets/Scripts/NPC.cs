@@ -93,6 +93,11 @@ public class NPC : MonoBehaviour, IInteractable
                 CurrentStation = null;
             }
             IsWorking = false;
+
+            if (animator != null)
+            {
+                animator.SetBool(_isWorkingParamName, false);
+            }
             return;
         }
 
