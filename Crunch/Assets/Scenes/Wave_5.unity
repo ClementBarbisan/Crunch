@@ -1206,7 +1206,7 @@ PrefabInstance:
     - target: {fileID: 976147677302552514, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: fd2be93fed7ee564c94b1b7ecb571b20, type: 2}
+      objectReference: {fileID: 23800000, guid: 22c2c369ad5524147b9185d46098cf84, type: 2}
     - target: {fileID: 976147677302552514, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
       propertyPath: m_UseGeometry
       value: 1
@@ -1257,7 +1257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3091468643495093890, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3106082289774971267, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
       propertyPath: m_IsActive
