@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
@@ -83,6 +84,15 @@ public class PlayerController : MonoBehaviour
         animator.SetBool(_isWalkingParamName, false);
         moveInput = Vector2.zero;
     }
-    
-    
+
+    public void OnStun(float timeStun)
+    {
+        StartCoroutine(StunForAWhile(timeStun));
+    }
+
+    private IEnumerator StunForAWhile(float timeStun)
+    {
+        rb.isKinematic = true;
+        yield return new WaitForSeconds(timeStun);
+    }
 }
