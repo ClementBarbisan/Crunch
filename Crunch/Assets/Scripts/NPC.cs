@@ -46,7 +46,6 @@ public class NPC : MonoBehaviour, IInteractable
     [field: SerializeField] private float isWalkingAnimThreshold = 0.1f;
     public string _isWalkingParamName = "isWalking";
     public string _isWorkingParamName = "isWorking";
-    public string _isHeldParamName = "isHeld";
 
     [Header("UI")]
     public StressProgressBar stressProgressBar;
@@ -69,6 +68,8 @@ public class NPC : MonoBehaviour, IInteractable
 
     public float TimeBeforeGettingUp = 2;
     private float timerGettingUp = -1;
+    [SerializeField] private float _workStressValueOnThrow = 0.5f;
+
     #region Unity Events
 
     void Awake()
@@ -81,35 +82,27 @@ public class NPC : MonoBehaviour, IInteractable
         InitNpc();
     }
 
+    void SwitchWorkingVFX()
+    {
+        if (IsWorking)
+        {
+            for (int i = 0; i < WorkingVFXs.Length; i++)
+            {
+                WorkingVFXs[i].Play();
+            }
+        }
+        else
+        {
+            for (int i = 0; i < WorkingVFXs.Length; i++)
+            {
+                WorkingVFXs[i].Stop();
+            }
+        }
+    }
+    
     void Update()
     {
-        
-        if (isHeldByPlayer)
-        {
-            //TODO: held by player logic here, change animation, 
-            
-            if (CurrentStation)
-            {
-                CurrentStation.freeStation = true;
-                CurrentStation.currentNPC = null;
-                CurrentStation = null;
-            }
-            IsWorking = false;
-
-            if (animator != null)
-            {
-                animator.SetBool(_isWorkingParamName, false);
-                animator.SetBool(_isHeldParamName, true);
-            }
-            return;
-        }
-
-
-        if (isThrown)
-        {
-            // Player have throw NPC, he's flying waiting to collide with something
-            return;
-        }
+        SwitchWorkingVFX();
         if (timerGettingUp != -1)
         {
             timerGettingUp -= Time.deltaTime;
@@ -123,15 +116,36 @@ public class NPC : MonoBehaviour, IInteractable
                 StunVFX.gameObject.SetActive(false);
                 //can get up and be active again
                 timerGettingUp = -1;
-
-                if (animator != null)
-                {
-                    animator.SetBool(_isHeldParamName, false);
-                }
             }
+        }
+        if (isHeldByPlayer)
+        {
+            //TODO: held by player logic here, change animation, 
+            
+            if (CurrentStation)
+            {
+                CurrentStation.freeStation = true;
+                CurrentStation.currentNPC = null;
+                CurrentStation = null;
+            }
+            IsWorking = false;
+            for (int i = 0; i < UnderworkedVFXs.Length; i++)
+            {
+                UnderworkedVFXs[i].Stop();
+            }
+            if (animator != null)
+            {
+                animator.SetBool(_isWorkingParamName, false);
+            }
+            return;
         }
 
 
+        if (isThrown)
+        {
+            // Player have throw NPC, he's flying waiting to collide with something
+            return;
+        }
         if (animator != null)
         {
             animator.SetBool(_isWalkingParamName, Agent.velocity.magnitude >= isWalkingAnimThreshold);
@@ -183,7 +197,6 @@ public class NPC : MonoBehaviour, IInteractable
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.transform.name);
         if (collision.transform.CompareTag("Player"))
             return;
         
@@ -193,8 +206,35 @@ public class NPC : MonoBehaviour, IInteractable
             Agent.enabled = true;
             transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
             GetComponent<Rigidbody>().isKinematic = true;
-            StunVFX.gameObject.SetActive(true);
-            timerGettingUp = TimeBeforeGettingUp;
+            if (collision.collider.TryGetComponent(out Station station))
+            {
+                if (!station.freeStation)
+                {
+                    station.currentNPC.transform.position = transform.position;
+                    station.currentNPC.IsWorking = false;
+
+                    if (station.currentNPC.animator != null)
+                    {
+                        station.currentNPC.animator.SetBool(station.currentNPC._isWorkingParamName, false);
+                    }
+                }
+                GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+                GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+                transform.position = station.transform.position + station.transform.forward / 2;
+                transform.forward = -station.transform.forward;
+                station.freeStation = false;
+                station.currentNPC = this;
+                CurrentStation = station;
+                IsWorking = true;
+                WorkStress = _workStressValueOnThrow;
+            }
+            else
+            {
+                Debug.Log("Hit not station");
+                StunVFX.gameObject.SetActive(true);
+                timerGettingUp = TimeBeforeGettingUp;
+            }
+           
         }
     }
 
