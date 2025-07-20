@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         _cam = Camera.main;
+        Camera.main.transform.position += transform.position; 
         speedMove = moveSpeedFast;
     }
     
