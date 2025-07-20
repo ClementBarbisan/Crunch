@@ -35,7 +35,7 @@ public class StressedTouMouState : StressedState
         if (!npc.finishFrenzy && npc.CurrentStation != null && npc.IsWorking)
         {
             GameManager.Instance.ProduceMoney(npc.FrenzyWorkEfficiencyRate);
-            if (npc.animator != null)
+            if (npc.animator != null )
             {
                 npc.animator.SetBool(npc._isWorkingParamName, true);
             }
@@ -79,7 +79,7 @@ public class StressedTouMouState : StressedState
         {
             if (npc.animator != null)
             {
-                npc.animator.SetBool(npc._isWorkingParamName, false);
+                npc.animator.SetBool(npc._isWorkingParamName, true);
             }
         }
     }

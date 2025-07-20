@@ -158,6 +158,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5076965970727811295, guid: a11785b116df744b5a7df37446cc5260, type: 3}
+      propertyPath: FrenzyTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076965970727811295, guid: a11785b116df744b5a7df37446cc5260, type: 3}
       propertyPath: _faceRenderer
       value: 
       objectReference: {fileID: 4934578886147084628}
