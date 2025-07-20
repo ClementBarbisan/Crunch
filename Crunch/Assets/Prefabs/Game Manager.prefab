@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreSlider: {fileID: 0}
   debugScoreText: {fileID: 0}
+  waveNumberText: {fileID: 0}
   waves:
   - {fileID: 11400000, guid: 0eb1e07dd3dfd4d31b1b102d9b489983, type: 2}
   timeSlider: {fileID: 0}

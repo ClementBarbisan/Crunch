@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Slider scoreSlider;
     [SerializeField] private TMP_Text debugScoreText;
+    [SerializeField] private TMP_Text waveNumberText;
     [SerializeField] private List<WaveObject> waves;
     [SerializeField] private Slider timeSlider;
     [SerializeField] private TMP_Text timeText;
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("singleton GameManager is already instantiated");
             Destroy(gameObject);
         }
+        waveNumberText.text = "Wave " + (currentWave + 1);
         waves[currentWave].CleanSceneAndSpawnNewStuff();
     }
 
@@ -99,6 +101,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Continue");
         currentWave++;
+        waveNumberText.text = "Wave " + (currentWave + 1);
         waves[currentWave].CleanSceneAndSpawnNewStuff();
         waveScore = 0;
         waveTimeElapsed = 0;
