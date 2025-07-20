@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
         }
 
         _phone = FindFirstObjectByType<InteractablePhoneBoss>(FindObjectsInactive.Include);
-        _timeBeforePhone = Random.Range(_minMaxCooldownPhone.x, _minMaxCooldownPhone.y);
+        _timeBeforePhone = UnityEngine.Random.Range(_minMaxCooldownPhone.x, _minMaxCooldownPhone.y);
         waveNumberText.text = "Wave " + (currentWave + 1);
     }
 
