@@ -6,6 +6,7 @@ public class NPC : MonoBehaviour, IInteractable
 {
     [Header("States")] 
     [SerializeField] bool isHeavy;
+    [SerializeField] private bool _isLazy;
     
     [Header("Navigation")]
     public Station CurrentStation;
@@ -19,7 +20,8 @@ public class NPC : MonoBehaviour, IInteractable
 
     [Header("Working Stress Values")]
     [Range(0, 1), SerializeField] private float WorkStressAtStart = 0.5f;
-    [Range(0, 1), SerializeField] private float _screamStressBoost = 0.125f;
+    [Range(0, 1), SerializeField] private float _screamStressBoostLazy = 0.125f;
+    [Range(0, 1), SerializeField] private float _screamStressBoostHyperactif = 0.125f;
     [SerializeField] private float _stressDecrementSpeed;
     [field: SerializeField] public float OverworkedMin { get; set; } = 0.75f;
     [field: SerializeField] public float OverworkedMax { get; set; } = 0.85f;
@@ -180,7 +182,14 @@ public class NPC : MonoBehaviour, IInteractable
 
     private void GetScreamedAt()
     {
-        WorkStress = Mathf.Clamp01(WorkStress + _screamStressBoost);
+        if (_isLazy)
+        {
+            WorkStress = Mathf.Clamp01(WorkStress + _screamStressBoostLazy);
+        }
+        else
+        {
+            WorkStress = Mathf.Clamp01(WorkStress + _screamStressBoostHyperactif);
+        }
     }
 
     #endregion
