@@ -20,11 +20,12 @@ public class GameManager : MonoBehaviour
     public float waveGoalScore = 20;
 
     [SerializeField] private int currentWave;
+    private float _timeBeforePhone;
     private float waveTimeElapsed;
     private float waveScore;
     private bool _isGameDone;
     private bool _hasWon;
-
+    private InteractablePhoneBoss _phone;
 
     public void Awake()
     {
@@ -37,6 +38,9 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("singleton GameManager is already instantiated");
             Destroy(gameObject);
         }
+
+        _phone = FindFirstObjectByType<InteractablePhoneBoss>(FindObjectsInactive.Include);
+        _timeBeforePhone = Random.Range(10, 20);
         waveNumberText.text = "Wave " + (currentWave + 1);
     }
 
@@ -58,6 +62,13 @@ public class GameManager : MonoBehaviour
             SetGameOver(false);
             
         }
+
+        if (_timeBeforePhone < 0)
+        {
+           _phone.LaunchCoroutineRing();
+            _timeBeforePhone = Random.Range(10, 20);
+        }
+        _timeBeforePhone -= Time.deltaTime;
     }
 
     private void OnGUI()
