@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -24,6 +26,7 @@ public class PlayerInteractor : MonoBehaviour
     [Header("Actions Vfx")]
     [SerializeField] private ParticleSystem[] textScreamVfxs;
     [SerializeField] private ParticleSystem waveScreamVfx;
+    [SerializeField] private Renderer _faceRenderer;
 
     [Header("Animations")]
     [SerializeField] Animator animator;
@@ -127,7 +130,8 @@ public class PlayerInteractor : MonoBehaviour
             if (_interactableToThrow.GetComponent<NPC>() != null)
                 _interactableToThrow.GetComponent<NPC>().isHeldByPlayer = true;
             NavMeshAgent agent = obj.GetComponent<NavMeshAgent>();
-            agent.isStopped = true;
+            if(agent.enabled)
+                agent.isStopped = true;
             agent.velocity = Vector3.zero;
             agent.enabled = false;
         }
@@ -145,7 +149,7 @@ public class PlayerInteractor : MonoBehaviour
             textScreamVfxs[Random.Range(0, textScreamVfxs.Length)].Play();
         }
         waveScreamVfx.Play();
-
+        StartCoroutine(SwitchFaceRenderer());
 
         if (_screamedDetected == 0)
             return;
@@ -156,6 +160,13 @@ public class PlayerInteractor : MonoBehaviour
             if (interactable != null)
                 interactable.OnScream();
         }
+    }
+
+    private IEnumerator SwitchFaceRenderer()
+    {
+        _faceRenderer.material.SetFloat("_faceNumber", 1);
+        yield return new WaitForSeconds(0.5f);
+        _faceRenderer.material.SetFloat("_faceNumber", 0);
     }
 
     private void Update()
