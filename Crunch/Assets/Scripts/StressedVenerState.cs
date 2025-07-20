@@ -12,6 +12,10 @@ public class StressedVenerState : StressedState
         if (!npc.finishFrenzy)
         {
             GameManager.Instance.ProduceMoney(npc.FrenzyWorkEfficiencyRate);
+            if (npc.animator != null)
+            {
+                npc.animator.SetBool(npc._isWorkingParamName, true);
+            }
             return;
         }
         npc.Agent.SetDestination(Camera.main.transform.position);
