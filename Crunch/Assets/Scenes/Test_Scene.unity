@@ -180,71 +180,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb23ff357d78d4742be8dad065f176e8, type: 3}
---- !u!1001 &100221238
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.6159997
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.727
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5076965970727811295, guid: a11785b116df744b5a7df37446cc5260, type: 3}
-      propertyPath: _stressDecrementSpeed
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 5076965970727811295, guid: a11785b116df744b5a7df37446cc5260, type: 3}
-      propertyPath: <UnderworkedMax>k__BackingField
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7584757859879435942, guid: a11785b116df744b5a7df37446cc5260, type: 3}
-      propertyPath: m_Name
-      value: NPC (4)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a11785b116df744b5a7df37446cc5260, type: 3}
 --- !u!4 &251992690 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7691810733729321207, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
@@ -309,6 +244,10 @@ PrefabInstance:
     - target: {fileID: 7584757859879435942, guid: a11785b116df744b5a7df37446cc5260, type: 3}
       propertyPath: m_Name
       value: NPC (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584757859879435942, guid: a11785b116df744b5a7df37446cc5260, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -890,6 +829,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7584757859879435942, guid: a11785b116df744b5a7df37446cc5260, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1075,6 +1018,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7584757859879435942, guid: a11785b116df744b5a7df37446cc5260, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1139,6 +1086,10 @@ PrefabInstance:
     - target: {fileID: 7584757859879435942, guid: a11785b116df744b5a7df37446cc5260, type: 3}
       propertyPath: m_Name
       value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 7584757859879435942, guid: a11785b116df744b5a7df37446cc5260, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1631,4 +1582,3 @@ SceneRoots:
   - {fileID: 1175459643}
   - {fileID: 1738531444}
   - {fileID: 254095794}
-  - {fileID: 100221238}
