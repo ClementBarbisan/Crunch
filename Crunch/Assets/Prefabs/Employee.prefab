@@ -190,13 +190,13 @@ MonoBehaviour:
   WorkStressAtStart: 0.5
   _screamStressBoostLazy: 0.04
   _screamStressBoostHyperactif: 0.08
-  _stressDecrementSpeed: 0.04
+  _stressDecrementSpeed: 0.1
   <OverworkedMin>k__BackingField: 0.75
   <OverworkedMax>k__BackingField: 0.85
   <UnderworkedMin>k__BackingField: 0.05
   <UnderworkedMax>k__BackingField: 0.25
   <WorkEfficiencyRate>k__BackingField: 0.5
-  <FrenzyWorkEfficiencyRate>k__BackingField: 5
+  <FrenzyWorkEfficiencyRate>k__BackingField: 1
   <DistanceToDestination>k__BackingField: 1.5
   <UnderworkedVFXs>k__BackingField: []
   <OverworkedVFXs>k__BackingField: []
