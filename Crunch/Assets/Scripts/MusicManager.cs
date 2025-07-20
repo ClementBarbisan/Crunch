@@ -1,10 +1,9 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    [SerializeField] private AudioClip[] clips;
+    public AudioClip[] clips;
     private AudioSource _source;
     private float _volumeMax;
 
