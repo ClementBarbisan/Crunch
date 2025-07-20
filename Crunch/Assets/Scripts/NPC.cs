@@ -43,7 +43,8 @@ public class NPC : MonoBehaviour, IInteractable
     [Header("Animations")]
     [field: SerializeField] public Animator animator { get; set; }
     [field: SerializeField] private float isWalkingAnimThreshold = 0.1f;
-    private string _isWalkingParamName = "isWalking";
+    public string _isWalkingParamName = "isWalking";
+    public string _isWorkingParamName = "isWorking";
 
     [Header("UI")]
     public StressProgressBar stressProgressBar;
@@ -59,7 +60,7 @@ public class NPC : MonoBehaviour, IInteractable
     public bool Heavy => isHeavy;
 
     public bool isHeldByPlayer, isThrown;
-    public bool IsWorking;
+    public bool IsWorking { get; set; }
     public float FrenzyTime = 10;
     public float TimeCounter, OldTimer = 10;
     public bool finishFrenzy = false;
