@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -9,13 +11,15 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Slider scoreSlider;
     [SerializeField] private TMP_Text debugScoreText;
-
+    [SerializeField] private TMP_Text waveNumberText;
     [SerializeField] private Slider timeSlider;
     [SerializeField] private TMP_Text timeText;
     [SerializeField] private Animator animator;
 
-    [SerializeField] private float waveDuration = 20;
-    [SerializeField] private float waveGoalScore = 20;
+    public float waveDuration = 20;
+    public float waveGoalScore = 20;
+
+    [SerializeField] private int currentWave;
     private float waveTimeElapsed;
     private float waveScore;
     private bool _isGameDone;
@@ -33,6 +37,7 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("singleton GameManager is already instantiated");
             Destroy(gameObject);
         }
+        waveNumberText.text = "Wave " + (currentWave + 1);
     }
 
     private void Update()
@@ -94,6 +99,11 @@ public class GameManager : MonoBehaviour
     public void SetContinue()
     {
         Debug.Log("Continue");
+        currentWave++;
+        waveNumberText.text = "Wave " + (currentWave + 1);
+        waveScore = 0;
+        waveTimeElapsed = 0;
+        SceneManager.LoadSceneAsync(currentWave);
         animator.SetTrigger("continueTrigger");
         Time.timeScale = 1f;
     }

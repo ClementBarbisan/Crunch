@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "LazyHyperactifState", menuName = "ScriptableObjects/LazyHyperactifState")]
+[CreateAssetMenu(fileName = "LazyHyperactifState", menuName = "ScriptableObjects/NPC/LazyHyperactifState")]
 public class LazyHyperactifState : LazyState
 {
     [SerializeField] private float _radiusSphere = 2.5f;
