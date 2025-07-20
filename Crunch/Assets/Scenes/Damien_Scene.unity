@@ -1060,6 +1060,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 704256365931948549, guid: 8c9bd7f7edcd2484cb008f7f8bc5fb59, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 864255276003260053, guid: 8c9bd7f7edcd2484cb008f7f8bc5fb59, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1071,6 +1075,10 @@ PrefabInstance:
     - target: {fileID: 1394164611527810405, guid: 8c9bd7f7edcd2484cb008f7f8bc5fb59, type: 3}
       propertyPath: m_Name
       value: ---- Global Instances ---
+      objectReference: {fileID: 0}
+    - target: {fileID: 1394164611527810405, guid: 8c9bd7f7edcd2484cb008f7f8bc5fb59, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1842895265467683589, guid: 8c9bd7f7edcd2484cb008f7f8bc5fb59, type: 3}
       propertyPath: m_Color.a
@@ -1605,10 +1613,6 @@ PrefabInstance:
     - target: {fileID: 5248227175255362289, guid: dc81b7a81ceed694784ecf406eeaff38, type: 3}
       propertyPath: moveSpeedSlow
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6163364187461141337, guid: dc81b7a81ceed694784ecf406eeaff38, type: 3}
-      propertyPath: animator
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6163364187461141337, guid: dc81b7a81ceed694784ecf406eeaff38, type: 3}
       propertyPath: interactRange
