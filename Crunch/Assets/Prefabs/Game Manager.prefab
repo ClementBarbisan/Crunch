@@ -47,10 +47,9 @@ MonoBehaviour:
   scoreSlider: {fileID: 0}
   debugScoreText: {fileID: 0}
   waveNumberText: {fileID: 0}
-  waves:
-  - {fileID: 11400000, guid: 0eb1e07dd3dfd4d31b1b102d9b489983, type: 2}
   timeSlider: {fileID: 0}
   timeText: {fileID: 0}
   animator: {fileID: 0}
-  waveDuration: 60
-  waveGoalScore: 100
+  waveDuration: 30
+  waveGoalScore: 23
+  currentWave: 1
