@@ -39,11 +39,19 @@ public class NPC : MonoBehaviour, IInteractable
     [field: SerializeField] public ParticleSystem[] OverworkedVFXs { get; set; }
     [field: SerializeField] public ParticleSystem[] WorkingVFXs { get; set; }
 
+
+    [Header("Animations")]
+    [field: SerializeField] public Animator animator { get; set; }
+    [field: SerializeField] private float isWalkingAnimThreshold = 0.1f;
+    private string _isWalkingParamName = "isWalking";
+
     [Header("UI")]
     public StressProgressBar stressProgressBar;
     public Transform TransformReferenceUI;
 
+
     [Header("Others")]
+    public Renderer DEBUG_Renderer;
 
     public AStateNPC CurrentState { get; private set; }
     public float WorkStress { get; set; }
@@ -72,6 +80,7 @@ public class NPC : MonoBehaviour, IInteractable
 
     void Update()
     {
+        
         if (isHeldByPlayer)
         {
             //TODO: held by player logic here, change animation, 
@@ -85,6 +94,7 @@ public class NPC : MonoBehaviour, IInteractable
             IsWorking = false;
             return;
         }
+
 
         if (isThrown)
         {
@@ -105,6 +115,14 @@ public class NPC : MonoBehaviour, IInteractable
                 timerGettingUp = -1;
             }
         }
+
+
+        if (animator != null)
+        {
+            animator.SetBool(_isWalkingParamName, Agent.velocity.magnitude >= isWalkingAnimThreshold);
+        }
+
+        // npc is active ( not thrown, not on the ground, not held by player)
         if (CurrentState.ShouldLeaveState(this) && (CurrentState.StateCategory != EStateCategory.Overworked || TimeCounter < 0)) //Changing state
         {
             CurrentState.OnLeaveState(this);
@@ -198,7 +216,7 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void DEBUG_ChangeColor(Color color) // To see states changes visually for now
     {
-        GetComponent<Renderer>().material.color = color;
+        DEBUG_Renderer.material.color = color;
     }
     #endregion
 
