@@ -44,8 +44,8 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("singleton GameManager is already instantiated");
             Destroy(gameObject);
         }
-
-        _phone = FindFirstObjectByType<InteractablePhoneBoss>(FindObjectsInactive.Include);
+        
+        _phone = FindFirstObjectByType<InteractablePhoneBoss>(FindObjectsInactive.Exclude);
         _timeBeforePhone = UnityEngine.Random.Range(_minMaxCooldownPhone.x, _minMaxCooldownPhone.y);
         waveNumberText.text = "Wave " + (currentWave + 1);
 
@@ -76,9 +76,9 @@ public class GameManager : MonoBehaviour
             MusicManager.Instance.ChangeMusic(2);
         }
 
-        if (_timeBeforePhone < 0)
+        if (_timeBeforePhone < 0 && _phone != null)
         {
-           _phone.LaunchCoroutineRing();
+            _phone.LaunchCoroutineRing();
            _timeBeforePhone = UnityEngine.Random.Range(_minMaxCooldownPhone.x, _minMaxCooldownPhone.y);
         }
         _timeBeforePhone -= Time.deltaTime;

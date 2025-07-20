@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2875452462736308175}
   - component: {fileID: 6258430804614730069}
   - component: {fileID: 1038522102577850865}
+  - component: {fileID: 307515173413817471}
   m_Layer: 5
   m_Name: Next Button
   m_TagString: Untagged
@@ -143,3 +144,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &307515173413817471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7943491782937581855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4a5a0de760f1e40932bcc008874e54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  hoverClip: {fileID: 8300000, guid: 60da71ccc09f1f44eba6aa2f395156f4, type: 3}
+  clickClip: {fileID: 8300000, guid: f1b6ba1723effc74dbc21fe60f8484e7, type: 3}
