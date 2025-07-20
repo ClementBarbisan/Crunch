@@ -208,9 +208,10 @@ public class NPC : MonoBehaviour, IInteractable
         if (isThrown)
         {
             isThrown = false;
-            Agent.enabled = true;
+            Agent.enabled = false;
             transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
-            GetComponent<Rigidbody>().isKinematic = true;
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.isKinematic = true;
             if (collision.collider.TryGetComponent(out Station station))
             {
                 if (!station.freeStation)
@@ -219,13 +220,11 @@ public class NPC : MonoBehaviour, IInteractable
                     station.currentNPC.IsWorking = false;
 
                     if (station.currentNPC.animator != null)
-                    {
                         station.currentNPC.animator.SetBool(station.currentNPC._isWorkingParamName, false);
-                    }
                 }
-                GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
-                GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-                transform.position = station.transform.position + station.transform.forward / 2;
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                transform.position = station.transform.position + station.transform.forward*.5f;
                 transform.forward = -station.transform.forward;
                 station.freeStation = false;
                 station.currentNPC = this;
@@ -239,7 +238,6 @@ public class NPC : MonoBehaviour, IInteractable
                 StunVFX.gameObject.SetActive(true);
                 timerGettingUp = TimeBeforeGettingUp;
             }
-           
         }
     }
 

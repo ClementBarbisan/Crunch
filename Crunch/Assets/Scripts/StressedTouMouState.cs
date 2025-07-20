@@ -46,7 +46,7 @@ public class StressedTouMouState : StressedState
             Exit door = FindClosestExit(npc.transform.position);
             if (door)
             {
-                npc.Agent.isStopped = false;
+                npc.Agent.enabled = true;
                 npc.Agent.speed = StateWalkSpeed;
                 npc.Agent.SetDestination(door.transform.position + new Vector3(Random.Range(-2, 2), 0, Random.Range(-2, 2)));
             }
