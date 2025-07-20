@@ -101,6 +101,7 @@ public class NPC : MonoBehaviour, IInteractable
             {
                 WorkingVFXs[i].Play();
             }
+            _audioSourceWork.Play();
         }
         else
         {
@@ -108,6 +109,7 @@ public class NPC : MonoBehaviour, IInteractable
             {
                 WorkingVFXs[i].Stop();
             }
+            _audioSourceWork.Stop();
         }
     }
     
