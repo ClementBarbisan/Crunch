@@ -55,6 +55,7 @@ public class InteractableCoffeeMachine : MonoBehaviour, IInteractable
             }
             
             AudioSource.PlayClipAtPoint(coffeeMachineBreakSplash, transform.position);
+            GameManager.Instance.StatsBreaks();
             Destroy(gameObject);
         }
     }

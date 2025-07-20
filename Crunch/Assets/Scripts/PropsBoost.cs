@@ -55,6 +55,7 @@ public class PropsBoost : MonoBehaviour, IInteractable
         waitColliding = false;
         AudioSource.PlayClipAtPoint(clipBreak, transform.position);
         Instantiate(breakFx, transform.position, Quaternion.identity);
+        GameManager.Instance.StatsBreaks();
         Destroy(gameObject);
     }
 }

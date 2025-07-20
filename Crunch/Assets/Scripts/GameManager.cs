@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     private bool _isGameDone;
     private bool _hasWon;
 
-    private int _nbScreams, _nbBreaks, _nbTrauma;
+    private int _nbScreams, _nbBreaks, _nbTrauma, _nbCat;
 
     private InteractablePhoneBoss _phone;
 
@@ -127,7 +127,8 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(currentWave);
         int v = currentWave + 3;
-        MusicManager.Instance.ChangeMusic(v);
+        if(MusicManager.Instance.clips.Length > v)
+            MusicManager.Instance.ChangeMusic(v);
     }
     
     public void SetContinue()
@@ -143,11 +144,11 @@ public class GameManager : MonoBehaviour
         _nbScreams = 0;
         _nbTrauma = 0;
         int v = currentWave + 4;
-        MusicManager.Instance.ChangeMusic(v);
+        if(MusicManager.Instance.clips.Length > v)
+            MusicManager.Instance.ChangeMusic(v);
         SceneManager.LoadSceneAsync(currentWave+1);
     }
-
-
+    
     private void UpdateUIElements()
     {
         int minutes = (int)(waveDuration-waveTimeElapsed) / 60;
@@ -167,5 +168,25 @@ public class GameManager : MonoBehaviour
     public void SetTimeScale(float value)
     {
         Time.timeScale = value;
+    }
+
+    public void StatsScreams()
+    {
+        _nbScreams++;
+    }
+
+    public void StatsBreaks()
+    {
+        _nbBreaks++;
+    }
+
+    public void StatsTrauma()
+    {
+        _nbTrauma ++;
+    }
+
+    public void StatsCat()
+    {
+        _nbCat++;
     }
 }

@@ -83,6 +83,7 @@ public class InteractablePhoneBoss : MonoBehaviour,IInteractable
             Instantiate(breakFX, transform.position, Quaternion.identity);
             transform.position = _initPos;
             transform.eulerAngles = _initRot;
+            GameManager.Instance.StatsBreaks();
         }
     }
 }
