@@ -11,6 +11,8 @@ public class InteractableCoffeeMachine : MonoBehaviour, IInteractable
     [SerializeField] private float _radiusSphere = 3f;
     [SerializeField] private LayerMask _interactableLayer = 1 << 6;
     [SerializeField] private float _boostWorkCoffee = 0.3f;
+    [SerializeField] private Transform coffeePropsPf, coffeePropsSpawnPosition;
+    [SerializeField] private AudioClip clipCoffeeSpawn, coffeeMachineBreakSplash;
     private Collider[] colliders = new Collider[10];
     private int detectedHits;
 
@@ -30,21 +32,19 @@ public class InteractableCoffeeMachine : MonoBehaviour, IInteractable
     {
         _isThrown = true;
     }
-
-    private void Update()
-    {
-    }
-
+    
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag("Player"))
-            return;
-        if (_isThrown)
+        if (collision.collider.CompareTag("Player") && !_isThrown)
+        {
+            // Spawn coffee
+            Instantiate(coffeePropsPf, coffeePropsSpawnPosition.position + new Vector3(Random.Range(-.1f, .1f), 0f, Random.Range(-.1f, .1f)), Quaternion.identity);
+            AudioSource.PlayClipAtPoint(clipCoffeeSpawn, transform.position);
+        }
+        else if (!collision.collider.CompareTag("Player") && _isThrown)
         {
             _isThrown = false;
-            _particleSystem.transform.up = Vector3.up;
-            _particleSystem.gameObject.SetActive(true);
-            _particleSystem.Play();
+            Instantiate(_particleSystem, transform.position, Quaternion.identity);
             detectedHits = Physics.OverlapSphereNonAlloc(transform.position, _radiusSphere, colliders, _interactableLayer); 
             if (detectedHits > 0)
             {
@@ -56,6 +56,9 @@ public class InteractableCoffeeMachine : MonoBehaviour, IInteractable
                     }
                 }
             }
+            
+            AudioSource.PlayClipAtPoint(coffeeMachineBreakSplash, transform.position);
+            Destroy(gameObject);
         }
     }
 }

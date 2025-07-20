@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "StressedState", menuName = "ScriptableObjects/StressedState")]
+[CreateAssetMenu(fileName = "StressedState", menuName = "ScriptableObjects/NPC/StressedState")]
 public class StressedState : AStateNPC
 {
     public override void OnEnterState(NPC npc)

@@ -1,6 +1,6 @@
     using UnityEngine;
 
-[CreateAssetMenu(fileName = "StressedHyperactifState", menuName = "ScriptableObjects/StressedHyperactifState")]
+[CreateAssetMenu(fileName = "StressedHyperactifState", menuName = "ScriptableObjects/NPC/StressedHyperactifState")]
 public class StressedHyperactifState : StressedState
 {
     public override void OnUpdateState(NPC npc)
