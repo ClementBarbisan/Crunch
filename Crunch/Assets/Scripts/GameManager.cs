@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
@@ -13,7 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text debugScoreText;
     [SerializeField] private TMP_Text waveNumberText;
     [SerializeField] private Slider timeSlider;
-    [SerializeField] private TMP_Text timeText;
+    [SerializeField] private TMP_Text timeText, scoreText, newsText;
     [SerializeField] private Animator animator;
     [SerializeField] private Vector2 _minMaxCooldownPhone = new Vector2(10, 20);
     public float waveDuration = 20;
@@ -25,6 +26,9 @@ public class GameManager : MonoBehaviour
     private float waveScore;
     private bool _isGameDone;
     private bool _hasWon;
+
+    private int _nbScreams, _nbBreaks, _nbTrauma;
+
     private InteractablePhoneBoss _phone;
 
     public void Awake()
@@ -89,22 +93,25 @@ public class GameManager : MonoBehaviour
         if (hasWon)
         {
             Debug.Log("YOU WON (ka-ching!)");
-
             animator.SetTrigger("victoryTrigger");
-            
             scoreSlider.value = 1f;
-            
+            ScoreBoard();
+
         }
         else
         {
             Debug.Log("YOU LOST (loser)");
-
             timeText.text = string.Format("{0:00}:{1:00}", 0, 0);
-            
             animator.SetTrigger("defeatTrigger");
-
             timeSlider.value = 0f;
         }
+    }
+
+    private void ScoreBoard()
+    {
+        float valueScore = waveScore * 10f - waveTimeElapsed;
+        scoreText.text = "Stats:"+ Environment.NewLine+ "Screams " + _nbScreams + Environment.NewLine + "Breaks " + _nbBreaks + Environment.NewLine + "Traumatized " + _nbTrauma + Environment.NewLine + "Profitability " + valueScore.ToString("0");
+        newsText.text = "Lots of new things!!!!!";
     }
 
     public void SetContinue()
@@ -117,6 +124,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadSceneAsync(currentWave);
         animator.SetTrigger("continueTrigger");
         Time.timeScale = 1f;
+        _nbBreaks = 0;
+        _nbScreams = 0;
+        _nbTrauma = 0;
     }
 
 
@@ -133,6 +143,6 @@ public class GameManager : MonoBehaviour
 
         scoreSlider.value = Mathf.Clamp01(waveScore / waveGoalScore);
 
-        debugScoreText.text = "Score : "+waveScore.ToString("F2", CultureInfo.InvariantCulture); ;
+        debugScoreText.text = "Score : " + waveScore.ToString("F2", CultureInfo.InvariantCulture); ;
     }
 }
