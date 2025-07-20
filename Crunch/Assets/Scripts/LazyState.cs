@@ -13,7 +13,7 @@ public class LazyState : AStateNPC
             npc.CurrentStation = null;
         }*/
         npc.IsWorking = false;
-
+        npc.SwitchFaceRenderer(1);
 
         if (npc.animator != null)
         {

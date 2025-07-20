@@ -26,6 +26,7 @@ public class WorkingState : AStateNPC
     public override void OnEnterState(NPC npc)
     {
         npc.DEBUG_ChangeColor(Color.gray);
+        npc.SwitchFaceRenderer(0);
 
         if (!npc.CurrentStation)
         {
