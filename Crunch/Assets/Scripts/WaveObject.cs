@@ -34,16 +34,19 @@ public class WaveObject : ScriptableObject
         PlayerController player = FindFirstObjectByType<PlayerController>();
         player.transform.position = Vector3.zero;
         GameObjectRef[] starts = startPos;
+        int index = 0;
         for (int i = 0; i < nbToumou; i++)
         {
-            Instantiate(_toumouNPC, starts[i % starts.Length].RefObject.transform.position + new Vector3(Random.Range(-1, 1), 0,
+            Instantiate(_toumouNPC, starts[index % starts.Length].RefObject.transform.position + new Vector3(Random.Range(-1, 1), 0,
                 Random.Range(-1, 1)), Quaternion.identity);
+            index++;
         }
         for (int i = 0; i < nbHyperactif; i++)
         {
             Instantiate(_hyperactifNPC, starts[i % starts.Length].RefObject.transform.position + new Vector3(Random.Range(-1, 1),
                 0,
                 Random.Range(-1, 1)), Quaternion.identity);
+            index++;
         }
 
         GameManager.Instance.waveDuration = WaveDuration;
