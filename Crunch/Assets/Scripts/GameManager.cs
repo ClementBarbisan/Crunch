@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -11,7 +12,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Slider scoreSlider;
     [SerializeField] private TMP_Text debugScoreText;
     [SerializeField] private TMP_Text waveNumberText;
-    [SerializeField] private List<WaveObject> waves;
     [SerializeField] private Slider timeSlider;
     [SerializeField] private TMP_Text timeText;
     [SerializeField] private Animator animator;
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public float waveDuration = 20;
     public float waveGoalScore = 20;
 
-    private int currentWave;
+    [SerializeField] private int currentWave;
     private float waveTimeElapsed;
     private float waveScore;
     private bool _isGameDone;
@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         waveNumberText.text = "Wave " + (currentWave + 1);
-        waves[currentWave].CleanSceneAndSpawnNewStuff();
     }
 
     private void Update()
@@ -102,9 +101,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("Continue");
         currentWave++;
         waveNumberText.text = "Wave " + (currentWave + 1);
-        waves[currentWave].CleanSceneAndSpawnNewStuff();
         waveScore = 0;
         waveTimeElapsed = 0;
+        SceneManager.LoadSceneAsync(currentWave);
         animator.SetTrigger("continueTrigger");
         Time.timeScale = 1f;
     }
