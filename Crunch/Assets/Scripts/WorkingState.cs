@@ -34,7 +34,7 @@ public class WorkingState : AStateNPC
             {
                 npc.Agent.isStopped = false;
                 npc.Agent.speed = StateWalkSpeed;
-                npc.Agent.SetDestination(npc.CurrentStation.transform.position + npc.CurrentStation.transform.forward);
+                npc.Agent.SetDestination(npc.CurrentStation.transform.position + npc.CurrentStation.transform.forward / 2f);
             }
         }
     }
