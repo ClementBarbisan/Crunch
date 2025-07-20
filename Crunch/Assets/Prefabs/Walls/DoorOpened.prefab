@@ -66,6 +66,8 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 573b841baf322184c8383877c30aff63, type: 2}
+  - {fileID: 2100000, guid: ddff98e52028d7f44b22394305177033, type: 2}
+  - {fileID: 2100000, guid: 6d2b30bb67728a24189b7de6ec5995f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,19 +111,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38dfec20c18821b4fa42af54f9ccc30d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.039608642
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38dfec20c18821b4fa42af54f9ccc30d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38dfec20c18821b4fa42af54f9ccc30d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.9992153
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38dfec20c18821b4fa42af54f9ccc30d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38dfec20c18821b4fa42af54f9ccc30d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -129,12 +131,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38dfec20c18821b4fa42af54f9ccc30d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 175.46
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 38dfec20c18821b4fa42af54f9ccc30d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 38dfec20c18821b4fa42af54f9ccc30d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 573b841baf322184c8383877c30aff63, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 38dfec20c18821b4fa42af54f9ccc30d, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d2b30bb67728a24189b7de6ec5995f2, type: 2}
     - target: {fileID: 919132149155446097, guid: 38dfec20c18821b4fa42af54f9ccc30d, type: 3}
       propertyPath: m_Name
       value: Door

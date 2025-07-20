@@ -53,6 +53,9 @@ public class NPC : MonoBehaviour, IInteractable
     public float FrenzyTime = 10;
     public float TimeCounter, OldTimer = 10;
     public bool finishFrenzy = false;
+
+    public float TimeBeforeGettingUp = 2;
+    private float timerGettingUp = -1;
     #region Unity Events
 
     void Awake()
@@ -85,6 +88,20 @@ public class NPC : MonoBehaviour, IInteractable
         {
             // Player have throw NPC, he's flying waiting to collide with something
             return;
+        }
+        if (timerGettingUp != -1)
+        {
+            timerGettingUp -= Time.deltaTime;
+            if(timerGettingUp>0f)
+            {
+                //NPC is on the floor waiting before getting up
+                return;
+            }
+            else
+            {
+                //can get up and be active again
+                timerGettingUp = -1;
+            }
         }
         if (CurrentState.ShouldLeaveState(this) && (CurrentState.StateCategory != EStateCategory.Overworked || TimeCounter < 0)) //Changing state
         {
@@ -141,6 +158,8 @@ public class NPC : MonoBehaviour, IInteractable
             Agent.enabled = true;
             transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
             GetComponent<Rigidbody>().isKinematic = true;
+
+            timerGettingUp = TimeBeforeGettingUp;
         }
     }
 
@@ -188,7 +207,10 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void OnThrow()
     {
-        
+        isHeldByPlayer = false;
+        isThrown = true;
+
+        timerGettingUp = -1;
     }
 
     #endregion
