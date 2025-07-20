@@ -148,7 +148,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -3638099861037300, guid: 40c2f13f12ac0464aab79ec041ef8aa0, type: 3}
+  m_Motion: {fileID: -3638099861037300, guid: cd3bf6acd3af71d42aaa14dcd77b2dbe, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -176,7 +176,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e4480398d7b76ac43b22c60c5d9cf6d4, type: 2}
+  m_Motion: {fileID: -3857853861787006385, guid: cd3bf6acd3af71d42aaa14dcd77b2dbe, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -443,7 +443,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 904817118099642442, guid: 40c2f13f12ac0464aab79ec041ef8aa0, type: 3}
+  m_Motion: {fileID: 8795936575567921786, guid: cd3bf6acd3af71d42aaa14dcd77b2dbe, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -455,7 +455,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player Animator Controller
+  m_Name: AC_Player
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isThrowingObject
@@ -523,7 +523,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -2440912889672634607, guid: 40c2f13f12ac0464aab79ec041ef8aa0, type: 3}
+  m_Motion: {fileID: -2440912889672634607, guid: cd3bf6acd3af71d42aaa14dcd77b2dbe, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
