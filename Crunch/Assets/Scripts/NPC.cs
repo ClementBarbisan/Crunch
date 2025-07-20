@@ -46,7 +46,8 @@ public class NPC : MonoBehaviour, IInteractable
     [field: SerializeField] private float isWalkingAnimThreshold = 0.1f;
     public string _isWalkingParamName = "isWalking";
     public string _isWorkingParamName = "isWorking";
-
+    [SerializeField] private Renderer _faceRenderer;
+    
     [Header("UI")]
     public StressProgressBar stressProgressBar;
     public Transform TransformReferenceUI;
@@ -82,6 +83,11 @@ public class NPC : MonoBehaviour, IInteractable
         InitNpc();
     }
 
+    public void SwitchFaceRenderer(float face)
+    {
+        _faceRenderer.material.SetFloat("_faceNumber", face);
+    }
+    
     void SwitchWorkingVFX()
     {
         if (IsWorking)

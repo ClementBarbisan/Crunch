@@ -14,7 +14,7 @@ public class LazyState : AStateNPC
         }*/
         
         npc.IsWorking = false;
-
+        npc.SwitchFaceRenderer(1);
 
         if (npc.animator != null)
         {

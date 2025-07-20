@@ -6,7 +6,7 @@ public class StressedState : AStateNPC
     public override void OnEnterState(NPC npc)
     {
         npc.DEBUG_ChangeColor(Color.red);
-
+        npc.SwitchFaceRenderer(2);
     }
 
     public override void OnUpdateState(NPC npc)
