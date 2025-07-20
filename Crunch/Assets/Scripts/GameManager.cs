@@ -48,12 +48,12 @@ public class GameManager : MonoBehaviour
         else if (waveTimeElapsed >= waveDuration)
         {
             SetGameOver(false);
+            
         }
     }
 
     private void OnGUI()
     {
-
         UpdateUIElements();
     }
 
@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
     {
         _isGameDone = true;
         _hasWon = hasWon;
+        Time.timeScale  = 0f;
+        
         if (hasWon)
         {
             Debug.Log("YOU WON (ka-ching!)");
@@ -72,6 +74,7 @@ public class GameManager : MonoBehaviour
             animator.SetTrigger("victoryTrigger");
             
             scoreSlider.value = 1f;
+            
         }
         else
         {
@@ -83,6 +86,12 @@ public class GameManager : MonoBehaviour
 
             timeSlider.value = 0f;
         }
+    }
+
+    public void SetContinue()
+    {
+        animator.SetTrigger("continueTrigger");
+        Time.timeScale = 1f;
     }
 
 
