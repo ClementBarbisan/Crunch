@@ -22,11 +22,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5270335174849268565, guid: f22d904e72baecb43a142be5c35e4b11, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5270335174849268565, guid: f22d904e72baecb43a142be5c35e4b11, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5270335174849268565, guid: f22d904e72baecb43a142be5c35e4b11, type: 3}
       propertyPath: m_AnchorMin.x
