@@ -70,12 +70,17 @@ public class NPC : MonoBehaviour, IInteractable
     public float TimeBeforeGettingUp = 2;
     private float timerGettingUp = -1;
     [SerializeField] private float _workStressValueOnThrow = 0.5f;
-
+    [SerializeField] private AudioSource _audioSourceGrab;
+    [SerializeField] private AudioSource _audioSourceThrown;
+    public AudioSource _audioSourceSleeping;
+    [SerializeField] private AudioSource _audioSourceWork;
+    [SerializeField] private AudioSource _audioSourceFrenzy;
     #region Unity Events
 
     void Awake()
     {
         Agent = GetComponent<NavMeshAgent>();
+        
     }
 
     void Start()
@@ -96,6 +101,7 @@ public class NPC : MonoBehaviour, IInteractable
             {
                 WorkingVFXs[i].Play();
             }
+            _audioSourceWork.Play();
         }
         else
         {
@@ -103,6 +109,7 @@ public class NPC : MonoBehaviour, IInteractable
             {
                 WorkingVFXs[i].Stop();
             }
+            _audioSourceWork.Stop();
         }
     }
     
@@ -127,7 +134,7 @@ public class NPC : MonoBehaviour, IInteractable
         if (isHeldByPlayer)
         {
             //TODO: held by player logic here, change animation, 
-            
+            _audioSourceGrab.Play();
             if (CurrentStation)
             {
                 CurrentStation.freeStation = true;
@@ -149,6 +156,8 @@ public class NPC : MonoBehaviour, IInteractable
 
         if (isThrown)
         {
+            _audioSourceGrab.Stop();
+            _audioSourceThrown.Play();
             // Player have throw NPC, he's flying waiting to collide with something
             return;
         }
@@ -207,6 +216,7 @@ public class NPC : MonoBehaviour, IInteractable
         
         if (isThrown)
         {
+            _audioSourceThrown.Stop();
             isThrown = false;
             Agent.enabled = false;
             transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);

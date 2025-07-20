@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private Vector3 moveDirection;
     private InputSystem_Actions _controls;
+    private AudioSource _sourceAudio;
 
     void Awake()
     {
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
         _cam = Camera.main;
         Camera.main.transform.position += transform.position; 
         speedMove = moveSpeedFast;
+        _sourceAudio = GetComponent<AudioSource>();
     }
     
     void OnEnable()
@@ -81,6 +83,8 @@ public class PlayerController : MonoBehaviour
             animator.SetBool(_isWalkingParamName, true);
         }
         moveInput = context.ReadValue<Vector2>();
+        if(!_sourceAudio.isPlaying)
+            _sourceAudio.Play();
     }
 
     private void OnStop(InputAction.CallbackContext context)
@@ -90,6 +94,7 @@ public class PlayerController : MonoBehaviour
             animator.SetBool(_isWalkingParamName, false);
         }
         moveInput = Vector2.zero;
+        _sourceAudio.Stop();
     }
 
     public void OnStun(float timeStun)
