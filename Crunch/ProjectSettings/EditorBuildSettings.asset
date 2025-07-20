@@ -24,6 +24,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Wave_3.unity
     guid: 6783d249e34f3d84ba8d7b4f960115b4
   - enabled: 1
+    path: Assets/Scenes/Wave_4.unity
+    guid: 2d13eba23b0797f43b72a4718c5a6588
+  - enabled: 1
+    path: Assets/Scenes/Wave_5.unity
+    guid: 00d2c96422f0d6644b212fd6a78f869e
+  - enabled: 1
+    path: Assets/Scenes/Wave_6.unity
+    guid: 688e969ea394c6e44825d214467e8b7b
+  - enabled: 1
+    path: Assets/Scenes/Wave_7.unity
+    guid: 5f784a631754c9b46ae2bac7df054d14
+  - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: ae5c6134a0e294d8ba85ea9acf82928d
   m_configObjects:
