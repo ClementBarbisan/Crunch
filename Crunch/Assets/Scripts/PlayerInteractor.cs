@@ -130,7 +130,8 @@ public class PlayerInteractor : MonoBehaviour
             if (_interactableToThrow.GetComponent<NPC>() != null)
                 _interactableToThrow.GetComponent<NPC>().isHeldByPlayer = true;
             NavMeshAgent agent = obj.GetComponent<NavMeshAgent>();
-            agent.isStopped = true;
+            if(agent.enabled)
+                agent.isStopped = true;
             agent.velocity = Vector3.zero;
             agent.enabled = false;
         }

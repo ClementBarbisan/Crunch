@@ -39912,7 +39912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4263e1150f8f154886bcc60f539ec50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactRange: 0.44
+  interactRange: 0.46
   interactRadius: 0.3
   screamRadius: 3
   interactableLayer:
@@ -39925,6 +39925,7 @@ MonoBehaviour:
   - {fileID: 2028246596760779013}
   - {fileID: 5389435717371879920}
   waveScreamVfx: {fileID: 2577621983158843689}
+  _faceRenderer: {fileID: 4814986976323587153}
   animator: {fileID: 5248805128594066500}
 --- !u!1 &2910495746868887906
 GameObject:
