@@ -75,13 +75,19 @@ public class PlayerController : MonoBehaviour
     
     private void OnMove(InputAction.CallbackContext context)
     {
-        animator.SetBool(_isWalkingParamName, true);
+        if (animator != null)
+        {
+            animator.SetBool(_isWalkingParamName, true);
+        }
         moveInput = context.ReadValue<Vector2>();
     }
 
     private void OnStop(InputAction.CallbackContext context)
     {
-        animator.SetBool(_isWalkingParamName, false);
+        if (animator != null)
+        {
+            animator.SetBool(_isWalkingParamName, false);
+        }
         moveInput = Vector2.zero;
     }
 
