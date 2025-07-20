@@ -4,12 +4,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LazyHyperactifState", menuName = "ScriptableObjects/LazyHyperactifState")]
 public class LazyHyperactifState : LazyState
 {
-    [SerializeField] private float _radiusSphere = 3f;
-    [SerializeField] private float _rangeSphere = 0f;
-    [SerializeField] private int _interactableLayer;
+    [SerializeField] private float _radiusSphere = 2.5f;
+    [SerializeField] private LayerMask _interactableLayer = 1 << 6;
     [SerializeField] private float _dividerDestressOthers = 30f;
 
-    private RaycastHit[] hits = new RaycastHit[10];
+    private Collider[] colliders = new Collider[10];
 
     Station FindClosestOccupiedStation(Vector3 pos)
     {
@@ -46,12 +45,12 @@ public class LazyHyperactifState : LazyState
     public override void OnUpdateState(NPC npc)
     {
         base.OnUpdateState(npc);
-        int detectedHits = Physics.SphereCastNonAlloc(npc.transform.position, _radiusSphere, npc.transform.forward, hits, _rangeSphere, _interactableLayer);
+        int detectedHits = Physics.OverlapSphereNonAlloc(npc.transform.position, _radiusSphere, colliders, _interactableLayer);
         if (detectedHits > 0)
         {
             for (int i = 0; i < detectedHits; i++)
             {
-                if (hits[i].collider.TryGetComponent(out NPC npcOther))
+                if (colliders[i].TryGetComponent(out NPC npcOther))
                 {
                     npcOther.WorkStress -= Time.deltaTime / _dividerDestressOthers;
                 }
