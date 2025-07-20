@@ -169,7 +169,7 @@ public class PlayerInteractor : MonoBehaviour
         }
         
         sourceAudioScream.clip = clipsScreams[Random.Range(0, clipsScreams.Length)];
-        sourceAudioInteract.Play();
+        sourceAudioScream.Play();
     }
 
     private IEnumerator SwitchFaceRenderer()
