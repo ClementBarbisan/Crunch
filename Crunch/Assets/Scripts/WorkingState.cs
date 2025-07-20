@@ -70,19 +70,12 @@ public class WorkingState : AStateNPC
             npc.CurrentStation.freeStation = false;
             npc.CurrentStation.currentNPC = npc;
             npc.IsWorking = true;
-            for (int i = 0; i < npc.WorkingVFXs.Length; i++)
-            {
-                npc.WorkingVFXs[i].Play();
-            }
+
         }
     }
 
     public override void OnLeaveState(NPC npc)
     {
-        for (int i = 0; i < npc.WorkingVFXs.Length; i++)
-        {
-            npc.WorkingVFXs[i].Stop();
-        }
     }
 
     public override bool ShouldLeaveState(NPC npc)

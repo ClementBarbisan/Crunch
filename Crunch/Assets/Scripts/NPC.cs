@@ -97,18 +97,11 @@ public class NPC : MonoBehaviour, IInteractable
     {
         if (IsWorking)
         {
-            for (int i = 0; i < WorkingVFXs.Length; i++)
-            {
-                WorkingVFXs[i].Play();
-            }
             _audioSourceWork.Play();
         }
         else
         {
-            for (int i = 0; i < WorkingVFXs.Length; i++)
-            {
-                WorkingVFXs[i].Stop();
-            }
+
             _audioSourceWork.Stop();
         }
     }
