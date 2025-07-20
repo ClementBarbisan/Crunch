@@ -32,6 +32,10 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] Animator animator;
     private string _isHoldingObjectParamName = "isHoldingObject";
     private string _isThrowingObjectParamName = "isThrowingObject";
+
+    [SerializeField] private AudioSource sourceAudioScream, sourceAudioInteract;
+    [SerializeField] private AudioClip[] clipsScreams;
+    [SerializeField] private AudioClip clipGrab, clipThrow;
     
     private void Awake()
     {
@@ -65,6 +69,9 @@ public class PlayerInteractor : MonoBehaviour
                 {
                     animator.SetBool(_isHoldingObjectParamName, true);
                 }
+                
+                sourceAudioInteract.clip = clipGrab;
+                sourceAudioInteract.Play();
             }
         }
         else
@@ -102,18 +109,18 @@ public class PlayerInteractor : MonoBehaviour
                 NPC npc = _interactableToThrow.GetComponent<NPC>();
 
                 npc.OnThrow();
-
             }
 
             _interactableToThrow = null;
-
-
-
+            
             if (animator != null)
             {
                 animator.SetBool(_isThrowingObjectParamName, false);
                 animator.SetBool(_isHoldingObjectParamName, false);
             }
+
+            sourceAudioInteract.clip = clipThrow;
+            sourceAudioInteract.Play();
         }
     }
 
@@ -160,6 +167,9 @@ public class PlayerInteractor : MonoBehaviour
             if (interactable != null)
                 interactable.OnScream();
         }
+        
+        sourceAudioScream.clip = clipsScreams[Random.Range(0, clipsScreams.Length)];
+        sourceAudioInteract.Play();
     }
 
     private IEnumerator SwitchFaceRenderer()
