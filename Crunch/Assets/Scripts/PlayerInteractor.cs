@@ -100,7 +100,7 @@ public class PlayerInteractor : MonoBehaviour
         obj.SetParent(carryPoint);
         obj.localPosition = Vector3.zero;
         obj.localRotation = Quaternion.identity;
-        obj.GetComponent<Renderer>().materials[1].SetFloat("_Detected", 0f);
+        SetOutline(obj, 0);
     }
 
     private void Scream()
@@ -130,22 +130,27 @@ public class PlayerInteractor : MonoBehaviour
 
         if (Physics.SphereCast(origin, interactRadius, direction, out RaycastHit hit, interactRange, interactableLayer))
         {
-            if (_interactableDetected != null && _interactableDetected != hit.collider)
-                _interactableDetected.GetComponent<Renderer>().materials[1].SetFloat("_Detected", 0f);
+            if (_interactableDetected != null && _interactableDetected != hit.collider) 
+                SetOutline(_interactableDetected.transform,0);
 
             _interactableDetected = hit.collider;
-            _interactableDetected.GetComponent<Renderer>().materials[1].SetFloat("_Detected", 1f);
+            SetOutline(_interactableDetected.transform,1);
         }
         else if (_interactableDetected)
         {
-            _interactableDetected.GetComponent<Renderer>().materials[1].SetFloat("_Detected", 0f);
+            SetOutline(_interactableDetected.transform,0);
             _interactableDetected = null;
         }
         
-        if(_interactableDetected != null)
-            Debug.Log(_interactableDetected.transform.name);
-        
         _screamedDetected = Physics.SphereCastNonAlloc(transform.position, screamRadius, transform.forward, _screamedDetectedHit, 0f, interactableLayer);
+    }
+
+    private void SetOutline(Transform t, int value)
+    {
+        if(t.GetComponent<Renderer>() != null)
+            t.GetComponent<Renderer>().materials[1].SetFloat("_Detected", value);
+        else if (t.GetComponentInChildren<Renderer>() != null)
+            t.GetComponentInChildren<Renderer>().materials[1].SetFloat("_Detected", value);
     }
     
     private void OnDrawGizmos()
