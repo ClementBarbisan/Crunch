@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "WorkingState", menuName = "ScriptableObjects/WorkingState")]
+[CreateAssetMenu(fileName = "WorkingState", menuName = "ScriptableObjects/NPC/WorkingState")]
 public class WorkingState : AStateNPC
 {
     Station FindClosestStation(Vector3 pos)

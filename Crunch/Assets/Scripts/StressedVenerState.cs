@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[CreateAssetMenu(fileName = "StressedVenerState", menuName = "ScriptableObjects/StressedVenerState")]
+[CreateAssetMenu(fileName = "StressedVenerState", menuName = "ScriptableObjects/NPC/StressedVenerState")]
 public class StressedVenerState : StressedState
 {
     [SerializeField] private float timeStun = 2.5f;
