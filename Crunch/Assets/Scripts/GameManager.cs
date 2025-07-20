@@ -16,11 +16,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Slider timeSlider;
     [SerializeField] private TMP_Text timeText, scoreText, newsText;
     [SerializeField] private Animator animator;
-
+    [SerializeField] private Vector2 _minMaxCooldownPhone = new Vector2(10, 20);
     public float waveDuration = 20;
     public float waveGoalScore = 20;
 
     [SerializeField] private int currentWave;
+    private float _timeBeforePhone;
     private float waveTimeElapsed;
     private float waveScore;
     private bool _isGameDone;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     private int _nbScreams, _nbBreaks, _nbTrauma;
 
+    private InteractablePhoneBoss _phone;
 
     public void Awake()
     {
@@ -40,6 +42,9 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("singleton GameManager is already instantiated");
             Destroy(gameObject);
         }
+
+        _phone = FindFirstObjectByType<InteractablePhoneBoss>(FindObjectsInactive.Include);
+        _timeBeforePhone = Random.Range(_minMaxCooldownPhone.x, _minMaxCooldownPhone.y);
         waveNumberText.text = "Wave " + (currentWave + 1);
     }
 
@@ -61,6 +66,13 @@ public class GameManager : MonoBehaviour
             SetGameOver(false);
             
         }
+
+        if (_timeBeforePhone < 0)
+        {
+           _phone.LaunchCoroutineRing();
+           _timeBeforePhone = Random.Range(_minMaxCooldownPhone.x, _minMaxCooldownPhone.y);
+        }
+        _timeBeforePhone -= Time.deltaTime;
     }
 
     private void OnGUI()
