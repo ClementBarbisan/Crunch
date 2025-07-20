@@ -19,6 +19,10 @@ public class StressedState : AStateNPC
     public override void OnLeaveState(NPC npc)
     {
         npc.finishFrenzy = false;
+        if (npc.animator != null)
+        {
+            npc.animator.SetBool(npc._isWorkingParamName, false);
+        }
     }
 
     public override bool ShouldLeaveState(NPC npc)
