@@ -115,6 +115,11 @@ public class GameManager : MonoBehaviour
         newsText.text = "Lots of new things!!!!!";
     }
 
+    public void RestartWave()
+    {
+        SceneManager.LoadSceneAsync(currentWave);
+    }
+    
     public void SetContinue()
     {
         Debug.Log("Continue");
@@ -122,12 +127,12 @@ public class GameManager : MonoBehaviour
         waveNumberText.text = "Wave " + (currentWave + 1);
         waveScore = 0;
         waveTimeElapsed = 0;
-        SceneManager.LoadSceneAsync(currentWave);
         animator.SetTrigger("continueTrigger");
         Time.timeScale = 1f;
         _nbBreaks = 0;
         _nbScreams = 0;
         _nbTrauma = 0;
+        SceneManager.LoadSceneAsync(currentWave);
     }
 
 
