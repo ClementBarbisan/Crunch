@@ -38,6 +38,7 @@ public class NPC : MonoBehaviour, IInteractable
     [field: SerializeField] public ParticleSystem[] UnderworkedVFXs { get; set; }
     [field: SerializeField] public ParticleSystem[] OverworkedVFXs { get; set; }
     [field: SerializeField] public ParticleSystem[] WorkingVFXs { get; set; }
+    [field: SerializeField] public ParticleSystem StunVFX { get; set; }
 
 
     [Header("Animations")]
@@ -117,6 +118,7 @@ public class NPC : MonoBehaviour, IInteractable
             }
             else
             {
+                StunVFX.gameObject.SetActive(false);
                 //can get up and be active again
                 timerGettingUp = -1;
             }
@@ -184,7 +186,7 @@ public class NPC : MonoBehaviour, IInteractable
             Agent.enabled = true;
             transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, 0f);
             GetComponent<Rigidbody>().isKinematic = true;
-
+            StunVFX.gameObject.SetActive(true);
             timerGettingUp = TimeBeforeGettingUp;
         }
     }
