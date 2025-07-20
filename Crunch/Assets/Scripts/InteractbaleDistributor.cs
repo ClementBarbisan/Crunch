@@ -62,6 +62,7 @@ public class InteractbaleDistributor : MonoBehaviour, IInteractable
             }
 
             AudioSource.PlayClipAtPoint(SnackMachineBreak, transform.position);
+            GameManager.Instance.StatsBreaks();
             Destroy(gameObject);
         }
     }

@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     private bool _isGameDone;
     private bool _hasWon;
 
-    private int _nbScreams, _nbBreaks, _nbTrauma;
+    private int _nbScreams, _nbBreaks, _nbTrauma, _nbCat;
 
     private InteractablePhoneBoss _phone;
 
@@ -167,5 +167,25 @@ public class GameManager : MonoBehaviour
     public void SetTimeScale(float value)
     {
         Time.timeScale = value;
+    }
+
+    public void StatsScreams()
+    {
+        _nbScreams++;
+    }
+
+    public void StatsBreaks()
+    {
+        _nbBreaks++;
+    }
+
+    public void StatsTrauma()
+    {
+        _nbTrauma ++;
+    }
+
+    public void StatsCat()
+    {
+        _nbCat++;
     }
 }
