@@ -1540,6 +1540,8 @@ PrefabInstance:
     - {fileID: 6745540661471057033, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
     - {fileID: 2806636480829467450, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
     - {fileID: 4694428532782426324, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
+    - {fileID: 6946993593791906956, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
+    - {fileID: 3010160593797875851, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 287843319083817379, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
       insertIndex: 1
@@ -1736,15 +1738,15 @@ PrefabInstance:
       objectReference: {fileID: 288317177}
     - target: {fileID: 6261813971068542099, guid: 8c9bd7f7edcd2484cb008f7f8bc5fb59, type: 3}
       propertyPath: currentWave
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6261813971068542099, guid: 8c9bd7f7edcd2484cb008f7f8bc5fb59, type: 3}
       propertyPath: waveDuration
-      value: 30
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 6261813971068542099, guid: 8c9bd7f7edcd2484cb008f7f8bc5fb59, type: 3}
       propertyPath: waveGoalScore
-      value: 30
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6261813971068542099, guid: 8c9bd7f7edcd2484cb008f7f8bc5fb59, type: 3}
       propertyPath: waveNumberText
@@ -1835,7 +1837,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1718249622894863866, guid: 8e1c8220ce2763f4386353f3199a5a0a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.82795006
+      value: -2.2
       objectReference: {fileID: 0}
     - target: {fileID: 1718249622894863866, guid: 8e1c8220ce2763f4386353f3199a5a0a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1843,7 +1845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1718249622894863866, guid: 8e1c8220ce2763f4386353f3199a5a0a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.58081055
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 1718249622894863866, guid: 8e1c8220ce2763f4386353f3199a5a0a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1879,7 +1881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2059167855544942400, guid: 8e1c8220ce2763f4386353f3199a5a0a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
