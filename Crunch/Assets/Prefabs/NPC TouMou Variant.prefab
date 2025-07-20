@@ -124599,19 +124599,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
-      propertyPath: m_LocalPosition.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.4057368
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.000000059604645
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.06
+      value: 8.221677
       objectReference: {fileID: 0}
     - target: {fileID: 4968492947203142844, guid: a11785b116df744b5a7df37446cc5260, type: 3}
       propertyPath: m_LocalRotation.w
@@ -124669,6 +124669,10 @@ PrefabInstance:
       propertyPath: '<UnderworkedVFXs>k__BackingField.Array.data[1]'
       value: 
       objectReference: {fileID: 2757014725813248084}
+    - target: {fileID: 6161330008158331647, guid: a11785b116df744b5a7df37446cc5260, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -8827253185144625579, guid: d86d96ae528d1a8468a3e304651c12a0, type: 3}
     - target: {fileID: 7584757859879435942, guid: a11785b116df744b5a7df37446cc5260, type: 3}
       propertyPath: m_Name
       value: NPC TouMou Variant

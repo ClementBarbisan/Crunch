@@ -204,6 +204,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.86
       objectReference: {fileID: 0}
+    - target: {fileID: 5757201566499890008, guid: f22d904e72baecb43a142be5c35e4b11, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7134935720161853018, guid: f22d904e72baecb43a142be5c35e4b11, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.86

@@ -44,6 +44,10 @@ public class WorkingState : AStateNPC
         if (npc.IsWorking)
         {
             GameManager.Instance.ProduceMoney(npc.WorkEfficiencyRate);
+            if (npc.animator != null)
+            {
+                npc.animator.SetBool(npc._isWorkingParamName, true);
+            }
             return;
         }
         if ((!npc.CurrentStation || !npc.CurrentStation.freeStation && npc.CurrentStation.currentNPC != npc))

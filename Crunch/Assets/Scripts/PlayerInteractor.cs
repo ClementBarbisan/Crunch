@@ -67,43 +67,54 @@ public class PlayerInteractor : MonoBehaviour
         else
         {
             // THROW
-            _handFree = true;
+            //Throw ();
+            BeginThrowAnim();
+        }
+    }
 
-            if (_interactableToThrow != null)
+    private void BeginThrowAnim()
+    {
+        animator.SetBool(_isThrowingObjectParamName, true);
+    }
+    public void Throw()
+    {
+        _handFree = true;
+
+        if (_interactableToThrow != null)
+        {
+            _playerController.speedMove = _playerController.moveSpeedFast;
+            _interactableToThrow.SetParent(null);
+            _interactableToThrow.GetComponent<Collider>().enabled = true;
+            _interactableToThrow.rotation = _rotationInitThrowable;
+            IInteractable interactableScript = _interactableToThrow.GetComponent<IInteractable>();
+            interactableScript.OnThrow();
+            Rigidbody rb = _interactableToThrow.GetComponent<Rigidbody>();
+            rb.isKinematic = false;
+
+            //float adjustedThrowForce = interactableScript.Heavy ? throwForceHeavy : throwForce;
+            rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+
+            if (_interactableToThrow.GetComponent<NPC>() != null)
             {
-                _playerController.speedMove = _playerController.moveSpeedFast;
-                _interactableToThrow.SetParent(null);
-                _interactableToThrow.GetComponent<Collider>().enabled = true;
-                _interactableToThrow.rotation = _rotationInitThrowable;
-                IInteractable interactableScript = _interactableToThrow.GetComponent<IInteractable>();
-                interactableScript.OnThrow();
-                Rigidbody rb = _interactableToThrow.GetComponent<Rigidbody>();
-                rb.isKinematic = false;
+                NPC npc = _interactableToThrow.GetComponent<NPC>();
 
-                //float adjustedThrowForce = interactableScript.Heavy ? throwForceHeavy : throwForce;
-                rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
+                npc.OnThrow();
 
-                if (_interactableToThrow.GetComponent<NPC>() != null)
-                {
-                    NPC npc = _interactableToThrow.GetComponent<NPC>();
+            }
 
-                    npc.OnThrow();
-
-                }
-                
-                _interactableToThrow = null;
+            _interactableToThrow = null;
 
 
 
-                if (animator != null)
-                {
-                    animator.SetBool(_isHoldingObjectParamName, false);
-                    animator.SetBool(_isThrowingObjectParamName, true);
-                }
+            if (animator != null)
+            {
+                animator.SetBool(_isThrowingObjectParamName, false);
+                animator.SetBool(_isHoldingObjectParamName, false);
             }
         }
     }
-    
+
+
     private void InteractableToThrow(Transform obj)
     {
         _interactableToThrow = obj;
