@@ -72,6 +72,9 @@ public class NPC : MonoBehaviour, IInteractable
     [SerializeField] private float _workStressValueOnThrow = 0.5f;
     [SerializeField] private AudioSource _audioSourceGrab;
     [SerializeField] private AudioSource _audioSourceThrown;
+    public AudioSource _audioSourceSleeping;
+    [SerializeField] private AudioSource _audioSourceWork;
+    [SerializeField] private AudioSource _audioSourceFrenzy;
     #region Unity Events
 
     void Awake()
@@ -98,6 +101,7 @@ public class NPC : MonoBehaviour, IInteractable
             {
                 WorkingVFXs[i].Play();
             }
+            _audioSourceWork.Play();
         }
         else
         {
@@ -105,6 +109,7 @@ public class NPC : MonoBehaviour, IInteractable
             {
                 WorkingVFXs[i].Stop();
             }
+            _audioSourceWork.Stop();
         }
     }
     
