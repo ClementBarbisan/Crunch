@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
 
     public void SetContinue()
     {
+        Debug.Log("Continue");
         animator.SetTrigger("continueTrigger");
         Time.timeScale = 1f;
     }
