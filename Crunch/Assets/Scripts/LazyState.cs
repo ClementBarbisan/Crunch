@@ -13,6 +13,12 @@ public class LazyState : AStateNPC
             npc.CurrentStation = null;
         }*/
         npc.IsWorking = false;
+
+
+        if (npc.animator != null)
+        {
+            npc.animator.SetBool(npc._isWorkingParamName, false);
+        }
         //npc.Agent.SetDestination(new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f)));
 
         if (npc.UnderworkedVFXs.Length > 0)

@@ -9,6 +9,10 @@ public class StressedHyperactifState : StressedState
         if(!npc.finishFrenzy)
         {
             GameManager.Instance.ProduceMoney(npc.FrenzyWorkEfficiencyRate);
+            if (npc.animator != null)
+            {
+                npc.animator.SetBool(npc._isWorkingParamName, true);
+            }
         }
         if (npc.OldTimer > 0 && npc.TimeCounter <= 0)
         {

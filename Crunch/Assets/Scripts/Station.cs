@@ -16,6 +16,11 @@ public class Station : MonoBehaviour
             {
                 currentNPC.transform.position = npc.transform.position;
                 currentNPC.IsWorking = false;
+
+                if (currentNPC.animator != null)
+                {
+                    currentNPC.animator.SetBool(currentNPC._isWorkingParamName, false);
+                }
             }
             npc.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
             npc.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
@@ -26,6 +31,7 @@ public class Station : MonoBehaviour
             npc.CurrentStation = this;
             npc.IsWorking = true;
             npc.WorkStress = _workStressValueOnThrow;
+
         }
     }
 
