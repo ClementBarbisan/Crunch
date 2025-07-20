@@ -1260,10 +1260,6 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6163364187461141337, guid: dc81b7a81ceed694784ecf406eeaff38, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6163364187461141337, guid: dc81b7a81ceed694784ecf406eeaff38, type: 3}
       propertyPath: interactRange
       value: 0.46
       objectReference: {fileID: 0}
