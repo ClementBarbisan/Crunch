@@ -16,7 +16,7 @@ public class StressedHyperactifState : StressedState
         }
         if (npc.OldTimer > 0 && npc.TimeCounter <= 0)
         {
-            npc.Agent.isStopped = false;
+            npc.Agent.enabled = false;
             npc.Agent.speed = StateWalkSpeed;
             npc.Agent.SetDestination(new Vector3(Random.Range(-15f, 15f), 0f, Random.Range(-15f, 15f)));
             npc.finishFrenzy = true;

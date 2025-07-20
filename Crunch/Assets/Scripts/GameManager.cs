@@ -68,12 +68,14 @@ public class GameManager : MonoBehaviour
         if (waveScore >= waveGoalScore)
         {
             SetGameOver(true);
-            MusicManager.Instance.ChangeMusic(1);
+            if(MusicManager.Instance != null)
+                MusicManager.Instance.ChangeMusic(1);
         }
         else if (waveTimeElapsed >= waveDuration)
         {
             SetGameOver(false);
-            MusicManager.Instance.ChangeMusic(2);
+            if(MusicManager.Instance != null)
+                MusicManager.Instance.ChangeMusic(2);
         }
 
         if (_timeBeforePhone < 0 && _phone != null)
@@ -127,7 +129,8 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(currentWave);
         int v = currentWave + 3;
-        if(MusicManager.Instance.clips.Length > v)
+        
+        if(MusicManager.Instance != null && MusicManager.Instance.clips.Length > v)
             MusicManager.Instance.ChangeMusic(v);
     }
     
@@ -144,7 +147,7 @@ public class GameManager : MonoBehaviour
         _nbScreams = 0;
         _nbTrauma = 0;
         int v = currentWave + 4;
-        if(MusicManager.Instance.clips.Length > v)
+        if(MusicManager.Instance != null && MusicManager.Instance.clips.Length > v)
             MusicManager.Instance.ChangeMusic(v);
         SceneManager.LoadSceneAsync(currentWave+1);
     }

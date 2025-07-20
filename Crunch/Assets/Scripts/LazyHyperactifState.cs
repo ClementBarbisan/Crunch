@@ -35,7 +35,7 @@ public class LazyHyperactifState : LazyState
         npc.CurrentStation = FindClosestOccupiedStation(npc.transform.position);
         if (npc.CurrentStation)
         {
-            npc.Agent.isStopped = false;
+            npc.Agent.enabled = true;
             npc.Agent.speed = StateWalkSpeed;
             npc.Agent.SetDestination(npc.CurrentStation.transform.position + npc.CurrentStation.transform.forward / 2f +
                                      npc.CurrentStation.transform.right / 2f);
