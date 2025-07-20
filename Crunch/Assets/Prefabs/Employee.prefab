@@ -64,10 +64,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3182174052723866330}
   - {fileID: 4941426269476131430}
   - {fileID: 1380800309870791561}
   - {fileID: 2621240448108364794}
-  - {fileID: 3182174052723866330}
   - {fileID: 8074778396100607312}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -153,6 +153,7 @@ MonoBehaviour:
   isWalkingAnimThreshold: 0.1
   _isWalkingParamName: isWalking
   _isWorkingParamName: isWorking
+  _isHeldParamName: isHeld
   stressProgressBar: {fileID: 0}
   TransformReferenceUI: {fileID: 1380800309870791561}
   DEBUG_Renderer: {fileID: 6161330008158331647}
