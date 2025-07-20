@@ -10,6 +10,7 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] LayerMask interactableLayer;
     [SerializeField] private Transform carryPoint;
     [SerializeField] private float throwForce;
+    [SerializeField] private float throwForceHeavy;
 
     private InputSystem_Actions _controls;
     private bool _handFree = true;
@@ -74,11 +75,14 @@ public class PlayerInteractor : MonoBehaviour
                 _interactableToThrow.SetParent(null);
                 _interactableToThrow.GetComponent<Collider>().enabled = true;
                 _interactableToThrow.rotation = _rotationInitThrowable;
-                _interactableToThrow.GetComponent<IInteractable>().OnThrow();
+                IInteractable interactableScript = _interactableToThrow.GetComponent<IInteractable>();
+                interactableScript.OnThrow();
                 Rigidbody rb = _interactableToThrow.GetComponent<Rigidbody>();
                 rb.isKinematic = false;
+
+                //float adjustedThrowForce = interactableScript.Heavy ? throwForceHeavy : throwForce;
                 rb.AddForce(transform.forward * throwForce, ForceMode.Impulse);
-                
+
                 if (_interactableToThrow.GetComponent<NPC>() != null)
                 {
                     NPC npc = _interactableToThrow.GetComponent<NPC>();

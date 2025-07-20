@@ -51,6 +51,7 @@ public class NPC : MonoBehaviour, IInteractable
 
 
     [Header("Others")]
+    public Renderer DEBUG_Renderer;
 
     public AStateNPC CurrentState { get; private set; }
     public float WorkStress { get; set; }
@@ -215,7 +216,7 @@ public class NPC : MonoBehaviour, IInteractable
 
     public void DEBUG_ChangeColor(Color color) // To see states changes visually for now
     {
-        GetComponent<Renderer>().material.color = color;
+        DEBUG_Renderer.material.color = color;
     }
     #endregion
 
