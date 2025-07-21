@@ -162,6 +162,6 @@ MonoBehaviour:
   breakFx: {fileID: 2230858593194337089, guid: 964da2837f4549342bb872afdc765830, type: 3}
   boostFx: {fileID: 2230858593194337089, guid: 964da2837f4549342bb872afdc765830, type: 3}
   clipBreak: {fileID: 8300000, guid: 844e1eca1427ffc48aaee03718500581, type: 3}
-  clipBoost: {fileID: 8300000, guid: 89b5d01df9a94254bad0df9715f159a8, type: 3}
-  boostEffectValue: 0.4
+  clipBoost: {fileID: 8300000, guid: 844e1eca1427ffc48aaee03718500581, type: 3}
+  boostEffectValue: 0.7
   waitColliding: 0

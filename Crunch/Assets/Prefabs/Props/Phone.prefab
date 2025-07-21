@@ -49941,7 +49941,7 @@ MonoBehaviour:
   breakFX: {fileID: 0}
   clipRing: {fileID: 0}
   clipBreak: {fileID: 0}
-  _stressBoost: 0.3
+  _stressBoost: 0.7
 --- !u!82 &485614231511500908
 AudioSource:
   m_ObjectHideFlags: 0

@@ -157,7 +157,7 @@ MonoBehaviour:
   _interactableLayer:
     serializedVersion: 2
     m_Bits: 64
-  _boostWorkCoffee: 0.3
+  _boostWorkCoffee: 1
   coffeePropsPf: {fileID: 2398478060952529829, guid: eb23ff357d78d4742be8dad065f176e8, type: 3}
   coffeePropsSpawnPosition: {fileID: 2626135531082840396}
   clipCoffeeSpawn: {fileID: 8300000, guid: 23c633a40bf019c489df0f99f35cc293, type: 3}
