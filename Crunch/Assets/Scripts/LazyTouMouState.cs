@@ -10,7 +10,7 @@ public class LazyTouMouState : LazyState
         {
             npc.UnderworkedVFXs[i].Play();
         }
-        npc._audioSourceSleeping.Play();
+        //npc._audioSourceSleeping.Play();
     }
 
     public override void OnLeaveState(NPC npc)
@@ -20,6 +20,6 @@ public class LazyTouMouState : LazyState
         {
             npc.UnderworkedVFXs[i].Stop();
         }
-        npc._audioSourceSleeping.Stop();
+        //npc._audioSourceSleeping.Stop();
     }
 }
