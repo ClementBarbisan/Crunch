@@ -157,7 +157,7 @@ MonoBehaviour:
   _interactableLayer:
     serializedVersion: 2
     m_Bits: 64
-  _boostWorkSnack: 0.3
+  _boostWorkSnack: -1
   snackPropsPf:
   - {fileID: 1900638445649528075, guid: e1fa7a936aacf064eaede20c4aefce26, type: 3}
   - {fileID: 2343090497339734172, guid: 6163ede0ec1ce2f4daf78152166ba65e, type: 3}
