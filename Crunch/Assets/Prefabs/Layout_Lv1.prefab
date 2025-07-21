@@ -17098,6 +17098,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cloud_2
       objectReference: {fileID: 0}
+    - target: {fileID: 3203123439703238973, guid: b10755acc9fa89a43a743114683330b0, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3317811913362414660, guid: b10755acc9fa89a43a743114683330b0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.99
@@ -18859,6 +18863,10 @@ PrefabInstance:
     - target: {fileID: 800028449257893209, guid: b10755acc9fa89a43a743114683330b0, type: 3}
       propertyPath: m_Name
       value: Cloud_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203123439703238973, guid: b10755acc9fa89a43a743114683330b0, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3317811913362414660, guid: b10755acc9fa89a43a743114683330b0, type: 3}
       propertyPath: m_LocalScale.x
@@ -22163,6 +22171,10 @@ PrefabInstance:
     - target: {fileID: 800028449257893209, guid: 41b3ef0a80b24844cbb6e9d955183a39, type: 3}
       propertyPath: m_Name
       value: Cloud_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203123439703238973, guid: 41b3ef0a80b24844cbb6e9d955183a39, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3317811913362414660, guid: 41b3ef0a80b24844cbb6e9d955183a39, type: 3}
       propertyPath: m_LocalScale.x
@@ -26433,6 +26445,10 @@ PrefabInstance:
     - target: {fileID: 800028449257893209, guid: 41b3ef0a80b24844cbb6e9d955183a39, type: 3}
       propertyPath: m_Name
       value: Cloud_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203123439703238973, guid: 41b3ef0a80b24844cbb6e9d955183a39, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3317811913362414660, guid: 41b3ef0a80b24844cbb6e9d955183a39, type: 3}
       propertyPath: m_LocalScale.x
@@ -39122,6 +39138,10 @@ PrefabInstance:
     - target: {fileID: 800028449257893209, guid: 8ea4a2f05f03c4941aaf1d9062d10ccd, type: 3}
       propertyPath: m_Name
       value: Cloud_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203123439703238973, guid: 8ea4a2f05f03c4941aaf1d9062d10ccd, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3317811913362414660, guid: 8ea4a2f05f03c4941aaf1d9062d10ccd, type: 3}
       propertyPath: m_LocalScale.x
