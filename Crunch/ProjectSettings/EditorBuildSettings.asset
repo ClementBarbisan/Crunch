@@ -31,9 +31,6 @@ EditorBuildSettings:
     guid: 00d2c96422f0d6644b212fd6a78f869e
   - enabled: 1
     path: Assets/Scenes/Wave_6.unity
-    guid: 688e969ea394c6e44825d214467e8b7b
-  - enabled: 1
-    path: Assets/Scenes/Wave_7.unity
     guid: 5f784a631754c9b46ae2bac7df054d14
   - enabled: 1
     path: Assets/Scenes/Main.unity
