@@ -564,7 +564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3317811913362414660, guid: ded5a2d64dc8eaa499f12e8192f23c49, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 1.32
       objectReference: {fileID: 0}
     - target: {fileID: 3317811913362414660, guid: ded5a2d64dc8eaa499f12e8192f23c49, type: 3}
       propertyPath: m_LocalPosition.y
@@ -572,7 +572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3317811913362414660, guid: ded5a2d64dc8eaa499f12e8192f23c49, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.2
+      value: -3.47
       objectReference: {fileID: 0}
     - target: {fileID: 3317811913362414660, guid: ded5a2d64dc8eaa499f12e8192f23c49, type: 3}
       propertyPath: m_LocalRotation.w
@@ -755,6 +755,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1081667956657013420, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1256890263961201597, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -772,6 +776,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2402474188304084121, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696643053193002377, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -828,6 +836,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4179703638193819381, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229100810233228111, guid: d285c3cae1d5a73489b7bbe3f6f0d051, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
