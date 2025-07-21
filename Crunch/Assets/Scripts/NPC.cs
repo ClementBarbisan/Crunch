@@ -93,7 +93,7 @@ public class NPC : MonoBehaviour, IInteractable
         _faceRenderer.material.SetFloat("_faceNumber", face);
     }
     
-    void SwitchWorkingVFX()
+    /*void SwitchWorkingVFX()
     {
         if (IsWorking)
         {
@@ -104,11 +104,11 @@ public class NPC : MonoBehaviour, IInteractable
 
             _audioSourceWork.Stop();
         }
-    }
+    }*/
     
     void Update()
     {
-        SwitchWorkingVFX();
+        //SwitchWorkingVFX();
         if (timerGettingUp != -1)
         {
             timerGettingUp -= Time.deltaTime;
